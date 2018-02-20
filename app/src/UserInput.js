@@ -1,16 +1,19 @@
 import React from 'react';
 import './App.css';
+import {Dropdown} from './Dropdown.js';
 
 class UserInput extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {name: ''};
-    this.state = {age: ''};
+    this.state = {
+      name: '',
+      age: ''
+    };
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.name});
+  handleChange(event, name) {
+    this.setState({[name]: event.target.value});
   }
 
   handleSubmit(event) {
@@ -20,28 +23,23 @@ class UserInput extends React.Component {
   render() {
     return (
       <form>
-        <h1 class="input_title">Introduce yourself</h1>
-        <label class="input_pompt">My name is {this.state.name}
-          <input type="text" value={this.state.name} onChange={this.handleChange}>
+        <h1 className="input_title">Introduce yourself</h1>
+        <label className="input_pompt">My name is
+          <input type="name" value={this.state.name} onChange={(e) => this.handleChange(e, 'name')}>
           </input>
         </label>
 
-        <label class="input_pompt">and I am a
-          <div className="dropdown-list">
-            <div>
-            {this.renderListItems}
-            </div>
-          </div>
+        <label className="input_dropdown">and I am a
+              <Dropdown data={['groovy', 'good loocking', 'eccentric', 'fabulous']}/>
         </label>
 
-        <label class="input_pompt">, who
-          <input>
-          </input>
+        <label className="input_dropdown">
+              <Dropdown data={['gentelman', 'lady']}/>
         </label>
 
-        <label class="input_pompt">is {this.state.age} years old
-          <input type="text" value={this.state.age} onChange={this.handleChange}>
-          </input>
+        <label className="input_pompt">, who is
+          <input type="age" value={this.state.age} onChange={(e) => this.handleChange(e, 'age')}>
+          </input> years old.
         </label>
 
       </form>
