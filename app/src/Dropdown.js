@@ -28,12 +28,14 @@ export class Dropdown extends React.Component {
     });
 
     return (
+      <label> {this.props.title}
       <Select
         name="form-field-name"
         value={value}
         onChange={this.handleChange}
         options ={opts}
       />
+      </label>
     );
   }
 }
