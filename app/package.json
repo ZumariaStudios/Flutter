@@ -4,7 +4,15 @@
   "private": true,
   "homepage": "../www",
   "dependencies": {
+    "autoprefixer": "^8.0.0",
     "bootstrap": "^4.0.0",
+    "copyfiles": "^1.2.0",
+    "font-awesome": "^4.7.0",
+    "node-sass": "^4.7.2",
+    "nodemon": "^1.15.1",
+    "normalize.css": "^8.0.0",
+    "npm-run-all": "^4.1.2",
+    "postcss-cli": "^5.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-global": "^0.1.8",
@@ -15,10 +23,17 @@
     "simple-react-dropdown": "^3.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm-run-all --parallel server:dev watch:sass",
+    "server:dev": "react-scripts start",
+    "prebuild": "npm-run-all sass",
     "build": "react-scripts build",
     "postbuild": "cp -R ./build/* ../www",
-    "test": "react-scripts test --env=jsdom"
+    "test": "react-scripts test --env=jsdom",
+    "copyfa": "mkdir -p public/fonts && cp -R node_modules/font-awesome/fonts/* public/fonts",
+    "presass": "npm run copyfa",
+    "sass": "node-sass --source-map true --include-path src --include-path node_modules src/index.scss public/styles/bundle.css",
+    "postsass": "postcss public/styles/bundle.css -c postcss.config.js -o public/styles/bundle.min.css",
+    "watch:sass": "nodemon -e scss -w src -x \"npm run sass\""
   },
   "devDependencies": {}
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
-export class Dropdown extends React.Component {
+class Dropdown extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,6 +25,7 @@ export class Dropdown extends React.Component {
         value: datum,
         label: datum
       });
+      return false;
     });
 
     return (
@@ -39,3 +40,5 @@ export class Dropdown extends React.Component {
     );
   }
 }
+
+export default Dropdown;

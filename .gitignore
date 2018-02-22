@@ -5,3 +5,6 @@ app/build
 package-lock.json
 www/*
 
+app/public/styles/*
+app/public/fonts/FontAwesome*
+app/public/fonts/fontawesome*

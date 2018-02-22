@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class Input extends React.Component {
+class Input extends React.Component {
   constructor(props) {
     super(props);
     this.state = {value: ''};
@@ -9,6 +9,7 @@ export class Input extends React.Component {
 
   handleChange(event) {
     this.setState({value: event.target.value});
+    this.props.onChange(event.target.value);
   }
 
   render() {
@@ -20,3 +21,5 @@ export class Input extends React.Component {
     )
   }
 }
+
+export default Input;

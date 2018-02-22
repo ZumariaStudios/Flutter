@@ -1,7 +1,7 @@
 import React from 'react';
-import './App.css';
-import {Dropdown} from './Dropdown.js';
-import {Input} from './Input.js';
+
+import Dropdown from './Dropdown.js';
+import Input from './Input.js';
 
 class UserInput extends React.Component {
   constructor(props) {
@@ -22,8 +22,10 @@ class UserInput extends React.Component {
         <h1 className="input_title">Introduce yourself</h1>
 
           <div>
-            <Input title={'My name is'}/>
-
+            <Input title={'My name is'} onChange={(newVal) => {
+                console.log('Changed to: ' + newVal);
+                this.setState({isHidden: false});
+            }}/>
           </div>
 
           <div>
