@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import UserInput from './UserInput';
+import InputBasicPage from './InputBasicPage';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<UserInput />, document.getElementById('root'));
+ReactDOM.render(<InputBasicPage />, document.getElementById('root'));
 registerServiceWorker();

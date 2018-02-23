@@ -23,7 +23,7 @@
     "simple-react-dropdown": "^3.3.0"
   },
   "scripts": {
-    "start": "npm-run-all --parallel server:dev watch:sass",
+    "start": "react-scripts start",
     "server:dev": "react-scripts start",
     "prebuild": "npm-run-all sass",
     "build": "react-scripts build",
