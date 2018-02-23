@@ -19,7 +19,6 @@ const Dropdown = (props) => {
         name="form-field-name"
         value={props.value}
         onChange={(evt) => {
-          console.log('dropdown evt: ' + evt.value);
           props.onChange(evt.value);
         }}
         options={opts}

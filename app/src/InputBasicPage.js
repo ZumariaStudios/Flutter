@@ -1,5 +1,6 @@
 import React from 'react';
 import Dropdown from './Dropdown.js';
+import {withRouter} from 'react-router-dom';
 
 class InputBasicPage extends React.Component {
   constructor(props) {
@@ -14,18 +15,23 @@ class InputBasicPage extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.arrayToggle = this.arrayToggle.bind(this);
+    this.nextSection = this.nextSection.bind(this);
   }
 
   handleChange (event, name, num){
-    console.log('value: ' + event.target.value);
     this.setState({[name]: event.target.value});
     this.arrayToggle(num);
+    name === 'age' ? this.nextSection() : null;
   }
 
   arrayToggle(num) {
     var listValues = this.state.listValues;
     listValues[num] = true;
     this.setState({listValues});
+  }
+
+  nextSection() {
+    this.state.age ? this.props.history.push('/InputBMIPage') : null;
   }
 
   render() {
@@ -73,16 +79,15 @@ class InputBasicPage extends React.Component {
             <input
                 type="age"
                 value={this.state.age}
-                onChange={(e) => this.handleChange(e, 'age')}>
+                onChange={(e) => this.handleChange(e, 'age')
+              }>
             </input> years old.
           </label>
           : null
         }
-
-
       </form>
     );
   }
 }
 
-export default InputBasicPage;
+export default withRouter(InputBasicPage);
