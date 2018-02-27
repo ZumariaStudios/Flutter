@@ -18,7 +18,6 @@ class InputBMIPage extends React.Component {
   handleChange (event, name, num){
     this.setState({[name]: event.target.value});
     this.arrayToggle(num);
-    // name === 'age' ? this.nextSection() : null;
   }
 
   arrayToggle(num) {
