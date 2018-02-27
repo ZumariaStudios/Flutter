@@ -1,6 +1,5 @@
 import React from 'react';
-import InputBasicPage from './InputBasicPage';
-import Dropdown from './Dropdown.js';
+import Dropdown from '../form/Dropdown.js';
 import {withRouter} from 'react-router-dom';
 
 class InputBMIPage extends React.Component {
@@ -8,22 +7,28 @@ class InputBMIPage extends React.Component {
     super(props);
     this.state = {
       weight: '',
+      weightMes: '',
       height: '',
-      listValues: [true, false]
+      heightMes: '',
+      listValues: [true, false, false]
     };
     this.handleChange = this.handleChange.bind(this);
     this.arrayToggle = this.arrayToggle.bind(this);
+    this.nextSection = this.nextSection.bind(this);
   }
 
-  handleChange (event, name, num){
+  handleChange (event, name){
     this.setState({[name]: event.target.value});
-    this.arrayToggle(num);
   }
 
   arrayToggle(num) {
     var listValues = this.state.listValues;
     listValues[num] = true;
     this.setState({listValues});
+  }
+
+  nextSection() {
+    this.props.history.push('/InputSpecificPage');
   }
 
   render() {
@@ -34,12 +39,22 @@ class InputBMIPage extends React.Component {
               type="weight"
               value={this.state.weight}
               onChange={(e) => {
-                this.handleChange(e, 'weight', 1)
+                this.handleChange(e, 'weight')
               }}>
           </input>
         </label>
+        <Dropdown
+          name='weightMes'
+          data={['lbs', 'kg']}
+          value={this.state.weightMes}
+          onChange={(newVal) => {
+            this.setState({weightMes: newVal});
+            this.arrayToggle(1);
+          }}
+        />
 
         {this.state.listValues[1] ?
+          <div>
          <label className="input_pompt">and was
            <input
                type="height"
@@ -48,8 +63,24 @@ class InputBMIPage extends React.Component {
              }>
            </input> tall.
          </label>
+         <Dropdown
+           name='heightMes'
+           data={['ft', 'm']}
+           value={this.state.heightMes}
+           onChange={(newVal) => {
+             this.setState({heightMes: newVal});
+             this.arrayToggle(2);
+           }}/></div>
          : null
        }
+
+       {this.state.listValues[2] ?
+         <input
+          type='submit'
+          value='Continue'
+          onClick={this.nextSection}/>
+         : null}
+
       </form>
     )
   }
