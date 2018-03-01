@@ -8,9 +8,9 @@ class InputBMIPage extends React.Component {
     super(props);
     this.state = {
       weight: '',
-      weightMes: '',
+      weightMes: 'lbs',
       height: '',
-      heightMes: '',
+      heightMes: 'ft',
       listValues: [true, false, false],
       //true means there is an error
       errors: {
@@ -24,10 +24,11 @@ class InputBMIPage extends React.Component {
     this.validate = this.validate.bind(this);
   }
 
-  handleChange (event, name){
+  handleChange (event, name, num){
     const value = event.target.value;
     this.setState({[name]: value});
     this.validate(name, value);
+    this.arrayToggle(num);
   }
 
   arrayToggle(num) {
@@ -67,7 +68,7 @@ class InputBMIPage extends React.Component {
               type="weight"
               value={this.state.weight}
               onChange={(e) => {
-                this.handleChange(e, 'weight')
+                this.handleChange(e, 'weight', 1)
               }}>
           </input>
         </label>
@@ -77,7 +78,6 @@ class InputBMIPage extends React.Component {
           value={this.state.weightMes}
           onChange={(newVal) => {
             this.setState({weightMes: newVal});
-            this.arrayToggle(1);
           }}
         />
 
@@ -88,7 +88,7 @@ class InputBMIPage extends React.Component {
                className={this.state.errors.height ? 'error' : null}
                type="height"
                value={this.state.height}
-               onChange={(e) => this.handleChange(e, 'height')
+               onChange={(e) => this.handleChange(e, 'height', 2)
              }>
            </input> tall.
          </label>
@@ -98,12 +98,13 @@ class InputBMIPage extends React.Component {
            value={this.state.heightMes}
            onChange={(newVal) => {
              this.setState({heightMes: newVal});
-             this.arrayToggle(2);
            }}/></div>
          : null
        }
 
-       {this.state.listValues[2] ?
+       {this.state.listValues[2] &&
+            !this.state.errors.weight &&
+            !this.state.errors.height ?
          <input
           type='submit'
           value='Continue'
