@@ -34,7 +34,7 @@ class InputBMIPage extends React.Component {
   render() {
     return (
       <form>
-        <label className="input_prompt">Last time I checked, I weight
+        <label className="input_prompt">Last time I checked, I weighed: <br/>
           <input
               type="weight"
               value={this.state.weight}

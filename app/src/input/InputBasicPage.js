@@ -2,8 +2,6 @@ import React from 'react';
 import Dropdown from '../form/Dropdown.js';
 import {withRouter} from 'react-router-dom';
 
-//a comment
-
 class InputBasicPage extends React.Component {
   constructor(props) {
     super(props);
