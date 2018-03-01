@@ -1,6 +1,7 @@
 import React from 'react';
 import Dropdown from '../form/Dropdown.js';
 import {withRouter} from 'react-router-dom';
+import './style.css';
 
 class InputBasicPage extends React.Component {
   constructor(props) {
@@ -10,16 +11,24 @@ class InputBasicPage extends React.Component {
       adjective: '',
       sex: '',
       age: '',
-      listValues: [true, false, false, false, false]
+      listValues: [true, false, false, false, false],
+      //true means there is an error
+      errors: {
+        userName: false,
+        age: false,
+      }
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.arrayToggle = this.arrayToggle.bind(this);
     this.nextSection = this.nextSection.bind(this);
+    this.validate = this.validate.bind(this);
   }
 
   handleChange (event, name, num){
-    this.setState({[name]: event.target.value});
+    const value = event.target.value;
+    this.setState({[name]: value});
+    this.validate(name, value);
     this.arrayToggle(num);
   }
 
@@ -27,6 +36,24 @@ class InputBasicPage extends React.Component {
     var listValues = this.state.listValues;
     listValues[num] = true;
     this.setState({listValues});
+  }
+
+  validate(name, value) {
+    let fieldValidationError = this.state.errors;
+
+    if (name === 'userName') {
+      value.length === 0 ?
+        fieldValidationError.userName = true :
+        fieldValidationError.userName = false;
+    }
+
+    if (name === 'age') {
+      value.length === 0 || !(/^\d+$/.test(value)) ?
+        fieldValidationError.age = true :
+        fieldValidationError.age = false;
+    }
+
+    this.setState({errors: fieldValidationError});
   }
 
   nextSection() {
@@ -38,8 +65,9 @@ class InputBasicPage extends React.Component {
       <div className ="inputBasicPage">
       <form>
         <h1 className="input_title">Introduce yourself</h1>
-        <label className="input_pompt">My name is
+        <label>My name is
           <input
+              className={this.state.errors.userName ? 'error' : null}
               type="name"
               value={this.state.name}
               onChange={(e) => {
@@ -79,6 +107,7 @@ class InputBasicPage extends React.Component {
           {this.state.listValues[3] ?
            <label className="input_pompt">, who is
              <input
+                 className={this.state.errors.age ? 'error' : null}
                  type="age"
                  value={this.state.age}
                  onChange={(e) => this.handleChange(e, 'age', 4)
@@ -88,13 +117,14 @@ class InputBasicPage extends React.Component {
            : null
          }
 
-         {this.state.listValues[4] ?
+         {this.state.listValues[4] &&
+           !this.state.errors.userName &&
+           !this.state.errors.age ?
            <input
             type='submit'
             value='Continue'
             onClick={this.nextSection}/>
            : null}
-
       </form>
       </div>
     );
