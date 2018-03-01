@@ -35,7 +35,8 @@ class InputBasicPage extends React.Component {
 
   render() {
     return (
-      <form className ="inputBasicPage">
+      <div className ="inputBasicPage">
+      <form>
         <h1 className="input_title">Introduce yourself</h1>
         <label className="input_pompt">My name is
           <input
@@ -95,6 +96,7 @@ class InputBasicPage extends React.Component {
            : null}
 
       </form>
+      </div>
     );
   }
 }

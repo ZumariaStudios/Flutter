@@ -12,10 +12,15 @@ class InputSpecificPage extends React.Component {
       bloodPressMed: false
     };
     this.handleChange = this.handleChange.bind(this);
+    this.nextSection = this.nextSection.bind(this);
   }
 
   handleChange(e, name) {
     this.setState({[name]: e.target.checked});
+  }
+
+  nextSection() {
+    this.props.history.push('/InputBPMPage');
   }
 
   render() {
@@ -60,6 +65,11 @@ class InputSpecificPage extends React.Component {
           />
           <span>Blood pressure</span>
         </label>
+
+        <input
+         type='submit'
+         value='Continue'
+         onClick={this.nextSection}/>
       </form>
     )
   }

@@ -5,12 +5,12 @@
 @import 'react-select/dist/react-select.css';
 
 // Defaults
-@import 'defaults/colors';
-@import 'defaults/typography';
+@import 'defaults/_colors';
+@import 'defaults/_typography';
 
 // Components
-@import 'toggle/react_toggle';
-@import 'input/inputPages';
-@import 'form/dropdown';
+@import 'toggle/_react_toggle';
+@import 'form/_dropdown';
 
 // Pages
+@import 'input/_inputPages';
