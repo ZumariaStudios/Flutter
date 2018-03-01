@@ -1,0 +1,30 @@
+#root {
+
+}
+
+span {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.select_control {
+  width: 50%;
+}
+
+h1 {
+  font-family: $sanserif;
+  color: purple;
+  text-align: center;
+}
+
+h1.input_title {
+    width: 100%;
+}
+
+
+
+.input_prompt {
+    font-family: $sanserif;
+  }

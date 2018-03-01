@@ -2,6 +2,8 @@ import React from 'react';
 import Dropdown from '../form/Dropdown.js';
 import {withRouter} from 'react-router-dom';
 
+//a comment
+
 class InputBasicPage extends React.Component {
   constructor(props) {
     super(props);
@@ -28,7 +30,7 @@ class InputBasicPage extends React.Component {
     listValues[num] = true;
     this.setState({listValues});
   }
-
+//comment here
   nextSection() {
     this.props.history.push('/InputBMIPage');
   }
@@ -38,7 +40,7 @@ class InputBasicPage extends React.Component {
       <div className ="inputBasicPage">
       <form>
         <h1 className="input_title">Introduce yourself</h1>
-        <label className="input_pompt">My name is
+        <label className="input_prompt">My name is
           <input
               type="name"
               value={this.state.name}
@@ -52,7 +54,7 @@ class InputBasicPage extends React.Component {
           <label className="input_dropdown">and I am a
             <Dropdown
                 name='adjective'
-                data={['groovy', 'good loocking', 'eccentric', 'fabulous']}
+                data={['groovy', 'good looking', 'eccentric', 'fabulous']}
                 value={this.state.adjective}
                 onChange={(newVal) => {
                   this.setState({adjective: newVal});
@@ -66,7 +68,7 @@ class InputBasicPage extends React.Component {
            <label className="input_dropdown">
                <Dropdown
                    name='sex'
-                   data={['gentelman', 'lady']}
+                   data={['gentleman', 'lady']}
                    value={this.state.sex}
                    onChange={(newVal) => {
                      this.setState({sex: newVal});
@@ -77,13 +79,13 @@ class InputBasicPage extends React.Component {
            }
 
           {this.state.listValues[3] ?
-           <label className="input_pompt">, who is
+           <label className="input_prompt"> who is
              <input
                  type="age"
                  value={this.state.age}
                  onChange={(e) => this.handleChange(e, 'age', 4)
                }>
-             </input> years old.
+             </input> years old. <br/><br/>
            </label>
            : null
          }
