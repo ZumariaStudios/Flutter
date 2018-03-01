@@ -14,16 +14,14 @@ const Dropdown = (props) => {
     });
 
     return (
-      <label>
       <Select
-        name="form-field-name"
+        name={props.name}
         value={props.value}
         onChange={(evt) => {
           props.onChange(evt.value);
         }}
         options={opts}
       />
-      </label>
     );
 }
 

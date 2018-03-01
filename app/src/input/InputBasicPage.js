@@ -1,5 +1,5 @@
 import React from 'react';
-import Dropdown from './Dropdown.js';
+import Dropdown from '../form/Dropdown.js';
 import {withRouter} from 'react-router-dom';
 
 class InputBasicPage extends React.Component {
@@ -10,7 +10,7 @@ class InputBasicPage extends React.Component {
       adjective: '',
       sex: '',
       age: '',
-      listValues: [true, false, false, false]
+      listValues: [true, false, false, false, false]
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -21,7 +21,6 @@ class InputBasicPage extends React.Component {
   handleChange (event, name, num){
     this.setState({[name]: event.target.value});
     this.arrayToggle(num);
-    name === 'age' ? this.nextSection() : null;
   }
 
   arrayToggle(num) {
@@ -31,11 +30,12 @@ class InputBasicPage extends React.Component {
   }
 
   nextSection() {
-    this.state.age ? this.props.history.push('/InputBMIPage') : null;
+    this.props.history.push('/InputBMIPage');
   }
 
   render() {
     return (
+      <div className ="inputBasicPage">
       <form>
         <h1 className="input_title">Introduce yourself</h1>
         <label className="input_pompt">My name is
@@ -51,6 +51,7 @@ class InputBasicPage extends React.Component {
          { this.state.listValues[1] ?
           <label className="input_dropdown">and I am a
             <Dropdown
+                name='adjective'
                 data={['groovy', 'good loocking', 'eccentric', 'fabulous']}
                 value={this.state.adjective}
                 onChange={(newVal) => {
@@ -61,31 +62,41 @@ class InputBasicPage extends React.Component {
             : null
           }
 
-         {this.state.listValues[2] ?
-          <label className="input_dropdown">
-              <Dropdown
-                  data={['gentelman', 'lady']}
-                  value={this.state.sex}
-                  onChange={(newVal) => {
-                    this.setState({sex: newVal});
-                    this.arrayToggle(3);
-              }}/>
-          </label>
-            : null
-          }
+          {this.state.listValues[2] ?
+           <label className="input_dropdown">
+               <Dropdown
+                   name='sex'
+                   data={['gentelman', 'lady']}
+                   value={this.state.sex}
+                   onChange={(newVal) => {
+                     this.setState({sex: newVal});
+                     this.arrayToggle(3);
+               }}/>
+           </label>
+             : null
+           }
 
-         {this.state.listValues[3] ?
-          <label className="input_pompt">, who is
-            <input
-                type="age"
-                value={this.state.age}
-                onChange={(e) => this.handleChange(e, 'age')
-              }>
-            </input> years old.
-          </label>
-          : null
-        }
+          {this.state.listValues[3] ?
+           <label className="input_pompt">, who is
+             <input
+                 type="age"
+                 value={this.state.age}
+                 onChange={(e) => this.handleChange(e, 'age', 4)
+               }>
+             </input> years old.
+           </label>
+           : null
+         }
+
+         {this.state.listValues[4] ?
+           <input
+            type='submit'
+            value='Continue'
+            onClick={this.nextSection}/>
+           : null}
+
       </form>
+      </div>
     );
   }
 }
