@@ -9,7 +9,7 @@ class InputSpecificPage extends React.Component {
       smoker: false,
       famHistory: false,
       diabetesMed: false,
-      bloodPressMed: false
+      bloodPressMed: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.nextSection = this.nextSection.bind(this);
