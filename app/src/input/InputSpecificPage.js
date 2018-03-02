@@ -27,6 +27,7 @@ class InputSpecificPage extends React.Component {
     return (
       <form>
         <h1 className="input_title">Its all coming together now!</h1>
+        <br />
         <label>
           <Toggle
             defaultChecked={this.state.smoker}
@@ -34,7 +35,7 @@ class InputSpecificPage extends React.Component {
               this.handleChange(e, 'smoker')
             }}
           />
-          <span>Smoke?</span>
+          <span>Smoke?<br/></span>
         </label>
         <label>
           <input
@@ -46,7 +47,7 @@ class InputSpecificPage extends React.Component {
           />
           <span>Have a family history of heart disease?</span>
         </label>
-        <span>Under medication for:</span>
+        <span><br/>Under medication for:<br/></span>
         <label>
           <input
             type='checkbox'
@@ -55,7 +56,7 @@ class InputSpecificPage extends React.Component {
               this.handleChange(e, 'diabetesMed')
             }}
           />
-          <span>Diabetes</span>
+          <span> Diabetes<br/></span>
           <input
             type='checkbox'
             defaultChecked={this.state.bloodPressMed}
@@ -63,7 +64,7 @@ class InputSpecificPage extends React.Component {
               this.handleChange(e, 'bloodPressMed')
             }}
           />
-          <span>Blood pressure</span>
+          <span>Blood pressure<br/></span>
         </label>
 
         <input

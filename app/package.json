@@ -17,10 +17,14 @@
     "react-global": "^0.1.8",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.0",
-    "react-select": "^1.2.1"
+    "react-select": "^1.2.1",
+    "react-toggle": "^4.0.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch:sass start-js",
+    "build-js": "react-scripts build",
+    "build": "npm-run-all build-css build-js",
     "server:dev": "react-scripts start",
     "prebuild": "npm-run-all sass",
     "build": "react-scripts build",

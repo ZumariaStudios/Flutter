@@ -5,9 +5,7 @@
  * https://twitter.com/jedwatson https://twitter.com/jossmackison https://twitter.com/keystonejs
  * MIT License: https://github.com/JedWatson/react-select
 */
-.Select {
-  position: relative;
-}
+
 .Select input::-webkit-contacts-auto-fill-button,
 .Select input::-webkit-credentials-auto-fill-button {
   display: none !important;
@@ -18,6 +16,8 @@
 .Select input::-ms-reveal {
   display: none !important;
 }
+
+
 .Select,
 .Select div,
 .Select input,
@@ -111,7 +111,6 @@
   outline: none;
   overflow: hidden;
   position: relative;
-  width: 100%;
 }
 .Select-control:hover {
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
@@ -128,10 +127,10 @@
   line-height: 34px;
   padding-left: 10px;
   padding-right: 10px;
-  position: absolute;
+  // position: absolute;
   right: 0;
   top: 0;
-  max-width: 100%;
+  max-width: 75%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
