@@ -68,7 +68,8 @@ class InputBasicPage extends React.Component {
         <label>My name is
           <input
               className={this.state.errors.userName ? 'error' : null}
-              type="name"
+              name="name"
+              type="text"
               value={this.state.name}
               onChange={(e) => {
                 this.handleChange(e, 'userName', 1)
@@ -108,7 +109,8 @@ class InputBasicPage extends React.Component {
            <label className="input_prompt"> who is
              <input
                  className={this.state.errors.age ? 'error' : null}
-                 type="age"
+                 name="age"
+                 type="number"
                  value={this.state.age}
                  onChange={(e) => this.handleChange(e, 'age', 4)
                }>
