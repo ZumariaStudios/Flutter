@@ -1,7 +1,6 @@
 import React from 'react';
 import Dropdown from '../form/Dropdown.js';
 import {withRouter} from 'react-router-dom';
-import './style.css';
 
 class InputBasicPage extends React.Component {
   constructor(props) {
@@ -23,6 +22,8 @@ class InputBasicPage extends React.Component {
     this.arrayToggle = this.arrayToggle.bind(this);
     this.nextSection = this.nextSection.bind(this);
     this.validate = this.validate.bind(this);
+    this.resizeInputName = this.resizeInputName.bind(this);
+    this.resizeInputAge = this.resizeInputAge.bind(this);
   }
 
   handleChange (event, name, num){
@@ -56,6 +57,22 @@ class InputBasicPage extends React.Component {
     this.setState({errors: fieldValidationError});
   }
 
+  resizeInputName() {
+    if (this.state.userName.length === 0) {
+      return 10;
+    } else {
+      return this.state.userName.length - 1;
+    }
+  }
+
+  resizeInputAge() {
+    if (this.state.age.length === 0) {
+      return 4;
+    } else {
+      return this.state.age.length - 1;
+    }
+  }
+
   nextSection() {
     this.props.history.push('/InputBMIPage');
   }
@@ -66,19 +83,22 @@ class InputBasicPage extends React.Component {
       <form>
         <h1 className="input_title">Introduce yourself</h1>
         <label>My name is
+        <div>
           <input
               className={this.state.errors.userName ? 'error' : null}
               name="name"
               type="text"
+              size={this.resizeInputName()}
               value={this.state.name}
               onChange={(e) => {
                 this.handleChange(e, 'userName', 1)
               }}>
-          </input>
+          </input></div>
         </label>
 
          { this.state.listValues[1] ?
           <label className="input_dropdown">and I am a
+          <div >
             <Dropdown
                 name='adjective'
                 data={['groovy', 'good looking', 'eccentric', 'fabulous']}
@@ -86,7 +106,7 @@ class InputBasicPage extends React.Component {
                 onChange={(newVal) => {
                   this.setState({adjective: newVal});
                   this.arrayToggle(2);
-              }} />
+              }} /></div>
           </label>
             : null
           }
@@ -110,7 +130,8 @@ class InputBasicPage extends React.Component {
              <input
                  className={this.state.errors.age ? 'error' : null}
                  name="age"
-                 type="number"
+                 type="text"
+                 size={this.resizeInputAge()}
                  value={this.state.age}
                  onChange={(e) => this.handleChange(e, 'age', 4)
                }>

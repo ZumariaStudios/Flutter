@@ -1,6 +1,9 @@
+.error {
+  border-bottom: 1px solid red !important;
+}
 
 input[type="text"], input[type="number"] {
-    border: none;
+    border: 0 solid transparent;
     border-bottom: 1px solid purple;
     display: inline;
     margin: 0 0.5em;

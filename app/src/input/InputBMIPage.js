@@ -1,7 +1,6 @@
 import React from 'react';
 import Dropdown from '../form/Dropdown.js';
 import {withRouter} from 'react-router-dom';
-import './style.css';
 
 class InputBMIPage extends React.Component {
   constructor(props) {
