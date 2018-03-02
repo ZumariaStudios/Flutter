@@ -80,7 +80,7 @@ class InputBasicPage extends React.Component {
           <label className="input_dropdown">and I am a
             <Dropdown
                 name='adjective'
-                data={['groovy', 'good loocking', 'eccentric', 'fabulous']}
+                data={['groovy', 'good looking', 'eccentric', 'fabulous']}
                 value={this.state.adjective}
                 onChange={(newVal) => {
                   this.setState({adjective: newVal});
@@ -94,7 +94,7 @@ class InputBasicPage extends React.Component {
            <label className="input_dropdown">
                <Dropdown
                    name='sex'
-                   data={['gentelman', 'lady']}
+                   data={['gentleman', 'lady']}
                    value={this.state.sex}
                    onChange={(newVal) => {
                      this.setState({sex: newVal});
@@ -105,14 +105,14 @@ class InputBasicPage extends React.Component {
            }
 
           {this.state.listValues[3] ?
-           <label className="input_pompt">, who is
+           <label className="input_prompt"> who is
              <input
                  className={this.state.errors.age ? 'error' : null}
                  type="age"
                  value={this.state.age}
                  onChange={(e) => this.handleChange(e, 'age', 4)
                }>
-             </input> years old.
+             </input> years old. <br/><br/>
            </label>
            : null
          }
