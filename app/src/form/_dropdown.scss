@@ -1,7 +1,18 @@
 .Dropdown {
-    border: 1px solid red;
+    // border: 1px solid red;
 
     display: inline-block;
-    margin: 0 0.5em;
-    min-width: 256px;
+    margin: 0.18em 0.5em;
+}
+
+.SmllDrop {
+  min-width: 114px;
+}
+
+.RegDrop {
+  min-width: 130px;
+}
+
+.Select-clear-zone {
+display: none !important;
 }

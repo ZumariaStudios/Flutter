@@ -60,11 +60,13 @@ class InputBMIPage extends React.Component {
 
   render() {
     return (
-      <form>
+      <div className ="inputBottomPage">
+      <form className ="form">
         <label className="input_pompt">Last time I checked, I weight
           <input
               className={this.state.errors.weight ? 'error' : null}
-              type="weight"
+              name="weight"
+              type="number"
               value={this.state.weight}
               onChange={(e) => {
                 this.handleChange(e, 'weight', 1)
@@ -85,7 +87,8 @@ class InputBMIPage extends React.Component {
          <label className="input_pompt">and was
            <input
                className={this.state.errors.height ? 'error' : null}
-               type="height"
+               name="height"
+               type="number"
                value={this.state.height}
                onChange={(e) => this.handleChange(e, 'height', 2)
              }>
@@ -110,7 +113,7 @@ class InputBMIPage extends React.Component {
           onClick={this.nextSection}/>
          : null}
 
-      </form>
+      </form></div>
     )
   }
 }

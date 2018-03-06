@@ -7,9 +7,10 @@ class InputBasicPage extends React.Component {
     super(props);
     this.state = {
       userName: '',
-      adjective: '',
-      sex: '',
+      adjective: 'Select',
+      sex: 'Select',
       age: '',
+      inputSizeUserName: 10,
       listValues: [true, false, false, false, false],
       //true means there is an error
       errors: {
@@ -22,14 +23,18 @@ class InputBasicPage extends React.Component {
     this.arrayToggle = this.arrayToggle.bind(this);
     this.nextSection = this.nextSection.bind(this);
     this.validate = this.validate.bind(this);
-    this.resizeInputName = this.resizeInputName.bind(this);
-    this.resizeInputAge = this.resizeInputAge.bind(this);
   }
 
   handleChange (event, name, num){
     const value = event.target.value;
     this.setState({[name]: value});
     this.validate(name, value);
+    this.validate(name, value);
+
+    if (name === 'userName') {
+      this.setState({inputSizeUserName: value.length });
+    }
+
     this.arrayToggle(num);
   }
 
@@ -57,30 +62,14 @@ class InputBasicPage extends React.Component {
     this.setState({errors: fieldValidationError});
   }
 
-  resizeInputName() {
-    if (this.state.userName.length === 0) {
-      return 10;
-    } else {
-      return this.state.userName.length - 1;
-    }
-  }
-
-  resizeInputAge() {
-    if (this.state.age.length === 0) {
-      return 4;
-    } else {
-      return this.state.age.length - 1;
-    }
-  }
-
   nextSection() {
     this.props.history.push('/InputBMIPage');
   }
 
   render() {
     return (
-      <div className ="inputBasicPage">
-      <form>
+      <div className ="inputBottomPage">
+      <form className ="form">
         <h1 className="input_title">Introduce yourself</h1>
         <label>My name is
         <div>
@@ -88,7 +77,7 @@ class InputBasicPage extends React.Component {
               className={this.state.errors.userName ? 'error' : null}
               name="name"
               type="text"
-              size={this.resizeInputName()}
+              size={this.state.inputSizeUserName}
               value={this.state.name}
               onChange={(e) => {
                 this.handleChange(e, 'userName', 1)
@@ -98,7 +87,6 @@ class InputBasicPage extends React.Component {
 
          { this.state.listValues[1] ?
           <label className="input_dropdown">and I am a
-          <div >
             <Dropdown
                 name='adjective'
                 data={['groovy', 'good looking', 'eccentric', 'fabulous']}
@@ -106,7 +94,7 @@ class InputBasicPage extends React.Component {
                 onChange={(newVal) => {
                   this.setState({adjective: newVal});
                   this.arrayToggle(2);
-              }} /></div>
+                }}/>
           </label>
             : null
           }
@@ -130,11 +118,10 @@ class InputBasicPage extends React.Component {
              <input
                  className={this.state.errors.age ? 'error' : null}
                  name="age"
-                 type="text"
-                 size={this.resizeInputAge()}
+                 type="number"
                  value={this.state.age}
-                 onChange={(e) => this.handleChange(e, 'age', 4)
-               }>
+                 onChange={(e) => this.handleChange(e, 'age', 4)}
+              >
              </input> years old. <br/><br/>
            </label>
            : null
