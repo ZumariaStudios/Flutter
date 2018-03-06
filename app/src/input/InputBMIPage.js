@@ -62,7 +62,7 @@ class InputBMIPage extends React.Component {
   render() {
     return (
       <div className ="inputBottomPage">
-       <Header header="Introduce yourself" imgSrc="http://cdn.boilerroom.tv/wp-content/uploads/2014/08/cute.jpg?7c4b8e"/>
+      <Header header="Introduce yourself"/>
       <form className ="form">
         <label>Last time I checked, I weight
         <div className="input_drop_align">
