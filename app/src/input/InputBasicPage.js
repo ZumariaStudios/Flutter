@@ -1,7 +1,7 @@
 import React from 'react';
 import Dropdown from '../form/Dropdown.js';
 import {withRouter} from 'react-router-dom';
-
+import Header from '../form/Header.js';
 class InputBasicPage extends React.Component {
   constructor(props) {
     super(props);
@@ -69,8 +69,9 @@ class InputBasicPage extends React.Component {
   render() {
     return (
       <div className ="inputBottomPage">
+       <Header
+          header="Introduce yourself" src="http://cdn.boilerroom.tv/wp-content/uploads/2014/08/cute.jpg?7c4b8e" />
       <form className ="form">
-        <h1 className="input_title">Introduce yourself</h1>
         <label>My name is
         <div>
           <input
