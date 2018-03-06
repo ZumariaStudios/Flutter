@@ -1,16 +1,16 @@
 import React from 'react';
 import Dropdown from '../form/Dropdown.js';
 import {withRouter} from 'react-router-dom';
-import './style.css';
 
 class InputBasicPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       userName: '',
-      adjective: '',
-      sex: '',
+      adjective: 'Select',
+      sex: 'Select',
       age: '',
+      inputSizeUserName: 10,
       listValues: [true, false, false, false, false],
       //true means there is an error
       errors: {
@@ -29,6 +29,12 @@ class InputBasicPage extends React.Component {
     const value = event.target.value;
     this.setState({[name]: value});
     this.validate(name, value);
+    this.validate(name, value);
+
+    if (name === 'userName') {
+      this.setState({inputSizeUserName: value.length });
+    }
+
     this.arrayToggle(num);
   }
 
@@ -62,58 +68,65 @@ class InputBasicPage extends React.Component {
 
   render() {
     return (
-      <div className ="inputBasicPage">
-      <form>
+      <div className ="inputBottomPage">
+      <form className ="form">
         <h1 className="input_title">Introduce yourself</h1>
         <label>My name is
+        <div>
           <input
               className={this.state.errors.userName ? 'error' : null}
               name="name"
               type="text"
+              size={this.state.inputSizeUserName}
               value={this.state.name}
               onChange={(e) => {
                 this.handleChange(e, 'userName', 1)
               }}>
-          </input>
+          </input></div>
         </label>
 
          { this.state.listValues[1] ?
-          <label className="input_dropdown">and I am a
-            <Dropdown
-                name='adjective'
-                data={['groovy', 'good looking', 'eccentric', 'fabulous']}
-                value={this.state.adjective}
-                onChange={(newVal) => {
-                  this.setState({adjective: newVal});
-                  this.arrayToggle(2);
-              }} />
-          </label>
+          <div className="input_center">
+              <div className="div_dropdown">and I am a</div>
+              <label>
+                <Dropdown
+                    name='adjective'
+                    data={['groovy', 'good looking', 'eccentric', 'fabulous']}
+                    value={this.state.adjective}
+                    onChange={(newVal) => {
+                      this.setState({adjective: newVal});
+                      this.arrayToggle(2);
+                    }}/>
+              </label>
+          </div>
             : null
           }
 
           {this.state.listValues[2] ?
-           <label className="input_dropdown">
-               <Dropdown
-                   name='sex'
-                   data={['gentleman', 'lady']}
-                   value={this.state.sex}
-                   onChange={(newVal) => {
-                     this.setState({sex: newVal});
-                     this.arrayToggle(3);
-               }}/>
-           </label>
+           <div className="input_center">
+               <label>
+                   <Dropdown
+                       name='sex'
+                       data={['gentleman', 'lady']}
+                       value={this.state.sex}
+                       onChange={(newVal) => {
+                         this.setState({sex: newVal});
+                         this.arrayToggle(3);
+                   }}/>
+               </label>
+           </div>
              : null
            }
 
           {this.state.listValues[3] ?
-           <label className="input_prompt"> who is
+           <label> who is
              <input
                  className={this.state.errors.age ? 'error' : null}
                  name="age"
                  type="number"
                  value={this.state.age}
-                 onChange={(e) => this.handleChange(e, 'age', 4)
-               }>
+                 onChange={(e) => this.handleChange(e, 'age', 4)}
+              >
              </input> years old. <br/><br/>
            </label>
            : null
@@ -127,8 +140,7 @@ class InputBasicPage extends React.Component {
             value='Continue'
             onClick={this.nextSection}/>
            : null}
-      </form>
-      </div>
+      </form></div>
     );
   }
 }

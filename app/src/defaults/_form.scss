@@ -1,13 +1,75 @@
+.error {
+  border-bottom: 1px solid red !important;
+}
+
+.inputBottomPage {
+  // border: 2px solid red;
+  margin-top: 8em;
+}
+
+.form {
+  // border: 2px solid blue;
+  margin: 1.5em;
+  padding: 0.5em 0.5em;
+}
+
+h1 {
+  color: purple;
+  font-size: 28px;
+  text-align: center;
+}
+
+span {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
 input[type="text"], input[type="number"] {
-    border: none;
-    border-bottom: 1px solid purple;
+    border: 0 solid transparent;
+    border-bottom: 1px solid gray;
+    color: purple;
     display: inline;
-    margin: 0 0.5em;
+    font-size: 24px;
+    margin: 0.3em 0.5em;
     outline: none;
+    text-align: center;
     padding: 0 0.25em;
 
     &:focus {
         outline: none;
     }
+}
+
+input[type="number"] {
+  width: 50px;
+}
+
+input[type="submit"] {
+  background-color: purple;
+  border-radius: 6px;
+  color: white;
+  margin: 10px 2px;
+  padding: 16px 32px;
+}
+
+.toggle {
+  align: center;
+}
+
+.input_center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  .div_dropdown {
+    text-align: left;
+  }
+}
+
+.input_drop_align {
+  align-items: flex-end;
+  display: flex;
+  justify-content: center;
 }

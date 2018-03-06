@@ -25,53 +25,52 @@ class InputSpecificPage extends React.Component {
 
   render() {
     return (
-      <form>
+      <div className ="inputBottomPage">
+      <form className ="form">
         <h1 className="input_title">Its all coming together now!</h1>
-        <br />
-        <label>
-          <Toggle
-            defaultChecked={this.state.smoker}
-            onChange={(e) => {
-              this.handleChange(e, 'smoker')
-            }}
-          />
-          <span>Smoke?<br/></span>
-        </label>
-        <label>
-          <input
-            type='checkbox'
-            defaultChecked={this.state.famHistory}
-            onChange={(e) => {
-              this.handleChange(e, 'famHistory')
-            }}
-          />
-          <span>Have a family history of heart disease?</span>
-        </label>
-        <span><br/>Under medication for:<br/></span>
-        <label>
-          <input
-            type='checkbox'
-            defaultChecked={this.state.diabetesMed}
-            onChange={(e) => {
-              this.handleChange(e, 'diabetesMed')
-            }}
-          />
-          <span> Diabetes<br/></span>
-          <input
-            type='checkbox'
-            defaultChecked={this.state.bloodPressMed}
-            onChange={(e) => {
-              this.handleChange(e, 'bloodPressMed')
-            }}
-          />
-          <span>Blood pressure<br/></span>
-        </label>
+        <div className="inputLabel">
+            <label>Do you smoke?
+                <div className="toggle">
+                    <Toggle
+                      defaultChecked={this.state.smoker}
+                      onChange={(e) => {
+                          this.handleChange(e, 'smoker')
+                      }}/></div>
+            </label>
+        </div>
+        <div className="inputLabel">
+            <label>Have a family history of heart disease?
+                <div className="toggle">
+                    <Toggle
+                      defaultChecked={this.state.famHistory}
+                      onChange={(e) => {
+                          this.handleChange(e, 'famHistory')
+                      }}/></div>
+            </label>
+        </div>
+        <div className="inputLabel">
+        <span>Under medication for:</span>
+            <label>
+                <div className="medicationInput">Diabetes</div>
+                    <Toggle className="toggle"
+                        defaultChecked={this.state.diabetesMed}
+                        onChange={(e) => {
+                            this.handleChange(e, 'diabetesMed')
+                        }}/>
+                <div className="medicationInput">Blood pressure</div>
+                    <Toggle className="toggle"
+                        defaultChecked={this.state.bloodPressMed}
+                        onChange={(e) => {
+                            this.handleChange(e, 'bloodPressMed')
+                        }}/>
+            </label>
+        </div>
 
         <input
-         type='submit'
-         value='Continue'
-         onClick={this.nextSection}/>
-      </form>
+           type='submit'
+           value='Continue'
+           onClick={this.nextSection}/>
+      </form></div>
     )
   }
 }

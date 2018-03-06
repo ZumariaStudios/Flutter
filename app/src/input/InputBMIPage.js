@@ -1,7 +1,6 @@
 import React from 'react';
 import Dropdown from '../form/Dropdown.js';
 import {withRouter} from 'react-router-dom';
-import './style.css';
 
 class InputBMIPage extends React.Component {
   constructor(props) {
@@ -61,44 +60,46 @@ class InputBMIPage extends React.Component {
 
   render() {
     return (
-      <form>
-        <label className="input_pompt">Last time I checked, I weight
+      <div className ="inputBottomPage">
+      <form className ="form">
+        <label>Last time I checked, I weight
+        <div className="input_drop_align">
           <input
               className={this.state.errors.weight ? 'error' : null}
-              type="weight"
+              name="weight"
+              type="number"
               value={this.state.weight}
               onChange={(e) => {
                 this.handleChange(e, 'weight', 1)
               }}>
           </input>
-        </label>
         <Dropdown
           name='weightMes'
           data={['lbs', 'kg']}
           value={this.state.weightMes}
           onChange={(newVal) => {
             this.setState({weightMes: newVal});
-          }}
-        />
+          }}/>
+        </div></label>
 
         {this.state.listValues[1] ?
-          <div>
-         <label className="input_pompt">and was
+         <label>and was
+          <div className="input_drop_align">
            <input
                className={this.state.errors.height ? 'error' : null}
-               type="height"
+               name="height"
+               type="number"
                value={this.state.height}
                onChange={(e) => this.handleChange(e, 'height', 2)
              }>
-           </input> tall.
-         </label>
+           </input>
          <Dropdown
            name='heightMes'
            data={['ft', 'm']}
            value={this.state.heightMes}
            onChange={(newVal) => {
              this.setState({heightMes: newVal});
-           }}/></div>
+           }}/>tall.</div></label>
          : null
        }
 
@@ -111,7 +112,7 @@ class InputBMIPage extends React.Component {
           onClick={this.nextSection}/>
          : null}
 
-      </form>
+      </form></div>
     )
   }
 }
