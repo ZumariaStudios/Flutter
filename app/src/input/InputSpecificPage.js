@@ -1,6 +1,7 @@
 import React from 'react';
 import Toggle from 'react-toggle';
 import {withRouter} from 'react-router-dom';
+import Header from '../form/Header.js';
 
 class InputSpecificPage extends React.Component {
   constructor(props) {
@@ -26,8 +27,9 @@ class InputSpecificPage extends React.Component {
   render() {
     return (
       <div className ="inputBottomPage">
+       <Header header="Its all coming together now" imgSrc="http://cdn.boilerroom.tv/wp-content/uploads/2014/08/cute.jpg?7c4b8e"/>
       <form className ="form">
-        <h1 className="input_title">Its all coming together now!</h1>
+        // <h1 className="input_title"></h1>
         <div className="inputLabel">
             <label>Do you smoke?
                 <div className="toggle">

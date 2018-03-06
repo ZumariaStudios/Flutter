@@ -1,6 +1,7 @@
 import React from 'react';
 import Dropdown from '../form/Dropdown.js';
 import {withRouter} from 'react-router-dom';
+import Header from '../form/Header.js';
 
 class InputBMIPage extends React.Component {
   constructor(props) {
@@ -61,6 +62,7 @@ class InputBMIPage extends React.Component {
   render() {
     return (
       <div className ="inputBottomPage">
+       <Header header="Introduce yourself" imgSrc="http://cdn.boilerroom.tv/wp-content/uploads/2014/08/cute.jpg?7c4b8e"/>
       <form className ="form">
         <label>Last time I checked, I weight
         <div className="input_drop_align">
