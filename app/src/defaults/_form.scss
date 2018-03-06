@@ -19,12 +19,12 @@ h1 {
   text-align: center;
 }
 
-// span {
-//   text-align: center;
-//   display: flex;
-//   justify-content: center;
-//   flex-wrap: wrap;
-// }
+span {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
 input[type="text"], input[type="number"] {
     border: 0 solid transparent;
@@ -50,26 +50,26 @@ input[type="submit"] {
   background-color: purple;
   border-radius: 6px;
   color: white;
-  margin: 4px 2px;
+  margin: 10px 2px;
   padding: 16px 32px;
 }
 
 .toggle {
-  // border: 2px solid purple;
   align: center;
 }
 
-.inputLabel {
-  // border: 2px solid green;
-  margin: 1em 0;
-  // padding: 1em 0;
+.input_center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  .div_dropdown {
+    text-align: left;
+  }
 }
 
-// .medicationInput {
-//   text-align: left;
-// }
-
-.input_dropdown {
-  // border: 2px solid green;
-  padding: 0.5em 0;
+.input_drop_align {
+  align-items: flex-end;
+  display: flex;
+  justify-content: center;
 }

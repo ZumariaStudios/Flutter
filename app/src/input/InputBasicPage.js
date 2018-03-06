@@ -86,35 +86,40 @@ class InputBasicPage extends React.Component {
         </label>
 
          { this.state.listValues[1] ?
-          <label className="input_dropdown">and I am a
-            <Dropdown
-                name='adjective'
-                data={['groovy', 'good looking', 'eccentric', 'fabulous']}
-                value={this.state.adjective}
-                onChange={(newVal) => {
-                  this.setState({adjective: newVal});
-                  this.arrayToggle(2);
-                }}/>
-          </label>
+          <div className="input_center">
+              <div className="div_dropdown">and I am a</div>
+              <label>
+                <Dropdown
+                    name='adjective'
+                    data={['groovy', 'good looking', 'eccentric', 'fabulous']}
+                    value={this.state.adjective}
+                    onChange={(newVal) => {
+                      this.setState({adjective: newVal});
+                      this.arrayToggle(2);
+                    }}/>
+              </label>
+          </div>
             : null
           }
 
           {this.state.listValues[2] ?
-           <label className="input_dropdown">
-               <Dropdown
-                   name='sex'
-                   data={['gentleman', 'lady']}
-                   value={this.state.sex}
-                   onChange={(newVal) => {
-                     this.setState({sex: newVal});
-                     this.arrayToggle(3);
-               }}/>
-           </label>
+           <div className="input_center">
+               <label>
+                   <Dropdown
+                       name='sex'
+                       data={['gentleman', 'lady']}
+                       value={this.state.sex}
+                       onChange={(newVal) => {
+                         this.setState({sex: newVal});
+                         this.arrayToggle(3);
+                   }}/>
+               </label>
+           </div>
              : null
            }
 
           {this.state.listValues[3] ?
-           <label className="input_prompt"> who is
+           <label> who is
              <input
                  className={this.state.errors.age ? 'error' : null}
                  name="age"
@@ -135,8 +140,7 @@ class InputBasicPage extends React.Component {
             value='Continue'
             onClick={this.nextSection}/>
            : null}
-      </form>
-      </div>
+      </form></div>
     );
   }
 }

@@ -62,7 +62,8 @@ class InputBMIPage extends React.Component {
     return (
       <div className ="inputBottomPage">
       <form className ="form">
-        <label className="input_pompt">Last time I checked, I weight
+        <label>Last time I checked, I weight
+        <div className="input_drop_align">
           <input
               className={this.state.errors.weight ? 'error' : null}
               name="weight"
@@ -72,19 +73,18 @@ class InputBMIPage extends React.Component {
                 this.handleChange(e, 'weight', 1)
               }}>
           </input>
-        </label>
         <Dropdown
           name='weightMes'
           data={['lbs', 'kg']}
           value={this.state.weightMes}
           onChange={(newVal) => {
             this.setState({weightMes: newVal});
-          }}
-        />
+          }}/>
+        </div></label>
 
         {this.state.listValues[1] ?
-          <div>
-         <label className="input_pompt">and was
+         <label>and was
+          <div className="input_drop_align">
            <input
                className={this.state.errors.height ? 'error' : null}
                name="height"
@@ -92,15 +92,14 @@ class InputBMIPage extends React.Component {
                value={this.state.height}
                onChange={(e) => this.handleChange(e, 'height', 2)
              }>
-           </input> tall.
-         </label>
+           </input>
          <Dropdown
            name='heightMes'
            data={['ft', 'm']}
            value={this.state.heightMes}
            onChange={(newVal) => {
              this.setState({heightMes: newVal});
-           }}/></div>
+           }}/>tall.</div></label>
          : null
        }
 
