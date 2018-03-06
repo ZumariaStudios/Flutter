@@ -1,11 +1,11 @@
 import React from 'react';
-import '../defaults/_header.scss';
+import logo from './NewBlue.jpg';
 
 const Header = (props) => {
-let img = new Image();
+
   return (
-       <div id="headerComponenet">
-        <img alt="FPO Image" src={props.imgSrc} />
+       <div className="headerComponenet">
+       <img alt="hold" src={logo}/>
         <h1>{props.header}</h1>
        </div>
 

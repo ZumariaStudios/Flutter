@@ -69,7 +69,7 @@ class InputBasicPage extends React.Component {
   render() {
     return (
       <div className ="inputBottomPage">
-       <Header header="Introduce yourself" imgSrc="http://cdn.boilerroom.tv/wp-content/uploads/2014/08/cute.jpg?7c4b8e"/>
+       <Header header="Introduce yourself" imgSrc="../img/NewBlue.jpg"/>
 
       <form className ="form">
         <label>My name is
