@@ -17,7 +17,19 @@ class InputSpecificPage extends React.Component {
   }
 
   handleChange(e, name) {
-    this.setState({[name]: e.target.checked});
+    const value = e.event.checked;
+    this.localStore(name, value);
+    this.setState({[name]: value});
+  }
+
+  localStore(name, value) {
+    const cachedHits = localStorage.getItem(value);
+    if (cachedHits) {
+      this.setState({[name]: JSON.parse(cachedHits)});
+      return;
+    }
+
+    localStorage.setItem(name, JSON.stringify(value));
   }
 
   nextSection() {
