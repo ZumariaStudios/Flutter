@@ -1,9 +1,11 @@
 .pulseInstructions {
   img.pulse {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 40%;
-    height: 35%;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column wrap;
+    width: 25%;
+    height: auto;
   }
 }

@@ -1,4 +1,6 @@
-img {
-width: 640px;
-max-height: 400px;
+.header {
+  width: 100%;
+  img {width: inherit;
+      max-height: 400px;
+  }
 }
