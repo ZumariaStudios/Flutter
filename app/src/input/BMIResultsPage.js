@@ -12,54 +12,73 @@ class BMIResultsPage extends React.Component {
         finalHeight: '',
         bmi: '',
       }
+
+    this.calcBMI = this.calcBMI.bind(this);
   }
 
   weightInMetric() {
-    let originalWeight = localStorage.getItem('weight');
-    console.log('originalWeight: ' + originalWeight);
+    let retrievedWeight = localStorage.getItem('weight');
+    let originalWeight = JSON.parse(retrievedWeight);
 
-    let weightMes = localStorage.getItem('weightMes');
-    console.log('weightMes: ' + weightMes);
-    console.log('type of weightMes: ' + typeof weightMes);
+    let retrievedWeightMes = localStorage.getItem('weightMes');
+    let weightMes = JSON.parse(retrievedWeightMes);
 
-    let finalWeight;
+    var fWeight = 0;
     weightMes === "lbs" ?
-        finalWeight = (originalWeight * 0.45) :
-        finalWeight = originalWeight;
+        fWeight = (Number(originalWeight) * 0.45) :
+        fWeight = originalWeight;
 
-    console.log('finalWeight: ' + finalWeight);
-    this.setState({finalWeight: finalWeight});
+    return fWeight;
+    // console.log('finalWeight: ' + fWeight);
+    // this.setState({finalWeight: fWeight});
+    // console.log('updated weight state: ' + this.state.finalWeight);
   }
 
   heightInMetric() {
-    let originalHeightFst = localStorage.getItem('heightFst');
+    let retrievedHeightFst = localStorage.getItem('heightFst');
+    let originalHeightFst = JSON.parse(retrievedHeightFst);
     console.log('originalHeightFst: ' + originalHeightFst);
 
-    let heightFstMes = localStorage.getItem('heightFstMes');
+    let retrievedHeightMs = localStorage.getItem('heightFstMes');
+    let heightFstMes = JSON.parse(retrievedHeightMs);
     console.log('heightFstMes: ' + heightFstMes);
 
-    let originalHeightSnd = localStorage.getItem('heightSnd');
+    let retrievedHeightSnd = localStorage.getItem('heightSnd');
+    let originalHeightSnd = JSON.parse(retrievedHeightSnd);
     console.log('originalHeightSnd: ' + originalHeightSnd);
 
-    let finalHeight;
-    if (originalHeightFst && originalHeightSnd) {
-      heightFstMes === 'ft' ?
-          finalHeight = Math.pow((originalHeightFst * 12 + originalHeightSnd) * 0.025) :
-          finalHeight = Math.pow(originalHeightFst + originalHeightSnd/100);
+    var fHeight = 0;
+    heightFstMes === 'ft' ?
+        fHeight = Math.pow(
+              ((Number(originalHeightFst) * 12 + Number(
+              originalHeightSnd)) * 0.025), 2) :
+        fHeight = Math.pow((Number(
+              originalHeightFst) + Number(
+              originalHeightSnd)/100),2);
 
-      console.log('finalHeight: ' + finalHeight);
-      this.setState({finalHeight: finalHeight});
-    }
+    return fHeight;
+    // console.log('finalHeight: ' + finalHeight);
+    // this.setState({finalHeight: finalHeight});
   }
 
-  componentWillMount() {
-    this.weightInMetric();
-    this.heightInMetric();
+  calcBMI() {
+    let weight = this.weightInMetric();
+    this.setState({finalWeight: weight});
 
-    let results = this.finalWeight/this.finalHeight;
+    let height = this.heightInMetric();
+
+
+    console.log('final weight state: ' + this.state.finalWeight);
+    console.log('final height state: ' + this.state.finalHeight);
+
+    let results = Number(this.state.finalWeight)/Number(this.state.finalHeight);
     console.log('bmi: ' + results);
     this.setState({bmi: results});
   }
+
+  // componentWillMount() {
+  //   this.calcBMI();
+  // }
 
   render() {
     return (
