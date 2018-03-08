@@ -6,23 +6,46 @@
   // border: 2px solid red;
   background-color: $clr-background;
   color: $clr-dark-blue;
-  // margin-top: 8em;
+
 }
+
 
 
 .inputLabel {
   text-align: left;
+
   .medicationInput {
-    text-indent: 10%;
+    text-indent: 5%;
+    border: 1px solid pink !important;
+    float:left;
+    width: 100%;
+
+      .diabetesCond, .bloodPressCond {
+        float: left;
+        clear:left;
+        border: 1px solid purple;
+        width: 70%;
+      }
+
   }
 
    .toggle {
      float: right;
+     clear: right;
+     border: 3px solid orange !important;
+
+
    }
 }
 
+.react-toggle {
+  vertical-align: text-top;
+   border: 1px solid red !important;
+}
+
 .react-toggle-track, .react-toggle-thumb {
-  background-color: $clr-light-red !important;
+//little slider buttons and track bar
+
 }
 
 .form {
@@ -42,6 +65,7 @@ span {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+
 }
 
 input[type="text"], input[type="number"] {
@@ -71,6 +95,8 @@ input[type="submit"] {
   color: white;
   margin: 10px 2px;
   padding: 16px 32px;
+  display: block;
+  clear: both;
 }
 
 .toggle {

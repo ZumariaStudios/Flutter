@@ -17,7 +17,7 @@ class InputSpecificPage extends React.Component {
   }
 
   handleChange(e, name) {
-    const value = e.event.checked;
+    const value = e.target.checked;
     this.localStore(name, value);
     this.setState({[name]: value});
   }
@@ -64,18 +64,20 @@ class InputSpecificPage extends React.Component {
         <div className="inputLabel">
         Take medication for:
             <label>
-                <div className="medicationInput">Diabetes</div>
+                <div className="medicationInput">
+                 <div className="diabetesCond">Diabetes</div>
                     <Toggle className="toggle"
                         defaultChecked={this.state.diabetesMed}
                         onChange={(e) => {
                             this.handleChange(e, 'diabetesMed')
                         }}/>
-                <div className="medicationInput">Blood pressure</div>
+                <div className="bloodPressCond">Blood pressure</div>
                     <Toggle className="toggle"
                         defaultChecked={this.state.bloodPressMed}
                         onChange={(e) => {
                             this.handleChange(e, 'bloodPressMed')
                         }}/>
+                  </div>
             </label>
         </div>
 
@@ -83,6 +85,7 @@ class InputSpecificPage extends React.Component {
            type='submit'
            value='Continue'
            onClick={this.nextSection}/>
+
       </form></div>
     )
   }
