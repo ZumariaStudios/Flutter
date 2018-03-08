@@ -66,6 +66,7 @@ input[type="submit"] {
   display: flex;
   justify-content: center;
 
+
   .div_dropdown {
     text-align: left;
   }
@@ -75,4 +76,5 @@ input[type="submit"] {
   align-items: flex-end;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }

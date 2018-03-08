@@ -16,13 +16,13 @@ class PulseInstructionsPage extends React.Component {
 
   render() {
     return (
-      <div className = 'pulseInstructions'>
+      <div class = 'pulseInstructions'>
       <Header header = "Where to find your pulse" / >
-      <img className='pulse' alt = "img1" src = {img1} / >
-      <img className='pulse'alt = "img2" src = {img2} / >
-      <input
+      <img class='pulse' alt = "img1" src = {img1} / >
+      <img class='pulse'alt = "img2" src = {img2} / >
+      <input class="continueButton"
          type='submit'
-         value='Continue'
+         value='Im ready'
          onClick={this.nextSection}/>
       </div>
     );
