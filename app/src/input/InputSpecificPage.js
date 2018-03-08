@@ -64,13 +64,13 @@ class InputSpecificPage extends React.Component {
         <div className="inputLabel">
         Take medication for:
             <label>
-                <div className="medicationInput">  Diabetes</div>
+                <div className="medicationInput">Diabetes</div>
                     <Toggle className="toggle"
                         defaultChecked={this.state.diabetesMed}
                         onChange={(e) => {
                             this.handleChange(e, 'diabetesMed')
                         }}/>
-                <div className="medicationInput">  Blood pressure</div>
+                <div className="medicationInput">Blood pressure</div>
                     <Toggle className="toggle"
                         defaultChecked={this.state.bloodPressMed}
                         onChange={(e) => {
