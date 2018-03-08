@@ -7,7 +7,7 @@ import HalfCircle from '../visualization/HalfCircle.js';
 class BMIResultsPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {result: ''}
+    this.state = {result: ''} 
   }
 
   // weightInKg() {

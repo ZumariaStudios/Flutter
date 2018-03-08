@@ -1,8 +1,8 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import Header from '../form/Header.js';
-
-import logo from '../img/Pulse_hold.jpg';
+import img1 from '../img/pulse1.jpg';
+import img2 from '../img/pulse2.jpg';
 
 class PulseInstructionsPage extends React.Component {
   constructor(props) {
@@ -15,17 +15,16 @@ class PulseInstructionsPage extends React.Component {
   }
 
   render() {
-    return ( <div class = 'pulseInstructions'>
-      <img alt = "img1" src = "../img/pulse_hold.jpg" / >
-      <img alt = "img2" src = "../img/pulse_hold_two.jpg" / >
+    return (
+      <div class = 'pulseInstructions'>
       <Header header = "Where to find your pulse" / >
+      <img class='pulse' alt = "img1" src = {img1} / >
+      <img class='pulse'alt = "img2" src = {img2} / >
       <input
          type='submit'
          value='Continue'
          onClick={this.nextSection}/>
       </div>
-
-
     );
   }
 }
