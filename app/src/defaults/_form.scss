@@ -9,6 +9,22 @@
   // margin-top: 8em;
 }
 
+
+.inputLabel {
+  text-align: left;
+  .medicationInput {
+    text-indent: 10%;
+  }
+
+   .toggle {
+     float: right;
+   }
+}
+
+.react-toggle-track, .react-toggle-thumb {
+  background-color: red;
+}
+
 .form {
   // border: 2px solid green;
   margin: 1.5em;
@@ -67,7 +83,7 @@ input[type="submit"] {
   justify-content: center;
 
 
-  .div_dropdown {
+.div_dropdown {
     text-align: left;
   }
 }
@@ -75,6 +91,6 @@ input[type="submit"] {
 .input_drop_align {
   align-items: flex-end;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   flex-wrap: wrap;
 }

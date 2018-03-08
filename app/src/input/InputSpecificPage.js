@@ -39,10 +39,10 @@ class InputSpecificPage extends React.Component {
   render() {
     return (
       <div className ="inputBottomPage">
-      <Header header="Its all coming together now"/>
+      <Header header="Its all coming together now! Do you:"/>
       <form className ="form">
         <div className="inputLabel">
-            <label>Do you smoke?
+            <label>Smoke?
                 <div className="toggle">
                     <Toggle
                       defaultChecked={this.state.smoker}
@@ -62,15 +62,15 @@ class InputSpecificPage extends React.Component {
             </label>
         </div>
         <div className="inputLabel">
-        <span>Under medication for:</span>
+        Take medication for:
             <label>
-                <div className="medicationInput">Diabetes</div>
+                <div className="medicationInput">  Diabetes</div>
                     <Toggle className="toggle"
                         defaultChecked={this.state.diabetesMed}
                         onChange={(e) => {
                             this.handleChange(e, 'diabetesMed')
                         }}/>
-                <div className="medicationInput">Blood pressure</div>
+                <div className="medicationInput">  Blood pressure</div>
                     <Toggle className="toggle"
                         defaultChecked={this.state.bloodPressMed}
                         onChange={(e) => {

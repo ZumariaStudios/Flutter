@@ -92,7 +92,7 @@ class InputBMIPage extends React.Component {
       <div className ="inputBottomPage">
       <Header header="Introduce yourself"/>
       <form className ="form">
-        <label>Last time I checked, I weight
+        <label>Last time I checked, I weighed
         <div className="input_drop_align">
           <input
               className={this.state.errors.weight ? 'error' : null}
