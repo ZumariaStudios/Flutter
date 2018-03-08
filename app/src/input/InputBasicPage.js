@@ -27,8 +27,9 @@ class InputBasicPage extends React.Component {
 
   handleChange (event, name, num){
     const value = event.target.value;
+
+    this.localStore(name, value);
     this.setState({[name]: value});
-    this.validate(name, value);
     this.validate(name, value);
 
     if (name === 'userName') {
@@ -36,6 +37,16 @@ class InputBasicPage extends React.Component {
     }
 
     this.arrayToggle(num);
+  }
+
+  localStore(name, value) {
+    const cachedHits = localStorage.getItem(value);
+    if (cachedHits) {
+      this.setState({[name]: JSON.parse(cachedHits)});
+      return;
+    }
+
+    localStorage.setItem(name, JSON.stringify(value));
   }
 
   arrayToggle(num) {
@@ -111,6 +122,7 @@ class InputBasicPage extends React.Component {
                        data={['gentleman', 'lady']}
                        value={this.state.sex}
                        onChange={(newVal) => {
+                         this.localStore('sex', newVal);
                          this.setState({sex: newVal});
                          this.arrayToggle(3);
                    }}/>

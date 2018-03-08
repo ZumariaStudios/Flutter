@@ -9,13 +9,16 @@ class InputBMIPage extends React.Component {
     this.state = {
       weight: '',
       weightMes: 'lbs',
-      height: '',
-      heightMes: 'ft',
+      heightFst: '',
+      heightFstMes: 'ft',
+      heightSnd: '',
+      heightSndMes: 'in',
       listValues: [true, false, false],
       //true means there is an error
       errors: {
         weight: false,
-        height: false,
+        heightFst: false,
+        heightSnd: false,
       }
     };
     this.handleChange = this.handleChange.bind(this);
@@ -26,9 +29,21 @@ class InputBMIPage extends React.Component {
 
   handleChange (event, name, num){
     const value = event.target.value;
+
+    this.localStore(name, value);
     this.setState({[name]: value});
     this.validate(name, value);
     this.arrayToggle(num);
+  }
+
+  localStore(name, value) {
+    const cachedHits = localStorage.getItem(value);
+    if (cachedHits) {
+      this.setState({[name]: JSON.parse(cachedHits)});
+      return;
+    }
+
+    localStorage.setItem(name, JSON.stringify(value));
   }
 
   arrayToggle(num) {
@@ -46,10 +61,16 @@ class InputBMIPage extends React.Component {
         fieldValidationError.weight = false;
     }
 
-    if (name === 'height') {
+    if (name === 'heightFst') {
       value.length === 0 || !(/^\d+$/.test(value)) ?
-        fieldValidationError.height = true :
-        fieldValidationError.height = false;
+        fieldValidationError.heightFst = true :
+        fieldValidationError.heightFst = false;
+    }
+
+    if (name === 'heightSnd') {
+      value.length === 0 || !(/^\d+$/.test(value)) ?
+        fieldValidationError.heightSnd = true :
+        fieldValidationError.heightSnd = false;
     }
 
     this.setState({errors: fieldValidationError});
@@ -80,6 +101,7 @@ class InputBMIPage extends React.Component {
           data={['lbs', 'kg']}
           value={this.state.weightMes}
           onChange={(newVal) => {
+            this.localStore('weightMes', newVal);
             this.setState({weightMes: newVal});
           }}/>
         </div></label>
@@ -88,26 +110,46 @@ class InputBMIPage extends React.Component {
          <label>and was
           <div className="input_drop_align">
            <input
-               className={this.state.errors.height ? 'error' : null}
-               name="height"
+               className={this.state.errors.heightFst ? 'error' : null}
+               name="heightFst"
                type="number"
-               value={this.state.height}
-               onChange={(e) => this.handleChange(e, 'height', 2)
+               value={this.state.heightFst}
+               onChange={(e) => this.handleChange(e, 'heightFst', 2)
              }>
            </input>
          <Dropdown
-           name='heightMes'
+           name='heightFstMes'
            data={['ft', 'm']}
-           value={this.state.heightMes}
+           value={this.state.heightFstMes}
            onChange={(newVal) => {
-             this.setState({heightMes: newVal});
-           }}/>tall.</div></label>
+             this.localStore('heightFstMes', newVal);
+             this.setState({heightFstMes: newVal});
+           }}/>
+           <input
+               className={this.state.errors.heightSnd ? 'error' : null}
+               name="heightSnd"
+               type="number"
+               value={this.state.heightSnd}
+               onChange={(e) => this.handleChange(e, 'heightSnd', 2)
+             }>
+           </input>
+           <Dropdown
+             name='heightSndMes'
+             data={['in', 'cm']}
+             value={this.state.heightSndMes}
+             onChange={(newVal) => {
+               this.localStore('heightSndMes', newVal);
+               this.setState({heightSndMes: newVal});
+             }}/>
+
+           tall.</div></label>
          : null
        }
 
        {this.state.listValues[2] &&
             !this.state.errors.weight &&
-            !this.state.errors.height ?
+            !this.state.errors.heightFst &&
+            !this.state.errors.heightSnd ?
          <input
           type='submit'
           value='Continue'
