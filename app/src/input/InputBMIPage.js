@@ -80,6 +80,13 @@ class InputBMIPage extends React.Component {
     this.props.history.push('/InputSpecificPage');
   }
 
+  componentWillMount() {
+    console.log('entered componentWillMout func in InputBMIPage');
+    this.localStore('weightMes', 'lbs');
+    this.localStore('heightFstMes', 'ft');
+    this.localStore('heightSndMes', 'in');
+  }
+
   render() {
     return (
       <div className ="inputBottomPage">

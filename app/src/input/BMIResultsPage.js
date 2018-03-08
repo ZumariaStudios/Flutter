@@ -20,16 +20,15 @@ class BMIResultsPage extends React.Component {
 
     let weightMes = localStorage.getItem('weightMes');
     console.log('weightMes: ' + weightMes);
+    console.log('type of weightMes: ' + typeof weightMes);
 
     let finalWeight;
-    if (originalWeight) {
-      weightMes === 'lbs' ?
-          finalWeight = originalWeight * 0.45 :
-          finalWeight = originalWeight;
+    weightMes === "lbs" ?
+        finalWeight = (originalWeight * 0.45) :
+        finalWeight = originalWeight;
 
-      console.log('finalWeight: ' + finalWeight);
-      this.setState({finalWeight: finalWeight});
-    }
+    console.log('finalWeight: ' + finalWeight);
+    this.setState({finalWeight: finalWeight});
   }
 
   heightInMetric() {

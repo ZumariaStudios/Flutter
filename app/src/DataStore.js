@@ -5,12 +5,14 @@ var DataStore = class {
     age: '',
     weight: '',
     weightMes: '',
-    height: '',
-    heightMes: '',
-    smoker: '',
-    famHistory: '',
-    diabetesMed: '',
-    bloodPressMed: ''
+    heightFst: '',
+    heightFstMes: '',
+    heightSnd: '',
+    heightSndMes: '',
+    smoker: false,
+    famHistory: false,
+    diabetesMed: false,
+    bloodPressMed: false
   }
 
   load() {
