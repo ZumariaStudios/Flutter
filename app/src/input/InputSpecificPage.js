@@ -36,6 +36,13 @@ class InputSpecificPage extends React.Component {
     this.props.history.push('/BMIResultsPage');
   }
 
+  componentWillMount() {
+    this.localStore('smoker', false);
+    this.localStore('famHistory', false);
+    this.localStore('diabetesMed', false);
+    this.localStore('bloodPressMed', false);
+  }
+
   render() {
     return (
       <div className ="inputBottomPage">
