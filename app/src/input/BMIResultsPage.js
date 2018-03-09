@@ -51,7 +51,7 @@ class BMIResultsPage extends React.Component {
     let weight = this.weightInMetric();
     let height = this.heightInMetric();
 
-    let results = Number(weight)/Number(height);
+    let results = (Number(weight)/Number(height)).toFixed(2);
     this.setState({bmi: results}, function() {
       console.log('bmi state: ' + this.state.bmi);
     });
@@ -65,7 +65,9 @@ class BMIResultsPage extends React.Component {
   render() {
     return (
       <div>
-      <div><BMIReader bmi={this.state.bmi}/></div>
+          <div><BMIReader bmi={this.state.bmi}/></div>
+          <h4>These are your Body Mass Index results!</h4>
+          <h4>Now lets keep going...</h4>
       </div>
     )
   }

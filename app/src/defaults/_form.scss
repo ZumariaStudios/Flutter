@@ -54,10 +54,19 @@
   padding: 0.5em 0.5em;
 }
 
-h1 {
+%hBasicFormat {
   color: $clr-blue;
-  font-size: 28px;
   text-align: center;
+}
+
+h1 {
+  @extend %hBasicFormat;
+  font-size: 28px;
+}
+
+h4 {
+  @extend %hBasicFormat;
+  font-size: 18px;
 }
 
 span {

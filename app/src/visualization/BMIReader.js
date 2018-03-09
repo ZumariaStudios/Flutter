@@ -9,23 +9,22 @@ const BMIReader = (props) => {
 
   if (results <= 18.5) {
       resultsLabel = 'underweight';
-      rotationDegree = 'rotate(17,510.5,486)';
+      rotationDegree = 'rotate(22,350,338.2)';
   } else if (results <= 25) {
       resultsLabel = 'healthy';
-      rotationDegree = 'rotate(55,510.5,486)';
+      rotationDegree = 'rotate(72,350,338.2)';
   } else if (results <= 30) {
       resultsLabel = 'overweight';
-      rotationDegree = 'rotate(130,510.5,486)';
+      rotationDegree = 'rotate(127,350,338.2)';
   } else {
       resultsLabel = 'obese';
-      rotationDegree = 'rotate(160,510.5,486)';
+      rotationDegree = 'rotate(175,350,338.2)';
   }
   console.log('final results: ' + resultsLabel);
 
   return (
     <div>
-    <BMIGraph results={resultsLabel} rotation={rotationDegree}/>
-    <div>BMI Results</div>
+    <BMIGraph results={resultsLabel} rotation={rotationDegree} bmi={results}/>
     </div>
   );
 }
