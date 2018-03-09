@@ -50,12 +50,6 @@
 .pulse {            //PulseInstructionsPage
   margin: auto 5px auto 5px;
       }
-// .continueButton {
-//   clear:both;
-// }
-// img {
-// padding: 5px 5px 50px 5px;
-// }                 //Component
 }
 
 .inputLabel {
@@ -102,6 +96,8 @@
   padding: 0.5em 0.5em;
 }
 
+
+
 h1 {
   color: $clr-blue;
   font-size: 28px;
@@ -145,7 +141,10 @@ input[type="submit"] {
   padding: 16px 32px;
   display: block;
   margin: auto;
+}
 
+.startTimer {
+  margin-top: 100px;
 }
 
 .toggle {

@@ -3,25 +3,42 @@ import Toggle from 'react-toggle';
 import {withRouter} from 'react-router-dom';
 import Header from '../form/Header.js';
 
-function startTimer(duration, display) {
-    var timer = duration, minutes, seconds;
-    setInterval(function () {
-        minutes = parseInt(timer / 60, 10)
-        seconds = parseInt(timer % 60, 10);
+class BPMTimerPage extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {count: 15}
+  }
+  componentWillUnmount () {
+    clearInterval(this.timer)
+  }
+  tick () {
+    if (this.state.count !== 0) {
+    this.setState({count: (this.state.count - 1)}) };
+  }
+  startTimer () {
+    clearInterval(this.timer)
+    this.timer = setInterval(this.tick.bind(this), 1000)
+  }
+  stopTimer () {
+    clearInterval(this.timer)
+  }
 
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
 
-        display.textContent = minutes + ":" + seconds;
-
-        if (--timer < 0) {
-            timer = duration;
-        }
-    }, 1000);
+  render () {
+    return (
+      <div className='timer'>
+        <Header header = "Press start when you're ready" />
+        <h1>{this.state.count}</h1>
+            <button onClick={this.startTimer.bind(this)}>Start</button>
+        <input class="startTimer"
+         type='submit'
+         value='Continue'
+         onClick={this.nextSection}/>
+      </div>
+    );
+  }
 }
 
-window.onload = function () {
-    var fiveMinutes = 60 * 5,
-        display = document.querySelector('#time');
-    startTimer(fiveMinutes, display);
-};
+
+
+export default withRouter(BPMTimerPage);
