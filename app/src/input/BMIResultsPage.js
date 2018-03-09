@@ -1,6 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import HalfCircle from '../visualization/HalfCircle.js';
+import BMIReader from '../visualization/BMIReader.js';
 
 
 class BMIResultsPage extends React.Component {
@@ -65,7 +65,7 @@ class BMIResultsPage extends React.Component {
   render() {
     return (
       <div>
-      <div><HalfCircle bmi={this.state.bmi}/></div>
+      <div><BMIReader bmi={this.state.bmi}/></div>
       </div>
     )
   }
