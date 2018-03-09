@@ -81,7 +81,6 @@ class InputBMIPage extends React.Component {
   }
 
   componentWillMount() {
-    console.log('entered componentWillMout func in InputBMIPage');
     this.localStore('weightMes', 'lbs');
     this.localStore('heightFstMes', 'ft');
     this.localStore('heightSndMes', 'in');

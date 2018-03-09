@@ -1,18 +1,12 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import InputBMIPage from './InputBMIPage.js';
 import HalfCircle from '../visualization/HalfCircle.js';
 
 
 class BMIResultsPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-        finalWeight: '',
-        finalHeight: '',
-        bmi: '',
-      }
-
+    this.state = {bmi: ''};
     this.calcBMI = this.calcBMI.bind(this);
   }
 
@@ -29,23 +23,17 @@ class BMIResultsPage extends React.Component {
         fWeight = originalWeight;
 
     return fWeight;
-    // console.log('finalWeight: ' + fWeight);
-    // this.setState({finalWeight: fWeight});
-    // console.log('updated weight state: ' + this.state.finalWeight);
   }
 
   heightInMetric() {
     let retrievedHeightFst = localStorage.getItem('heightFst');
     let originalHeightFst = JSON.parse(retrievedHeightFst);
-    console.log('originalHeightFst: ' + originalHeightFst);
 
     let retrievedHeightMs = localStorage.getItem('heightFstMes');
     let heightFstMes = JSON.parse(retrievedHeightMs);
-    console.log('heightFstMes: ' + heightFstMes);
 
     let retrievedHeightSnd = localStorage.getItem('heightSnd');
     let originalHeightSnd = JSON.parse(retrievedHeightSnd);
-    console.log('originalHeightSnd: ' + originalHeightSnd);
 
     var fHeight = 0;
     heightFstMes === 'ft' ?
@@ -57,33 +45,27 @@ class BMIResultsPage extends React.Component {
               originalHeightSnd)/100),2);
 
     return fHeight;
-    // console.log('finalHeight: ' + finalHeight);
-    // this.setState({finalHeight: finalHeight});
   }
 
   calcBMI() {
     let weight = this.weightInMetric();
-    this.setState({finalWeight: weight});
-
     let height = this.heightInMetric();
 
+    let results = Number(weight)/Number(height);
+    this.setState({bmi: results}, function() {
+      console.log('bmi state: ' + this.state.bmi);
+    });
 
-    console.log('final weight state: ' + this.state.finalWeight);
-    console.log('final height state: ' + this.state.finalHeight);
-
-    let results = Number(this.state.finalWeight)/Number(this.state.finalHeight);
-    console.log('bmi: ' + results);
-    this.setState({bmi: results});
   }
 
-  // componentWillMount() {
-  //   this.calcBMI();
-  // }
+  componentDidMount() {
+    this.calcBMI();
+  }
 
   render() {
     return (
       <div>
-      <div><HalfCircle/></div>
+      <div><HalfCircle bmi={this.state.bmi}/></div>
       </div>
     )
   }
