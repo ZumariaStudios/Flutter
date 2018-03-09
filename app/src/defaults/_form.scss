@@ -1,3 +1,26 @@
+.header {
+  width: 100%;
+  img {width: inherit;
+      max-height: 400px;
+  }
+}
+
+.BPMTimerPage {
+  border: 1px solid red;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+    .clockWrapper {
+        max-width: 50%;
+        height: auto;
+        margin-left: 0em;
+        border: 1px solid green;
+
+    }
+
+
+}
+
 .error {
   border-bottom: 1px solid red !important;
 }
@@ -7,9 +30,33 @@
   background-color: $clr-background;
   color: $clr-dark-blue;
 
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  background-color: pink;
+  justify-content: flex-start;
+  text-align: center;
+
 }
 
+.input_center {
+  // display: flex;
+  // flex-flow: row;
+  // flex-wrap: wrap;
+  // background-color: red;
+}
 
+.pulseInstructions { //for
+.pulse {            //PulseInstructionsPage
+  margin: auto 5px auto 5px;
+      }
+// .continueButton {
+//   clear:both;
+// }
+// img {
+// padding: 5px 5px 50px 5px;
+// }                 //Component
+}
 
 .inputLabel {
   text-align: left;
@@ -45,6 +92,7 @@
 
 .react-toggle-track, .react-toggle-thumb {
 //little slider buttons and track bar
+//NEEDS COLORS UPDATED
 
 }
 
@@ -96,7 +144,8 @@ input[type="submit"] {
   margin: 10px 2px;
   padding: 16px 32px;
   display: block;
-  clear: both;
+  margin: auto;
+
 }
 
 .toggle {

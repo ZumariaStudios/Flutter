@@ -8,6 +8,7 @@ import InputSpecificPage from './input/InputSpecificPage';
 import InputBPMPage from './input/BMIResultsPage';
 import registerServiceWorker from './registerServiceWorker';
 import PulseInstructionsPage from './visualization/PulseInstructionsPage';
+import BPMTimerPage from './visualization/BPMTimerPage.js';
 
 import './index.scss';
 
@@ -20,6 +21,7 @@ class App extends React.Component {
         <Route path='/InputSpecificPage' component={InputSpecificPage}/>
         <Route path='/BMIResultsPage' component={InputBPMPage}/>
         <Route path='/PulseInstructionsPage' component={PulseInstructionsPage}/>
+        <Route path='/BPMTimerPage' component={BPMTimerPage}/>
       </span></BrowserRouter>
     )
   }
