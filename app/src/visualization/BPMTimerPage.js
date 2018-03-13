@@ -6,7 +6,6 @@ import Header from '../form/Header.js';
 class BPMTimerPage extends React.Component {
   constructor (props) {
     super(props)
-<<<<<<< HEAD
     this.state = {
       count: 15,
       show: false,
@@ -28,31 +27,11 @@ class BPMTimerPage extends React.Component {
   stopTimer () {
     clearInterval(this.timer)
   }
-=======
-    this.state = {count: 15}
-  }
-  componentWillUnmount () {
-    clearInterval(this.timer)
-  }
-  tick () {
-    if (this.state.count !== 0) {
-    this.setState({count: (this.state.count - 1)}) };
-  }
-  startTimer () {
-    clearInterval(this.timer)
-    this.timer = setInterval(this.tick.bind(this), 1000)
-  }
-  stopTimer () {
-    clearInterval(this.timer)
-  }
-
->>>>>>> Timer button working
 
   render () {
     return (
       <div className='timer'>
         <Header header = "Press start when you're ready" />
-<<<<<<< HEAD
 
         <h1>{this.state.count}</h1>
         {(this.state.count > 0) ?
@@ -67,14 +46,6 @@ class BPMTimerPage extends React.Component {
              value='Continue'
              onClick={this.nextSection}/>
            : null}
-=======
-        <h1>{this.state.count}</h1>
-            <button onClick={this.startTimer.bind(this)}>Start</button>
-        <input class="startTimer"
-         type='submit'
-         value='Continue'
-         onClick={this.nextSection}/>
->>>>>>> Timer button working
       </div>
     );
   }

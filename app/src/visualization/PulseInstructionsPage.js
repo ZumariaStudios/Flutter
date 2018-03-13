@@ -22,7 +22,7 @@ class PulseInstructionsPage extends React.Component {
       <img className='pulse'alt = "img2" src = {img2} / >
       <input className="continueButton"
          type='submit'
-         value='Im ready'
+         value='Continue'
          onClick={this.nextSection}/>
       </div>
     );
