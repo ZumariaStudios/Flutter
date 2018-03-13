@@ -9,10 +9,18 @@ var DataStore = class {
     heightFstMes: '',
     heightSnd: '',
     heightSndMes: '',
+    bmi:'',
     smoker: false,
     famHistory: false,
     diabetesMed: false,
-    bloodPressMed: false
+    bloodPressMed: false,
+    sbp: '',
+    dbp: '',
+    triglycerides: '',
+    goodChol: '',
+    badChol: '',
+    cReactiveProteins: '',
+    heartRisk: '',
   }
 
   load() {

@@ -106,7 +106,7 @@ const BMIGraph = (props) => {
       </g>
       <g>
         <text fill="#7299A4" fontSize="35"  fontWeight="bold" x="315" y="330.2">BMI:</text>
-        <text fill="#7299A4" fontSize="35"  fontWeight="bold" x="302" y="365.2">{bmiValue}</text>
+        <text fill="#7299A4" fontSize="35"  fontWeight="bold" x="310" y="370">{bmiValue}</text>
       </g>
       </svg>
     </div>

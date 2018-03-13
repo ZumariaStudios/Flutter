@@ -1,6 +1,6 @@
 import React from 'react';
-import Dropdown from '../form/Dropdown.js';
 import {withRouter} from 'react-router-dom';
+import Dropdown from '../form/Dropdown.js';
 import Header from '../form/Header.js';
 
 class InputBMIPage extends React.Component {

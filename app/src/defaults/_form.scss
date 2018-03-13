@@ -1,10 +1,21 @@
 .header {
   width: 100%;
-
-  img {
-    width: inherit;
-    max-height: 400px;
+  img {width: inherit;
+      max-height: 400px;
   }
+}
+
+.BPMTimerPage {
+  border: 1px solid red;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+    .clockWrapper {
+        max-width: 50%;
+        height: auto;
+        margin-left: 0em;
+        border: 1px solid green;
+    }
 }
 
 .error {
@@ -20,11 +31,26 @@
 .inputBottomPage {
   background-color: $clr-background;
   color: $clr-dark-blue;
-  display: flex;
-  flex-flow: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  text-align: center;
+  margin: auto;
+}
+
+.bmiResultsArea {
+  background-color: $clr-super-light-blue;
+  margin: -0.5em;
+}
+
+.topSpacing {
+  padding-top: 1.5em;
+}
+
+.grayLine {
+  background-color: #C1C0C0;
+  height: 6px;
+  width: 100%;
+}
+
+.bmiGraph {
+  margin: 0.8em;
 }
 
 .pulseInstructions {
@@ -41,26 +67,24 @@
 
   .medicationInput {
     text-indent: 5%;
-    float: left;
+    float:left;
     width: 100%;
 
-    .bloodPressCond,
-    .diabetesCond {
-      float: left;
-      clear: left;
-      width: 70%;
-    }
+      .diabetesCond, .bloodPressCond {
+        float: left;
+        clear:left;
+        width: 70%;
+      }
   }
 
-  .toggle {
-    float: right;
-    clear: right;
-  }
+   .toggle {
+     float: right;
+     clear: right;
+   }
 }
 
 .react-toggle {
   vertical-align: text-top;
-  border: 1px solid red !important;
 }
 
 .react-toggle-thumb,

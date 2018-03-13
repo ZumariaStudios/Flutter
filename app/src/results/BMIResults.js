@@ -1,5 +1,4 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
 import BMIReader from '../visualization/BMIReader.js';
 
 
@@ -47,6 +46,16 @@ class BMIResults extends React.Component {
     return fHeight;
   }
 
+  localStore(name, value) {
+    const cachedHits = localStorage.getItem(value);
+    if (cachedHits) {
+      this.setState({[name]: JSON.parse(cachedHits)});
+      return;
+    }
+
+    localStorage.setItem(name, JSON.stringify(value));
+  }
+
   calcBMI() {
     let weight = this.weightInMetric();
     let height = this.heightInMetric();
@@ -56,6 +65,7 @@ class BMIResults extends React.Component {
       console.log('bmi state: ' + this.state.bmi);
     });
 
+    this.localStore('bmi', results);
   }
 
   componentDidMount() {
@@ -71,4 +81,4 @@ class BMIResults extends React.Component {
   }
 }
 
-export default withRouter(BMIResults);
+export default BMIResults;

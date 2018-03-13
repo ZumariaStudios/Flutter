@@ -10,6 +10,9 @@ class InputHeartRatePage extends React.Component {
             bpmErrorMessage: '',
             bpmError: false,
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.nextSection = this.nextSection.bind(this);
+    this.validate = this.validate.bind(this);
   }
 
   handleChange (event, name){
@@ -18,8 +21,6 @@ class InputHeartRatePage extends React.Component {
     this.localStore(name, value);
     this.setState({[name]: value});
     this.validate(value);
-
-    this.setState({inputSizeBpm: value.length });
   }
 
   localStore(name, value) {
@@ -42,22 +43,22 @@ class InputHeartRatePage extends React.Component {
   }
 
   nextSection() {
-    this.props.history.push('/InputBloodPressurePage');
-    // if (this.state.bpmError) {
-    //   this.props.history.push('/PulseInstructionsPage');
-    // } else {
-    //   this.props.history.push('/InputBloodPressurePage');
-    // }
+    if (this.state.bpmError || this.state.bpm.length === 0) {
+      this.props.history.push('/PulseInstructionsPage');
+    } else {
+      this.props.history.push('/InputBloodPressurePage');
+    }
   }
 
   render() {
     return(
       <div className ="inputBottomPage">
-          <div><BMIResults/></div>
-          <span>
-              <h4>This is your Body Mass Index result!</h4>
-              <h4>Now lets keep going...</h4>
-          </span>
+          <div className ="bmiResultsArea">
+              <h4 className="topSpacing">Your BMI result!</h4>
+              <BMIResults/>
+              <div className="grayLine"></div>
+          </div>
+          <h4 className="topSpacing">Now lets keep going...</h4>
           <form className ="form">
               <label>My resting heart rate (BPM) is
                     <input
@@ -69,15 +70,16 @@ class InputHeartRatePage extends React.Component {
                           this.handleChange(e, 'bpm')
                         }}>
                     </input>
-                    <div className="errorMessage">{this.state.bpmError ?
-                          this.state.bpmErrorMessage : null}</div>
               </label>
+              <div className="errorMessage">{this.state.bpmError ?
+                    this.state.bpmErrorMessage : null}</div>
               <input
-               type='submit'
-               value='Continue'
-               onClick={this.nextSection}/>
-          </form>
+                     type='submit'
+                     value={this.state.bpmError || this.state.bpm.length === 0 ? 'Find out' : 'continue'}
+                     onClick={this.nextSection}/>
+           </form>
       </div>
+
     );
   }
 }

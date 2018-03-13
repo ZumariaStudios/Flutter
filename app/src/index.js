@@ -7,6 +7,8 @@ import InputBMIPage from './input/InputBMIPage';
 import InputSpecificPage from './input/InputSpecificPage';
 import InputHeartRatePage from './input/InputHeartRatePage';
 import InputBloodPressurePage from './input/InputBloodPressurePage';
+import InputBloodChemistryPage from './input/InputBloodChemistryPage';
+import SetReminderPage from './input/SetReminderPage';
 import PulseInstructionsPage from './visualization/PulseInstructionsPage';
 import BPMTimerPage from './visualization/BPMTimerPage.js';
 
@@ -24,6 +26,8 @@ class App extends React.Component {
         <Route path='/InputBloodPressurePage' component={InputBloodPressurePage}/>
         <Route path='/PulseInstructionsPage' component={PulseInstructionsPage}/>
         <Route path='/BPMTimerPage' component={BPMTimerPage}/>
+        <Route path='/InputBloodChemistryPage' component={InputBloodChemistryPage}/>
+        <Route path='/SetReminderPage' component={SetReminderPage}/>
       </span></BrowserRouter>
     )
   }
