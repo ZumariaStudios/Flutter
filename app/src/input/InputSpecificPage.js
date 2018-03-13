@@ -33,7 +33,14 @@ class InputSpecificPage extends React.Component {
   }
 
   nextSection() {
-    this.props.history.push('/BMIResultsPage');
+    this.props.history.push('/InputHeartRatePage');
+  }
+
+  componentWillMount() {
+    this.localStore('smoker', false);
+    this.localStore('famHistory', false);
+    this.localStore('diabetesMed', false);
+    this.localStore('bloodPressMed', false);
   }
 
   componentWillMount() {

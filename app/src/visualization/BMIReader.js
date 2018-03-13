@@ -5,6 +5,7 @@ const BMIReader = (props) => {
 
   let results = props.bmi;
   let resultsLabel;
+<<<<<<< HEAD
   let rotationDegree;
 
   if (results <= 18.5) {
@@ -21,6 +22,27 @@ const BMIReader = (props) => {
       rotationDegree = 'rotate(175,350,338.2)';
   }
   console.log('final results: ' + resultsLabel);
+=======
+  let degree;
+
+  if (results <= 18.5) {
+      resultsLabel = 'underweight';
+      degree = '22';
+  } else if (results <= 25) {
+      resultsLabel = 'healthy';
+      degree = '72';
+  } else if (results <= 30) {
+      resultsLabel = 'overweight';
+      degree = '127';
+  } else {
+      resultsLabel = 'obese';
+      degree = '175';
+  }
+
+  console.log('final results: ' + resultsLabel);
+  let rotationDegree = `rotate(${degree},350,338.2)`;
+  console.log('rotation degree: ' + rotationDegree);
+>>>>>>> 0dd54fe5b342214a57d09b29535ffe57ad32c9a7
 
   return (
     <div>

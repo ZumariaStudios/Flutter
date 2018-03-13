@@ -83,8 +83,11 @@ class InputBasicPage extends React.Component {
        <Header header="Introduce yourself" imgSrc="../img/NewBlue.jpg"/>
 
       <form className ="form">
+
+
+
         <label>My name is
-        <div>
+        <div className="input_center">
           <input
               className={this.state.errors.userName ? 'error' : null}
               name="name"
@@ -131,6 +134,8 @@ class InputBasicPage extends React.Component {
              : null
            }
 
+
+
           {this.state.listValues[3] ?
            <label> who is
              <input
@@ -153,7 +158,7 @@ class InputBasicPage extends React.Component {
             value='Continue'
             onClick={this.nextSection}/>
            : null}
-      </form></div>
+  </form></div>
     );
   }
 }
