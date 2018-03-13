@@ -2,6 +2,7 @@ import React from 'react';
 import Dropdown from '../form/Dropdown.js';
 import {withRouter} from 'react-router-dom';
 import Header from '../form/Header.js';
+
 class InputBasicPage extends React.Component {
   constructor(props) {
     super(props);
@@ -83,9 +84,6 @@ class InputBasicPage extends React.Component {
        <Header header="Introduce yourself" imgSrc="../img/NewBlue.jpg"/>
 
       <form className ="form">
-
-
-
         <label>My name is
         <div className="input_center">
           <input

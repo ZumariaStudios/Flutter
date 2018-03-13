@@ -64,7 +64,7 @@ class BMIResults extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className ="inputBottomPage">
           <div><BMIReader bmi={this.state.bmi}/></div>
       </div>
     )

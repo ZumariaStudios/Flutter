@@ -26,8 +26,8 @@ const BMIReader = (props) => {
   console.log('rotation degree: ' + rotationDegree);
 
   return (
-    <div>
-    <BMIGraph results={resultsLabel} rotation={rotationDegree} bmi={results}/>
+    <div className="bmiGraph">
+        <BMIGraph results={resultsLabel} rotation={rotationDegree} bmi={results}/>
     </div>
   );
 }

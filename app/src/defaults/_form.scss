@@ -11,6 +11,12 @@
   border-bottom: 1px solid red !important;
 }
 
+.errorMessage {
+    font-size: 14px;
+    font-style: italic;
+    margin: 0;
+}
+
 .inputBottomPage {
   background-color: $clr-background;
   color: $clr-dark-blue;
@@ -68,10 +74,21 @@
   padding: 0.5em;
 }
 
-h1 {
-  font-size: 28px;
+%textCommonStyle {
   color: $clr-blue;
   text-align: center;
+}
+
+h1 {
+  @extend %textCommonStyle;
+  font-size: 28px;
+}
+
+h4 {
+  @extend %textCommonStyle;
+  // border: 2px solid green;
+  font-size: 22px;
+  margin: 6px;
 }
 
 h4 {
