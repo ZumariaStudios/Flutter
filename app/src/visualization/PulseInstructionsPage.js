@@ -1,8 +1,8 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import Header from '../form/Header.js';
-import img1 from '../img/pulse1.jpg';
-import img2 from '../img/pulse2.jpg';
+import img1 from '../img/darkblueneck.png';
+import img2 from '../img/darkbluewrist.png';
 
 class PulseInstructionsPage extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class PulseInstructionsPage extends React.Component {
   }
 
   nextSection() {
-    this.props.history.push('/InputBPMPage');
+    this.props.history.push('/BPMTimerPage');
   }
 
   render() {

@@ -8,7 +8,7 @@ class BPMTimerPage extends React.Component {
     super(props)
     this.state = {
       count: 15,
-      show: false,
+      on: true,
     }
 
     this.startTimer.bind(this);
@@ -17,35 +17,52 @@ class BPMTimerPage extends React.Component {
     clearInterval(this.timer)
   }
   tick () {
-    if (this.state.count !== 0) {
+    if (this.state.count !== 0 && this.state.on == true) {
     this.setState({count: (this.state.count - 1)}) };
+    console.log('tick has run');
   }
   startTimer () {
     clearInterval(this.timer)
     this.timer = setInterval(this.tick.bind(this), 1000)
+    this.setState({on: (this.state.on = true)})
+    console.log('startTime has run');
+    //ADD +1 to count here so user gets 15 seconds
   }
-  stopTimer () {
-    clearInterval(this.timer)
+
+  resetTimer(){
+    this.setState({count: (this.state.count = 15)})
+    console.log('resetTimer has run');
+    this.setState({on: (this.state.on = false)})
+
+  }
+
+  nextSection() {
+    this.props.history.push(null);
   }
 
   render () {
     return (
       <div className='timer'>
-        <Header header = "Press start when you're ready" />
+        <Header header = "Press the button to begin the countdown" />
 
-        <h1>{this.state.count}</h1>
         {(this.state.count > 0) ?
-          <input class="startTimer"
+          <input className="startTimer"
            type='submit'
-           value='Start'
-           onClick={(e) => this.startTimer(e)}/>
+           value={this.state.count === 15 ? 'Start' : this.state.count}
+           onClick={(e) => this.startTimer (e)}/>
            : null}
-        {this.state.count === 0 ?
-            <input class="startTimer"
+        {(this.state.count === 0 )?
+            <input className="startTimer"
              type='submit'
-             value='Continue'
-             onClick={this.nextSection}/>
+             value='Reset'
+             onClick={(e) => this.resetTimer(e)}/>
            : null}
+           {this.state.count === 0 ?
+               <input className="continueButton"
+                type='submit'
+                value='Continue'
+                onClick={null}/>
+              : null}
       </div>
     );
   }

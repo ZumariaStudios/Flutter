@@ -1,24 +1,10 @@
 .header {
   width: 100%;
-  img {width: inherit;
-      max-height: 400px;
+
+  img {
+    width: inherit;
+    max-height: 400px;
   }
-}
-
-.BPMTimerPage {
-  border: 1px solid red;
-  display: flex;
-  flex-flow: row;
-  flex-wrap: wrap;
-    .clockWrapper {
-        max-width: 50%;
-        height: auto;
-        margin-left: 0em;
-        border: 1px solid green;
-
-    }
-
-
 }
 
 .error {
@@ -26,29 +12,28 @@
 }
 
 .inputBottomPage {
-  // border: 2px solid red;
   background-color: $clr-background;
   color: $clr-dark-blue;
-
   display: flex;
   flex-flow: row;
   flex-wrap: wrap;
   justify-content: flex-start;
   text-align: center;
-
 }
 
-.input_center {
-  // display: flex;
-  // flex-flow: row;
-  // flex-wrap: wrap;
-  // background-color: red;
-}
+.pulseInstructions {
+  //for
 
-.pulseInstructions { //for
-.pulse {            //PulseInstructionsPage
-  margin: auto 5px auto 5px;
-      }
+  .pulse {
+    //PulseInstructionsPage
+    //margin: auto 5px auto 5px;
+  }
+
+  img.pulse {
+    padding: 0.7em;
+    width: 40%;
+    height: auto;
+  }
 }
 
 .inputLabel {
@@ -56,58 +41,46 @@
 
   .medicationInput {
     text-indent: 5%;
-    border: 1px solid pink !important;
-    float:left;
+    float: left;
     width: 100%;
 
-      .diabetesCond, .bloodPressCond {
-        float: left;
-        clear:left;
-        border: 1px solid purple;
-        width: 70%;
-      }
-
+    .bloodPressCond,
+    .diabetesCond {
+      float: left;
+      clear: left;
+      width: 70%;
+    }
   }
 
-   .toggle {
-     float: right;
-     clear: right;
-     border: 3px solid orange !important;
-
-
-   }
+  .toggle {
+    float: right;
+    clear: right;
+  }
 }
 
 .react-toggle {
   vertical-align: text-top;
-   border: 1px solid red !important;
+  border: 1px solid red !important;
 }
 
-.react-toggle-track, .react-toggle-thumb {
-//little slider buttons and track bar
-//NEEDS COLORS UPDATED
-
+.react-toggle-thumb,
+.react-toggle-track {
+  //little slider buttons and track bar
+  //NEEDS COLORS UPDATED
 }
 
 .form {
-  // border: 2px solid green;
   margin: 1.5em;
-  padding: 0.5em 0.5em;
+  padding: 0.5em;
 }
 
-
 h1 {
+  font-size: 28px;
   color: $clr-blue;
   text-align: center;
 }
 
-h1 {
-  @extend %hBasicFormat;
-  font-size: 28px;
-}
-
 h4 {
-  @extend %hBasicFormat;
   font-size: 18px;
 }
 
@@ -116,24 +89,24 @@ span {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-
 }
 
-input[type="text"], input[type="number"] {
-    background-color: $clr-background;
-    border: 0 solid transparent;
-    border-bottom: 1px solid $clr-dark-blue;
-    color: $clr-red;
-    display: inline;
-    font-size: 24px;
-    margin: 0.3em 0.5em;
-    outline: none;
-    text-align: center;
-    padding: 0 0.25em;
+input[type="text"],
+input[type="number"] {
+  background-color: $clr-background;
+  border: 0 solid transparent;
+  border-bottom: 1px solid $clr-dark-blue;
+  color: $clr-red;
+  display: inline;
+  font-size: 24px;
+  margin: 0.3em 0.5em;
+  outline: none;
+  text-align: center;
+  padding: 0 0.25em;
 
-    &:focus {
-        outline: none;
-    }
+  &:focus {
+    outline: none;
+  }
 }
 
 input[type="number"] {
@@ -147,15 +120,19 @@ input[type="submit"] {
   margin: 10px 2px;
   padding: 16px 32px;
   margin: auto;
+  display: flex;
 }
 
-.startTimer {
-  margin-top: 100px;
+.timer {
+  .startTimer {
+    border-radius: 50% !important;
+    width: 90px;
+    height: 90px;
+  }
 
-}
-
-.startTimer {
-  margin-top: 100px;
+  .continueButton {
+    margin-top: 10px !important;
+  }
 }
 
 .toggle {
@@ -167,8 +144,7 @@ input[type="submit"] {
   display: flex;
   justify-content: center;
 
-
-.div_dropdown {
+  .div_dropdown {
     text-align: left;
   }
 }
