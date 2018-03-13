@@ -87,7 +87,7 @@ class InputBasicPage extends React.Component {
 
 
         <label>My name is
-        <div>
+        <div className="input_center">
           <input
               className={this.state.errors.userName ? 'error' : null}
               name="name"

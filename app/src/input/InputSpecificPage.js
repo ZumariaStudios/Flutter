@@ -33,7 +33,7 @@ class InputSpecificPage extends React.Component {
   }
 
   nextSection() {
-    this.props.history.push('/BMIResultsPage');
+    this.props.history.push('/InputHeartRatePage');
   }
 
   componentWillMount() {
