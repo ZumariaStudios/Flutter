@@ -2,6 +2,9 @@ import React from 'react';
 
 const BMIGraph = (props) => {
   let res = props.results;
+  let rotationDegree = props.rotation;
+  let bmiValue = props.bmi;
+  console.log('rotation degree: ' + rotationDegree);
   return(
     <div>
       <svg className="BMIGraph" viewBox="0 0 696.9 439.2" width="350" preserveAspectRatio='none'>
@@ -99,9 +102,12 @@ const BMIGraph = (props) => {
       <path className={res === "obese" ? "alert" : "notAlert"}  d="M598.3,352.4c-0.6-68-28.4-129.6-72.9-174.4L352,353.4L598.3,352.4z"/>
       <polygon className="lines" points="348.4,354.9 348.4,356.4 598.4,355.4 598.4,355.4 598.4,352.4 598.3,352.4 352,353.4 525.4,177.9 525.4,177.9 523.3,175.8 523.3,175.8 349.9,351.2 348.9,103.9 348.9,103.9 345.9,103.9 345.9,103.9 346.9,351.2 171.4,175.8 171.4,175.8 169.3,177.9 169.3,178 344.7,353.4 96.4,353.4 96.4,353.4 96.4,353.9 96.4,356.4 348.4,356.4 "/>
       <g>
-        <path className= "BMI_Graph_pointer" d="M338.8,276.6c34.2-5.9,66.9,17.2,72.8,51.4s-17.2,66.9-51.4,72.8c-25.9,4.5-51-7.6-64.1-28.7l-45.7-16.9l37.9-31.5C294.1,300.1,313.4,281,338.8,276.6z"/>
+        <path className= "BMI_Graph_pointer" transform={rotationDegree} d="M338.8,276.6c34.2-5.9,66.9,17.2,72.8,51.4s-17.2,66.9-51.4,72.8c-25.9,4.5-51-7.6-64.1-28.7l-45.7-16.9l37.9-31.5C294.1,300.1,313.4,281,338.8,276.6z"/>
       </g>
-
+      <g>
+        <text fill="#7299A4" fontSize="35"  fontWeight="bold" x="315" y="330.2">BMI:</text>
+        <text fill="#7299A4" fontSize="35"  fontWeight="bold" x="302" y="365.2">{bmiValue}</text>
+      </g>
       </svg>
     </div>
   );

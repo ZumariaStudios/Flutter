@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom';
 import BMIReader from '../visualization/BMIReader.js';
 
 
-class BMIResultsPage extends React.Component {
+class BMIResults extends React.Component {
   constructor(props) {
     super(props);
     this.state = {bmi: ''};
@@ -51,7 +51,7 @@ class BMIResultsPage extends React.Component {
     let weight = this.weightInMetric();
     let height = this.heightInMetric();
 
-    let results = Number(weight)/Number(height);
+    let results = (Number(weight)/Number(height)).toFixed(2);
     this.setState({bmi: results}, function() {
       console.log('bmi state: ' + this.state.bmi);
     });
@@ -65,10 +65,10 @@ class BMIResultsPage extends React.Component {
   render() {
     return (
       <div>
-      <div><BMIReader bmi={this.state.bmi}/></div>
+          <div><BMIReader bmi={this.state.bmi}/></div>
       </div>
     )
   }
 }
 
-export default withRouter(BMIResultsPage);
+export default withRouter(BMIResults);
