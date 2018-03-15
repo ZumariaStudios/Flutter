@@ -11,7 +11,7 @@ class InputBasicPage extends React.Component {
       adjective: 'Select',
       sex: 'Select',
       age: '',
-      inputSizeUserName: 10,
+      inputSizeUserName: 4,
       listValues: [true, false, false, false, false],
       //true means there is an error
       errors: {
@@ -82,10 +82,10 @@ class InputBasicPage extends React.Component {
     return (
       <div className ="inputBottomPage">
        <Header header="Introduce yourself" imgSrc="../img/NewBlue.jpg"/>
-
       <form className ="form">
-        <label>My name is
-        <div className="input_center">
+       <div className="input_center">My name is</div>
+        <label>
+        <div className="div_dropdown">
           <input
               className={this.state.errors.userName ? 'error' : null}
               name="name"
@@ -100,8 +100,8 @@ class InputBasicPage extends React.Component {
 
          { this.state.listValues[1] ?
           <div className="input_center">
-              <div className="div_dropdown">and I am a</div>
-              <label>
+              <label>and I am a
+              <div className="div_dropdown">
                 <Dropdown
                     name='adjective'
                     data={['groovy', 'good looking', 'eccentric', 'fabulous']}
@@ -110,7 +110,9 @@ class InputBasicPage extends React.Component {
                       this.setState({adjective: newVal});
                       this.arrayToggle(2);
                     }}/>
+                        </div>
               </label>
+
           </div>
             : null
           }
@@ -118,6 +120,7 @@ class InputBasicPage extends React.Component {
           {this.state.listValues[2] ?
            <div className="input_center">
                <label>
+              <div className="div_dropdown">
                    <Dropdown
                        name='sex'
                        data={['gentleman', 'lady']}
@@ -127,6 +130,7 @@ class InputBasicPage extends React.Component {
                          this.setState({sex: newVal});
                          this.arrayToggle(3);
                    }}/>
+                </div>
                </label>
            </div>
              : null

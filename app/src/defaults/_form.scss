@@ -175,14 +175,19 @@ input[type="submit"] {
   align: center;
 }
 
+.div_dropdown {
+  text-align: left;
+  display: inline-block;
+}
+
 .input_center {
   align-items: center;
-  display: flex;
   justify-content: center;
+  text-align: left;
+  display: inline-block;
 
-  .div_dropdown {
-    text-align: left;
-  }
+
+
 }
 
 .input_drop_align {
