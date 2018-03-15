@@ -1,29 +1,26 @@
 import React from 'react';
 import BMIGraph from '../visualization/BMIGraph.js';
+import { scaleLinear } from 'd3-scale';
 
 const BMIReader = (props) => {
 
   let results = props.bmi;
   let resultsLabel;
-  let degree;
+  const rotationDegrees = scaleLinear().domain([15, 35]).range([0, 180]);
+
+  let r = rotationDegrees(results);
+
+  const rotationDegree = `rotate(${r})`;
 
   if (results <= 18.5) {
       resultsLabel = 'underweight';
-      degree = '22';
   } else if (results <= 25) {
       resultsLabel = 'healthy';
-      degree = '72';
   } else if (results <= 30) {
       resultsLabel = 'overweight';
-      degree = '127';
   } else {
       resultsLabel = 'obese';
-      degree = '175';
   }
-
-  console.log('final results: ' + resultsLabel);
-  let rotationDegree = `rotate(${degree},350,338.2)`;
-  console.log('rotation degree: ' + rotationDegree);
 
   return (
     <div className="bmiGraph">

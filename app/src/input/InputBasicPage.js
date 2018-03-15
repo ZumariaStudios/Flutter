@@ -2,6 +2,7 @@ import React from 'react';
 import Dropdown from '../form/Dropdown.js';
 import {withRouter} from 'react-router-dom';
 import Header from '../form/Header.js';
+import Minty from '../visualization/Minty.js';
 
 class InputBasicPage extends React.Component {
   constructor(props) {

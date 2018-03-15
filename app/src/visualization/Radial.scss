@@ -7,14 +7,14 @@
 .Radial {
     overflow: visible;
 
-    .Radial__inner {
-        transform-origin: center;
-        transform: scale(0.60);
-
-        path {
-            stroke-width: 8;
-        }
-    }
+    // .Radial__inner {
+    //     transform-origin: center;
+    //     transform: scale(0.60);
+    //
+    //     path {
+    //         stroke-width: 8;
+    //     }
+    // }
 
     .Radial__outer {
         transform-origin: center;

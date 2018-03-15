@@ -34,9 +34,9 @@ class InputHeartRatePage extends React.Component {
   }
 
   validate(value) {
-    if (value.length === 0 || value < 25 || value > 74) {
+    if (value.length === 0 || value < 25 || value > 180) {
       this.setState({bpmError: true});
-      this.setState({bpmErrorMessage: '*Enter a number in between 25 and 74'})
+      this.setState({bpmErrorMessage: '*Enter a number in between 25 and 180'})
     } else {
       this.setState({bpmError: false});
     }

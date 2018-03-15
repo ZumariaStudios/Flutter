@@ -16,22 +16,22 @@ class BPMTimerPage extends React.Component {
     clearInterval(this.timer)
   }
   tick () {
-    if (this.state.count !== 0 && this.state.on == true) {
+    if (this.state.count !== 0 && this.state.on === true) {
     this.setState({count: (this.state.count - 1)}) };
     console.log('tick has run');
   }
   startTimer () {
     clearInterval(this.timer)
     this.timer = setInterval(this.tick.bind(this), 1000)
-    this.setState({on: (this.state.on = true)})
+    this.setState({on: true})
     console.log('startTime has run');
     //ADD +1 to count here so user gets 15 seconds
   }
 
   resetTimer(){
-    this.setState({count: (this.state.count = 16)})
+    this.setState({count: 16})
     console.log('resetTimer has run');
-    this.setState({on: (this.state.on = false)})
+    this.setState({on: false})
 
   }
 

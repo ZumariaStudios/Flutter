@@ -1,8 +1,8 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import Header from '../form/Header.js';
-import img1 from '../img/darkblueneck.png';
-import img2 from '../img/darkbluewrist.png';
+import img1 from '../img/Neck.png';
+import img2 from '../img/Wrist.png';
 
 class PulseInstructionsPage extends React.Component {
   constructor(props) {
@@ -17,9 +17,12 @@ class PulseInstructionsPage extends React.Component {
   render() {
     return (
       <div className = 'pulseInstructions'>
-      <Header header = "Where to find your pulse" / >
-      <img className='pulse' alt = "img1" src = {img1} / >
-      <img className='pulse'alt = "img2" src = {img2} / >
+      <h1>Where to find your pulse</h1>
+      <div className='images'>
+          <img className='pulse' alt = "img1" src = {img1} / >
+          <h4 className='or'>OR</h4>
+          <img className='pulse'alt = "img2" src = {img2} / >
+      </div>
       <input className="continueButton"
          type='submit'
          value='Continue'

@@ -3,8 +3,10 @@ import React from 'react';
 const BMIGraph = (props) => {
   let res = props.results;
   let rotationDegree = props.rotation;
-  let bmiValue = props.bmi;
-  let text = (<text x='315' y='330.2' textAnchor='middle'>BMI: ${props.bmi}%</text>);
+  let text = (<text x='0' y='0' textAnchor='middle'>
+                <tspan x='350' y='338'>BMI:</tspan>
+                <tspan x='350' y='368'>{props.bmi}</tspan>
+              </text>);
   console.log('rotation degree: ' + rotationDegree);
   return(
     <div>

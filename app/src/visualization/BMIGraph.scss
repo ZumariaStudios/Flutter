@@ -1,3 +1,15 @@
+@keyframes BmiIndicator {
+  0% {
+    transform:rotate(0deg);
+  }
+  // 0% {
+  //   transform:rotate(0deg);
+  // }
+  // 100% {
+  //   transform:rotate(196.00deg);
+  // }
+}
+
 .refNum {
   fill: $clr-gray-70,
 }
@@ -8,6 +20,11 @@
   fill: $clr-dark-blue,
 }
 .BMI_Graph_pointer {
+  animation-name: BmiIndicator;
+  animation-duration: 1s;
+  //animation-direction: reverse;
+  animation-fill-mode: forwards;
+  transform-origin: 50% 78%;
   fill: $clr-super-light-blue,
 }
 
@@ -26,6 +43,7 @@
 
 text {
     fill: $clr-light-blue;
-    font-size: 35px;
+    font-size: 30px;
     font-weight: bold;
+    border: 1px solid red;
 }
