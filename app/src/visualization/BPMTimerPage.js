@@ -1,5 +1,4 @@
 import React from 'react';
-import Toggle from 'react-toggle';
 import {withRouter} from 'react-router-dom';
 import Header from '../form/Header.js';
 
@@ -7,7 +6,7 @@ class BPMTimerPage extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      count: 15,
+      count: 16,
       on: true,
     }
 
@@ -30,7 +29,7 @@ class BPMTimerPage extends React.Component {
   }
 
   resetTimer(){
-    this.setState({count: (this.state.count = 15)})
+    this.setState({count: (this.state.count = 16)})
     console.log('resetTimer has run');
     this.setState({on: (this.state.on = false)})
 
@@ -48,7 +47,7 @@ class BPMTimerPage extends React.Component {
         {(this.state.count > 0) ?
           <input className="startTimer"
            type='submit'
-           value={this.state.count === 15 ? 'Start' : this.state.count}
+           value={this.state.count === 16 ? 'Start' : this.state.count}
            onClick={(e) => this.startTimer (e)}/>
            : null}
         {(this.state.count === 0 )?
