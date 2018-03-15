@@ -5,18 +5,7 @@
   }
 }
 
-.BPMTimerPage {
-  border: 1px solid red;
-  display: flex;
-  flex-flow: row;
-  flex-wrap: wrap;
-    .clockWrapper {
-        max-width: 50%;
-        height: auto;
-        margin-left: 0em;
-        border: 1px solid green;
-    }
-}
+
 
 .error {
   border-bottom: 1px solid red !important;
@@ -158,11 +147,23 @@ input[type="submit"] {
   display: flex;
 }
 
+.BPMTimerPage {
+  border: 1px solid red;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+
+}
+
+
 .timer {
   .startTimer {
+    background-color: white;
+    color: black;
     border-radius: 50% !important;
-    width: 90px;
-    height: 90px;
+    width: 110px;
+    height: 110px;
+    border: 4px dashed $clr-blue;
   }
 
   .continueButton {
