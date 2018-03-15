@@ -70,7 +70,7 @@ class InputBloodPressurePage extends React.Component {
     return(
       <div className ="inputBottomPage">
           <div className ="bmiResultsArea">
-              <h4 className="topSpacing">Your heart risk so far...</h4>
+              <h4 className="topSpacing">Cardiovascular Health Assessment:</h4>
               <div className="grayLine"></div>
           </div>
           <h4 className="topSpacing">Keep going...</h4>

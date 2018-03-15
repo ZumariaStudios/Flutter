@@ -87,8 +87,7 @@ class RiskResultsBP extends React.Component {
   render() {
     return(
       <div className ="radialGraph">
-          <div>{this.state.heartRisk}%</div>
-          <div><Radial completed={this.state.heartRisk}/></div>
+          <div><Radial completed={this.state.heartRisk} showPercentage={this.state.heartRisk}/></div>
       </div>
     );
   }

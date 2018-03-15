@@ -26,18 +26,18 @@
     }
 
     path {
-        stroke: transparentize(white, 0.75);
+        stroke: transparentize($clr-light-blue, 0.75);
     }
 
     text {
-        fill: white;
+        fill: $clr-light-blue;
         font-size: 10px;
         font-weight: bold;
     }
 
     .completed {
         animation: RadialProgress 1s ease-in-out forwards;
-        stroke: white;
+        stroke: $clr-light-blue;
     }
 }
 
@@ -46,7 +46,7 @@
 }
 
 .radialGraph {
-  width: 38%;
+  width: 28%;
   margin: auto;
   padding: 0.5em;
 }
