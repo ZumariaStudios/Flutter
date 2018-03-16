@@ -5,11 +5,7 @@ const Header = (props) => {
 
   return (
        <div className="header">
-<<<<<<< HEAD
-          <Minty/>
-          <h1>{props.header}</h1>
-=======
-          <img className="minty" alt="hold" src={logo}/>
+          <img className="minty" alt="hold" src={Minty}/>
           <svg  className="progressMonitor" x="0px" y="0px" viewBox="0 0 400 100" style={{enableBackground: "new 0 0 400 100"}} xmlSpace="preserve">
           <g>
           	<path className="st0" d="M90,40.5"/>
@@ -21,7 +17,6 @@ const Header = (props) => {
         <h1>{props.header}</h1>
 
 
->>>>>>> Animation working
       </div>
 );
 }
