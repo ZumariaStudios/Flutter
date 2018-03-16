@@ -5,7 +5,8 @@ const Header = (props) => {
 
   return (
        <div className="header">
-          <img className="minty" alt="hold" src={Minty}/>
+        <Minty />
+        <div className="progressTracker">
           <svg  className="progressMonitor" x="0px" y="0px" viewBox="0 0 400 100" style={{enableBackground: "new 0 0 400 100"}} xmlSpace="preserve">
           <g>
           	<path className="st0" d="M90,40.5"/>
@@ -15,9 +16,8 @@ const Header = (props) => {
           <polyline className="beat" points="400,35.5 127,34.5 128,34.5 122.5,34.5 120.5,41.5 117.5,26.5 112.5,58.5 109.5,16.5 105,43 103,34.3 95.5,34.3 "/>
           </svg>
         <h1>{props.header}</h1>
-
-
       </div>
+    </div>
 );
 }
 export default Header;

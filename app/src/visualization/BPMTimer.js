@@ -27,14 +27,10 @@ class BPMTimer extends React.Component {
     clearInterval(this.timer);
     this.timer = setInterval(this.tick.bind(this), 1000);
     this.setState({on: true});
-    this.setState({startAnimation: true});
-
     if (this.state.count === 0) {
           this.resetTimer();
-          this.setState({startAnimation: false});
     }
     console.log('startTime has run');
-    //ADD +1 to count here so user gets 15 seconds
   }
 
   resetTimer(){

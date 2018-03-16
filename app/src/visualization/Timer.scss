@@ -5,41 +5,13 @@
 }
 
 $class-slug: for !default;
-$boolean: false !default;
-
-@mixin animation($boolean: true) {
-  @if $boolean {
-    @for $i from 1 through 15 {
-      .#{$class-slug}-#{$i} {
-        animation: activateCounter #{$i}s;
-        fill: $clr-red;
-      }
-    }
-  }
-}
 
 .notActive {
   fill: $clr-super-light-blue;
 }
 
 .activate {
-  @include animation($boolean: true);
-}
-
-// @for $i from 1 through 15 {
-//   @if $boolean{
-//     .#{$class-slug}-#{$i} {
-//       animation: activateCounter #{$i + 1}s;
-//       fill: $clr-red;
-//     }
-//   }
-// }
-
-@for $i from 1 through 15 {
-  .#{$class-slug}-#{$i} {
-    animation: activateCounter #{$i + 1}s;
-    fill: $clr-red;
-  }
+  @include animation(true);
 }
 
 .timer {
@@ -61,12 +33,14 @@ $boolean: false !default;
   fill: $clr-extra-light-blue;
 }
 .active{
-  fill: $clr-red;
+  @for $i from 15 through 1 {
+    .#{$class-slug}-#{$i} {
+      animation: activateCounter #{$i}s;
+      fill: $clr-red;
+   }
+  }
 }
-// .notActive{
-//   animation: activateCounter 1s;
-//   fill: $clr-super-light-blue;
-// }
+
 .innerRing{
   fill: $clr-blue;
 }
