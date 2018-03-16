@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Timer = (props) => {
-  let startAnimation = props.startAnimation;
   let counter = props.counter;
   let dire = props.dire;
   let numCount = (<text className="numStyle" x='160' y='205' textAnchor='middle'>{counter}</text>);

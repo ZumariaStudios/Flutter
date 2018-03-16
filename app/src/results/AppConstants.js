@@ -137,6 +137,122 @@ export const AppConstants = {
       male: 0.899,
       female: 0.98634
     }
+  },
+
+  //Cardiovascular Health Assestment
+  REST_HEART: {
+    male: {
+      age18to25: {
+        bpm49to55 : 'Athlete',
+        bpm56to61 : 'Excellent',
+        bpm62to65 : 'Good',
+        bpm66to69 : 'Above average',
+        bpm70to73 : 'Average',
+        bpm74to81 : 'Below average',
+        bpm82plus : 'Poor',
+      },
+      age26to35: {
+        bpm49to54 : 'Athlete',
+        bpm55to61 : 'Excellent',
+        bpm62to65 : 'Good',
+        bpm66to70 : 'Above average',
+        bpm71to74 : 'Average',
+        bpm75to81 : 'Below average',
+        bpm82plus : 'Poor',
+      },
+      age36to45: {
+        bpm50to56 : 'Athlete',
+        bpm57to62 : 'Excellent',
+        bpm63to66 : 'Good',
+        bpm67to70 : 'Above average',
+        bpm71to75 : 'Average',
+        bpm76to82 : 'Below average',
+        bpm83plus : 'Poor',
+      },
+      age46to55: {
+        bpm50to57 : 'Athlete',
+        bpm58to63 : 'Excellent',
+        bpm64to67 : 'Good',
+        bpm68to71 : 'Above average',
+        bpm72to76 : 'Average',
+        bpm77to83 : 'Below average',
+        bpm84plus : 'Poor',
+      },
+      age56to65: {
+        bpm51to56 : 'Athlete',
+        bpm57to61 : 'Excellent',
+        bpm62to67 : 'Good',
+        bpm68to71 : 'Above average',
+        bpm72to75 : 'Average',
+        bpm76to81 : 'Below average',
+        bpm82plus : 'Poor',
+      },
+      age65plus: {
+        bpm50to55 : 'Athlete',
+        bpm56to61 : 'Excellent',
+        bpm62to65 : 'Good',
+        bpm66to69 : 'Above average',
+        bpm70to73 : 'Average',
+        bpm74to79 : 'Below average',
+        bpm80plus : 'Poor',
+      }
+    },
+    female: {
+      age18to25: {
+        bpm54to60 : 'Athlete',
+        bpm61to65 : 'Excellent',
+        bpm66to69 : 'Good',
+        bpm70to73 : 'Above average',
+        bpm74to78 : 'Average',
+        bpm79to84 : 'Below average',
+        bpm85plus : 'Poor',
+      },
+      age26to35: {
+        bpm54to59 : 'Athlete',
+        bpm60to64 : 'Excellent',
+        bpm65to68 : 'Good',
+        bpm69to72 : 'Above average',
+        bpm73to76 : 'Average',
+        bpm77to82 : 'Below average',
+        bpm83plus : 'Poor',
+      },
+      age36to45: {
+        bpm54to59 : 'Athlete',
+        bpm60to64 : 'Excellent',
+        bpm65to69 : 'Good',
+        bpm70to73 : 'Above average',
+        bpm74to78 : 'Average',
+        bpm79to84 : 'Below average',
+        bpm85plus : 'Poor',
+      },
+      age46to55: {
+        bpm54to60 : 'Athlete',
+        bpm61to65 : 'Excellent',
+        bpm66to69 : 'Good',
+        bpm70to73 : 'Above average',
+        bpm74to77 : 'Average',
+        bpm78to83 : 'Below average',
+        bpm84plus : 'Poor',
+      },
+      age56to65: {
+        bpm54to59 : 'Athlete',
+        bpm60to64 : 'Excellent',
+        bpm65to68 : 'Good',
+        bpm69to73 : 'Above average',
+        bpm74to77 : 'Average',
+        bpm78to83 : 'Below average',
+        bpm84plus : 'Poor',
+      },
+      age65plus: {
+        bpm54to59 : 'Athlete',
+        bpm60to64 : 'Excellent',
+        bpm65to68 : 'Good',
+        bpm69to72 : 'Above average',
+        bpm73to76 : 'Average',
+        bpm77to84 : 'Below average',
+        bpm85plus : 'Poor',
+      }
+    }
   }
 }
 

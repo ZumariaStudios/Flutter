@@ -1,0 +1,45 @@
+.BPMGraph {
+  width: 95%;
+  margin: auto;
+  padding: 0;
+
+  .athlete {
+    fill:$clr-blue;
+  }
+
+  .smallNum {
+    fill: $clr-gray-70;
+  }
+
+  .pointer {
+    fill: $clr-super-light-blue;
+  }
+
+  .belowAve {
+    fill: $clr-light-red;
+  }
+
+  .aboveAve {
+    fill: $clr-blue;
+  }
+
+  .average {
+    fill:$clr-blue;
+  }
+
+  .poor {
+    fill: $clr-red;
+  }
+
+  .good {
+    fill:$clr-blue;
+  }
+
+  .excellent {
+    fill:$clr-blue;
+  }
+
+  .mainBox {
+    fill: $clr-dark-blue;
+  }
+}

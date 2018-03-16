@@ -1,5 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
+import BPMResults from '../results/BPMResults.js';
 
 class InputBloodPressurePage extends React.Component {
   constructor(props) {
@@ -71,6 +72,7 @@ class InputBloodPressurePage extends React.Component {
       <div className ="inputBottomPage">
           <div className ="bmiResultsArea">
               <h4 className="topSpacing">Cardiovascular Health Assessment:</h4>
+              <BPMResults/>
               <div className="grayLine"></div>
           </div>
           <h4 className="topSpacing">Keep going...</h4>
