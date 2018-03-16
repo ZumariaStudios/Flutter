@@ -10,7 +10,7 @@ import InputBloodPressurePage from './input/InputBloodPressurePage';
 import InputBloodChemistryPage from './input/InputBloodChemistryPage';
 import SetReminderPage from './input/SetReminderPage';
 import PulseInstructionsPage from './visualization/PulseInstructionsPage';
-import BPMTimerPage from './visualization/BPMTimerPage.js';
+import InputHeartRateTimerPage from './input/InputHeartRateTimerPage.js';
 
 import registerServiceWorker from './registerServiceWorker';
 import './index.scss';
@@ -25,7 +25,7 @@ class App extends React.Component {
         <Route path='/InputHeartRatePage' component={InputHeartRatePage}/>
         <Route path='/InputBloodPressurePage' component={InputBloodPressurePage}/>
         <Route path='/PulseInstructionsPage' component={PulseInstructionsPage}/>
-        <Route path='/BPMTimerPage' component={BPMTimerPage}/>
+        <Route path='/InputHeartRateTimerPage' component={InputHeartRateTimerPage}/>
         <Route path='/InputBloodChemistryPage' component={InputBloodChemistryPage}/>
         <Route path='/SetReminderPage' component={SetReminderPage}/>
       </span></BrowserRouter>

@@ -1,46 +1,38 @@
-.cls-1 {
-  clip-path: url(#clip-iPhone_6_7_8_26);
+@keyframes googlyEyes {
+  5% {transform: translateY(5px);}
+  50% {transform: translateY(0);}
+  65% {transform: translateX(2px);}
+  85% {transform: translateX(-2px);}
+  100% {transform: translateX(0);}
 }
 
-.cls-2 {
-  fill: #a4cad5;
+.st0{
+  fill: $clr-extra-light-blue;
+}
+.st1{
+  fill:#C1C0C0;
+}
+.st3{
+  display:none;
+  fill:#444444;
+}
+.mouth{
+  fill:#444444;
+}
+.st5{
+  opacity:0.7;fill:$clr-super-light-blue;
+  enable-background:new;
+}
+.st6{
+  fill:#FFFFFF;
+}
+.st7{
+  fill: $clr-red;
 }
 
-.cls-3 {
-  fill: #fff;
-}
+.eyes {
+  animation: googlyEyes 4s infinite;
+  animation-delay: 4s;
 
-.cls-10, .cls-4 {
-  fill: none;
-}
-
-.cls-4 {
-  stroke: #c1c0c0;
-  opacity: 0.8;
-}
-
-.cls-4, .cls-5 {
-  stroke-width: 5px;
-}
-
-.cls-5 {
-  fill: rgba(230,244,244,0.2);
-  stroke: rgba(193,192,192,0.8);
-}
-
-.cls-6 {
-  fill: #444;
-}
-
-.cls-7 {
-  fill: #e6f4f4;
-  opacity: 0.7;
-}
-
-.cls-8 {
-  fill: #ee4031;
-}
-
-.cls-9 {
-  stroke: none;
+  fill:#444444;
 }

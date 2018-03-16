@@ -1,11 +1,11 @@
 import React from 'react';
-import logo from '../img/MintyHeader.png';
+import Minty from '../visualization/Minty.js';
 
 const Header = (props) => {
 
   return (
        <div className="header">
-          <img className="minty" alt="hold" src={logo}/>
+          <Minty/>
           <h1>{props.header}</h1>
       </div>
 );
