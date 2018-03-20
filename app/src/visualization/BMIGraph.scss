@@ -18,7 +18,7 @@
   animation-duration: 1s;
   //animation-direction: reverse;
   animation-fill-mode: forwards;
-  transform-origin: 50% 78%;
+  transform-origin: 50% 73%;
   fill: $clr-super-light-blue,
 }
 
@@ -35,11 +35,9 @@
   fill: $clr-blue,
 }
 
-text {
-  .bmiText {
+text.bmiText {
     fill: $clr-light-blue;
     font-size: 30px;
     font-weight: bold;
     // border: 1px solid red;
   }
-}
