@@ -42,8 +42,10 @@
 }
 
 text {
+  .bmiText {
     fill: $clr-light-blue;
     font-size: 30px;
     font-weight: bold;
-    border: 1px solid red;
+    // border: 1px solid red;
+  }
 }
