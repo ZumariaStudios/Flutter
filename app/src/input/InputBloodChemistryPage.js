@@ -114,7 +114,7 @@ class InputBloodChemistryPage extends React.Component {
                           this.handleChange(e, 'triglycerides')
                         }}>
                     </input>
-                    <div className="errorMessage">{this.state.sbpError ?
+                    <div className="errorMessage">{this.state.triglyceridesError ?
                           triglyceridesErorMessage : null}</div>
               </label>
               <label>Good Cholesterol (HDL)(mg/dL):
@@ -127,7 +127,7 @@ class InputBloodChemistryPage extends React.Component {
                           this.handleChange(e, 'goodChol')
                         }}>
                     </input>
-                    <div className="errorMessage">{this.state.dbpError ?
+                    <div className="errorMessage">{this.state.goodCholError ?
                           goodCholErrorMessage : null}</div>
               </label>
               <label>Bad Cholesterol (LDL) (mg/dL):
@@ -140,7 +140,7 @@ class InputBloodChemistryPage extends React.Component {
                           this.handleChange(e, 'badChol')
                         }}>
                     </input>
-                    <div className="errorMessage">{this.state.sbpError ?
+                    <div className="errorMessage">{this.state.badCholError ?
                           badCholErorMessage : null}</div>
               </label>
               <label>C-reactive Proteins (mg/dL):
@@ -153,7 +153,7 @@ class InputBloodChemistryPage extends React.Component {
                           this.handleChange(e, 'cReactiveProteins')
                         }}>
                     </input>
-                    <div className="errorMessage">{this.state.dbpError ?
+                    <div className="errorMessage">{this.state.cReactiveProteinsError ?
                           cReactiveProteinsErrorMessage : null}</div>
               </label>
               <input

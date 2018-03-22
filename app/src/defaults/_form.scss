@@ -146,6 +146,21 @@ input[type="submit"] {
   margin: auto;
   display: flex;
 }
+%buttonShared {
+  margin-bottom: 1em;
+  width: 6.5em;
+  padding: auto;
+}
+
+input[type="submit"].reminder {
+  background-color: $clr-blue;
+  @extend %buttonShared;
+}
+
+input[type="submit"].never {
+  background-color: $clr-red;
+  @extend %buttonShared;
+}
 
 .toggle {
   align: center;
