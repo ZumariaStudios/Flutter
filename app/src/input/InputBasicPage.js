@@ -2,6 +2,7 @@ import React from 'react';
 import Dropdown from '../form/Dropdown.js';
 import {withRouter} from 'react-router-dom';
 import Header from '../form/Header.js';
+import Footer from '../form/Footer.js';
 
 class InputBasicPage extends React.Component {
   constructor(props) {
@@ -160,7 +161,9 @@ class InputBasicPage extends React.Component {
             value='Continue'
             onClick={this.nextSection}/>
            : null}
-  </form></div>
+  </form>
+    <Footer/>
+  </div>
     );
   }
 }

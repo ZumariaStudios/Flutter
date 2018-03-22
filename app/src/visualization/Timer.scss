@@ -10,10 +10,6 @@ $class-slug: for !default;
   fill: $clr-super-light-blue;
 }
 
-.activate {
-  @include animation(true);
-}
-
 .timer {
   width: 45%;
   margin: auto;
