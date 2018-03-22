@@ -1,6 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import BPMResults from '../results/BPMResults.js';
+import Footer from '../form/Footer.js';
 
 class InputBloodPressurePage extends React.Component {
   constructor(props) {
@@ -111,6 +112,7 @@ class InputBloodPressurePage extends React.Component {
                         this.state.sbpError || this.state.dbpError ? 'Skip' : 'continue'}
                      onClick={this.nextSection}/>
            </form>
+              <Footer pageID='5'/>
       </div>
     );
   }

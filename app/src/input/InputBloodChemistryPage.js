@@ -1,6 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import FraminghamBMIModelResults from '../results/FraminghamBMIModelResults.js';;
+import FraminghamBMIModelResults from '../results/FraminghamBMIModelResults.js';
+import Footer from '../form/Footer.js';
 
 class InputBloodChemistryPage extends React.Component {
   constructor(props) {
@@ -164,6 +165,7 @@ class InputBloodChemistryPage extends React.Component {
                         this.state.triglyceridesError || this.state.goodCholError ? 'Skip' : 'continue'}
                      onClick={this.nextSection}/>
            </form>
+              <Footer pageID='6'/>
       </div>
     );
   }

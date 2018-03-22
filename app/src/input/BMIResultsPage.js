@@ -69,6 +69,7 @@ class BMIResultsPage extends React.Component {
           <h4>These are your Body Mass Index results!</h4>
           <h4>Now lets keep going...</h4>
       </div>
+        
     )
   }
 }

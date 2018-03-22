@@ -2,6 +2,7 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 import Dropdown from '../form/Dropdown.js';
 import Header from '../form/Header.js';
+import Footer from '../form/Footer.js';
 
 class InputBMIPage extends React.Component {
   constructor(props) {
@@ -162,7 +163,8 @@ class InputBMIPage extends React.Component {
           onClick={this.nextSection}/>
          : null}
 
-      </form></div>
+      </form>      <Footer pageID='2'/></div>
+
     )
   }
 }

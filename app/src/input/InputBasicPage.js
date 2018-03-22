@@ -82,7 +82,7 @@ class InputBasicPage extends React.Component {
   render() {
     return (
       <div className ="inputBottomPage">
-       <Header header="Introduce yourself" imgSrc="../img/NewBlue.jpg"/>
+       <Header header="Introduce yourself"/>
       <form className ="form">
        <div className="input_center">My name is</div>
         <label>
@@ -162,7 +162,7 @@ class InputBasicPage extends React.Component {
             onClick={this.nextSection}/>
            : null}
   </form>
-    <Footer/>
+    <Footer pageID='1'/>
   </div>
     );
   }
