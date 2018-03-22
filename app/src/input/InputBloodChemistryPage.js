@@ -85,7 +85,7 @@ class InputBloodChemistryPage extends React.Component {
             this.state.cReactiveProteinsError) {
       this.props.history.push('/SetReminderPage');
     } else {
-      this.props.history.push('/FinalResults');
+      this.props.history.push('/FinalResultsPage');
     }
   }
 

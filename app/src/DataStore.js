@@ -19,6 +19,7 @@ var DataStore = class {
     triglycerides: '',
     goodChol: '',
     badChol: '',
+    totalChol: '',
     cReactiveProteins: '',
     FraminghamBMIModelRisk: '',
     FraminghamLipidModelRisk: '',

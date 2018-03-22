@@ -24,8 +24,8 @@ let sbp = JSON.parse(retrievedSbp);
 // let retrievedDbp = localStorage.getItem('dbp');
 // let dbp = JSON.parse(retrievedDbp);
 
-// let retrievedTrig = localStorage.getItem('triglycerides');
-// let triglycerides = JSON.parse(retrievedTrig);
+let retrievedTrig = localStorage.getItem('triglycerides');
+let triglycerides = JSON.parse(retrievedTrig);
 
 let retrievedGoodChol = localStorage.getItem('goodChol');
 let goodChol = JSON.parse(retrievedGoodChol);
@@ -38,8 +38,6 @@ let crp = JSON.parse(retrievedCReact);
 
 let retrievedFamHistory = localStorage.getItem('famHistory');
 let famHistory = JSON.parse(retrievedFamHistory);
-
-let cholTotal = goodChol + badChol;
 
 let bases;
 let betas;
@@ -74,6 +72,10 @@ const sbp2 =
 * betas.treatingBP;
 const sbpContribution = sbp1 + sbp2;
 
+export const calcTotalChol = () => {
+  return (goodChol + badChol + (triglycerides/5));
+}
+
 export const calcFraminghamBMIModel = () => {
   // Calculate boolean log set
   const bmiContribution =
@@ -93,6 +95,9 @@ export const calcFraminghamBMIModel = () => {
 }
 
 export const calcFraminghamLipidModel = () => {
+
+  let cholTotal = calcTotalChol();
+
   // Calculate boolean log set
   const cholTotalContribution =
   (Math.log(cholTotal) - bases.cholTotal) * betas.cholTotal;
@@ -114,6 +119,7 @@ export const calcFraminghamLipidModel = () => {
 
 export const calcReynoldsModel = () => {
 
+  let cholTotal = calcTotalChol();
   // Calculate natural log set
   const ageContribution = (gender === 'male')
   ? (Math.log(age) - bases.age) * betas.age

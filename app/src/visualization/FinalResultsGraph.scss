@@ -1,0 +1,23 @@
+.FinalResultsGraph {
+  width: 100%;
+
+  .noVals{
+    fill:$clr-gray-70;
+  }
+
+  .poor{
+    fill: $clr-red;
+  }
+
+  .average{
+    fill: $clr-light-red;
+  }
+
+  .good{
+    fill: $clr-light-blue;
+  }
+
+ .excellent{
+   fill: $clr-dark-blue;
+ }
+}
