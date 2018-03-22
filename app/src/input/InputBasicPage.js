@@ -27,9 +27,14 @@ class InputBasicPage extends React.Component {
   }
 
   handleChange (event, name, num){
-    const value = event.target.value;
+    let value = event.target.value;
 
     this.localStore(name, value);
+
+    if (name === 'sex') {
+      value === 'lady' ? value = 'female' : value = 'male';
+    }
+
     this.setState({[name]: value});
     this.validate(name, value);
 

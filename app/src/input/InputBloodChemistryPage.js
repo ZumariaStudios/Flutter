@@ -1,6 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import RiskResultsBP from '../results/RiskResultsBP.js';
+import FraminghamBMIModelResults from '../results/FraminghamBMIModelResults.js';;
 
 class InputBloodChemistryPage extends React.Component {
   constructor(props) {
@@ -98,7 +98,7 @@ class InputBloodChemistryPage extends React.Component {
       <div className ="inputBottomPage">
           <div className ="bmiResultsArea">
               <h4 className="topSpacing">Your heart risk so far...</h4>
-              <RiskResultsBP/>
+              <FraminghamBMIModelResults/>
               <div className="grayLine"></div>
           </div>
           <h4 className="topSpacing">One more thing...</h4>

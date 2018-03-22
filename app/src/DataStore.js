@@ -20,7 +20,8 @@ var DataStore = class {
     goodChol: '',
     badChol: '',
     cReactiveProteins: '',
-    heartRisk: '',
+    FraminghamBMIModelRisk: '',
+    FraminghamLipidModelRisk: '',
   }
 
   load() {
