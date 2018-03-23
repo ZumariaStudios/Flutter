@@ -48,15 +48,27 @@ class FinalResultsPage extends React.Component {
     console.log('framinghamLipidRisk: ' + framinghamLipidRisk);
     console.log('reynoldsRisk: ' + reynoldsRisk);
     console.log('finalAverage: ' + finalAverage);
+  }
 
+  render() {
     // get bmi results
     let retrievedBmiResults = localStorage.getItem('bmiResults');
     let bmiResults = JSON.parse(retrievedBmiResults);
     console.log('bmiResults: ' + bmiResults);
 
+    //check for empty values
+    if (bmiResults.length === 0) {
+      bloodPressResults = 'noVals';
+    }
+
     // get cholesterol
     let totalChol = calcTotalChol();
     console.log('totalChol: ' + totalChol);
+
+    //check for empty values
+    if (!totalChol) {
+      bloodPressResults = 'noVals';
+    }
 
     let totalCholResults;
 
@@ -73,6 +85,11 @@ class FinalResultsPage extends React.Component {
     let bpmResults = JSON.parse(retrievedBpmresults);
     console.log('bpmResults: ' + bpmResults);
 
+    //check for empty values
+    if (bpmResults.length === 0) {
+      bloodPressResults = 'noVals';
+    }
+
     // blood pressure
     let retrievedSbp = localStorage.getItem('sbp');
     let sbp = JSON.parse(retrievedSbp);
@@ -81,6 +98,11 @@ class FinalResultsPage extends React.Component {
     let dbp = JSON.parse(retrievedDbp);
 
     let bloodPressResults;
+
+    //check for empty values
+    if (sbp.length === 0 || dbp.length === 0) {
+      bloodPressResults = 'noVals';
+    }
 
     if (sbp <= 120 && dbp <= 80) {
       bloodPressResults = 'normal';
@@ -91,11 +113,12 @@ class FinalResultsPage extends React.Component {
     } else {
       bloodPressResults = 'stage 2 prehypertension';
     }
-  }
 
-  render() {
     return(
-      <div><FinalResultsGraph/></div>
+      <div><FinalResultsGraph bmiResults={bmiResults}
+                              totalCholResults={totalCholResults}
+                              bpmResults={bpmResults}
+                              bloodPressResults={bloodPressResults}/></div>
     );
   }
 }
