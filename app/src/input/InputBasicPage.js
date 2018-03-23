@@ -82,7 +82,7 @@ class InputBasicPage extends React.Component {
   render() {
     return (
       <div className ="inputBottomPage">
-       <Header header="Introduce yourself"/>
+       <Header visited ={false} header="Introduce yourself"/>
       <form className ="form">
        <div className="input_center">My name is</div>
         <label>

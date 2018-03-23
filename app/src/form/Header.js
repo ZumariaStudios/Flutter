@@ -3,6 +3,11 @@ import Minty from '../visualization/Minty.js';
 
 const Header = (props) => {
 
+
+
+
+
+
   return (
        <div className="header">
         <Minty />
