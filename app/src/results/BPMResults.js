@@ -5,12 +5,23 @@ class BPMResults extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      results: '',
+      bpmResults: '',
       bpm: '',
     };
     this.calcBPM = this.calcBPM.bind(this);
     this.getResultsMale = this.getResultsMale.bind(this);
     this.getResultsFemale = this.getResultsFemale.bind(this);
+    this.localStore = this.localStore.bind(this);
+  }
+
+  localStore(name, value) {
+    const cachedHits = localStorage.getItem(value);
+    if (cachedHits) {
+      this.setState({[name]: JSON.parse(cachedHits)});
+      return;
+    }
+
+    localStorage.setItem(name, JSON.stringify(value));
   }
 
   getResultsMale(bpm, age, possibleRes) {
@@ -157,15 +168,16 @@ class BPMResults extends React.Component {
   componentDidMount() {
     let res = this.calcBPM();
     console.log('res: ' +  res);
-    this.setState({results: res}, function() {
+    this.setState({bpmResults: res}, function() {
       console.log('results state: ' + this.state.results);
       });
+    this.localStore('bpmResults', res);
   }
 
   render() {
     return (
       <div>
-        <BPMGraph results={this.state.results} bmi={this.state.bpm}/>
+        <BPMGraph results={this.state.bpmResults} bmi={this.state.bpm}/>
       </div>
     );
   }

@@ -43,43 +43,42 @@ let bases;
 let betas;
 let expBase;
 
-if (gender === 'male') {
-  bases = AppConstants.BASELINES.fbm.male;
-  betas = AppConstants.BETAS.fbm.male;
-  expBase = AppConstants.EXP_BASES.fbm.male;
-} else {
-  bases = AppConstants.BASELINES.fbm.female;
-  betas = AppConstants.BETAS.fbm.female;
-  expBase = AppConstants.EXP_BASES.fbm.female;
-}
-
-// Calculate boolean log set
-const smokerVal = (smoker === true) ? 1 : 0;
-const smokerContribution = (smokerVal - bases.smoker) * betas.smoker;
-const diabeticVal = (diabetic === true) ? 1 : 0;
-const diabeticContribution = (diabeticVal - bases.diabetic) * betas.diabetic;
-
-// Calculate boolean log set
-const ageContribution =
-(Math.log(age) - bases.age) * betas.age;
-
-// Calculate BP set
-const treating = (treatingBP === true) ? 1 : 0;
-const sbp1 =
-((Math.log(sbp) * (1 - treating)) - bases.sbp) * betas.sbp;
-const sbp2 =
-((Math.log(sbp) * (treating)) - bases.treatingBP)
-* betas.treatingBP;
-const sbpContribution = sbp1 + sbp2;
-
 export const calcTotalChol = () => {
-  return (goodChol + badChol + (triglycerides/5));
+  return (Number(goodChol) + Number(badChol) + (Number(triglycerides)/5));
 }
 
 export const calcFraminghamBMIModel = () => {
+
+  if (gender === 'gentleman') {
+    bases = AppConstants.BASELINES.fbm.male;
+    betas = AppConstants.BETAS.fbm.male;
+    expBase = AppConstants.EXP_BASES.fbm.male;
+  } else {
+    bases = AppConstants.BASELINES.fbm.female;
+    betas = AppConstants.BETAS.fbm.female;
+    expBase = AppConstants.EXP_BASES.fbm.female;
+  }
+
   // Calculate boolean log set
+  const ageContribution =
+  (Math.log(age) - bases.age) * betas.age;
   const bmiContribution =
   (Math.log(bmi) - bases.bmi) * betas.bmi;
+
+  // Calculate boolean log set
+  const smokerVal = (smoker === true) ? 1 : 0;
+  const smokerContribution = (smokerVal - bases.smoker) * betas.smoker;
+  const diabeticVal = (diabetic === true) ? 1 : 0;
+  const diabeticContribution = (diabeticVal - bases.diabetic) * betas.diabetic;
+
+  // Calculate BP set
+  const treating = (treatingBP === true) ? 1 : 0;
+  const sbp1 =
+  ((Math.log(sbp) * (1 - treating)) - bases.sbp) * betas.sbp;
+  const sbp2 =
+  ((Math.log(sbp) * (treating)) - bases.treatingBP)
+  * betas.treatingBP;
+  const sbpContribution = sbp1 + sbp2;
 
   // Combine contributions
   const totalContributions =
@@ -96,13 +95,40 @@ export const calcFraminghamBMIModel = () => {
 
 export const calcFraminghamLipidModel = () => {
 
+  if (gender === 'gentleman') {
+    bases = AppConstants.BASELINES.flm.male;
+    betas = AppConstants.BETAS.flm.male;
+    expBase = AppConstants.EXP_BASES.flm.male;
+  } else {
+    bases = AppConstants.BASELINES.flm.female;
+    betas = AppConstants.BETAS.flm.female;
+    expBase = AppConstants.EXP_BASES.flm.female;
+  }
+
   let cholTotal = calcTotalChol();
 
   // Calculate boolean log set
+  const ageContribution =
+  (Math.log(age) - bases.age) * betas.age;
   const cholTotalContribution =
   (Math.log(cholTotal) - bases.cholTotal) * betas.cholTotal;
   const cholHDLContribution =
   (Math.log(goodChol) - bases.cholHDL) * betas.cholHDL;
+
+  // Calculate boolean log set
+  const smokerVal = (smoker === true) ? 1 : 0;
+  const smokerContribution = (smokerVal - bases.smoker) * betas.smoker;
+  const diabeticVal = (diabetic === true) ? 1 : 0;
+  const diabeticContribution = (diabeticVal - bases.diabetic) * betas.diabetic;
+
+  // Calculate BP set
+  const treating = (treatingBP === true) ? 1 : 0;
+  const sbp1 =
+  ((Math.log(sbp) * (1 - treating)) - bases.sbp) * betas.sbp;
+  const sbp2 =
+  ((Math.log(sbp) * (treating)) - bases.treatingBP)
+  * betas.treatingBP;
+  const sbpContribution = sbp1 + sbp2;
 
   // Combine contributions
   const totalContributions = ageContribution
@@ -119,9 +145,20 @@ export const calcFraminghamLipidModel = () => {
 
 export const calcReynoldsModel = () => {
 
+  if (gender === 'gentleman') {
+    bases = AppConstants.BASELINES.rm.male;
+    betas = AppConstants.BETAS.rm.male;
+    expBase = AppConstants.EXP_BASES.rm.male;
+  } else {
+    bases = AppConstants.BASELINES.rm.female;
+    betas = AppConstants.BETAS.rm.female;
+    expBase = AppConstants.EXP_BASES.rm.female;
+  }
+
   let cholTotal = calcTotalChol();
+
   // Calculate natural log set
-  const ageContribution = (gender === 'male')
+  const ageContribution = (gender === 'gentleman')
   ? (Math.log(age) - bases.age) * betas.age
   : (age - bases.age) * betas.age;
   const sbpContribution =
@@ -134,6 +171,8 @@ export const calcReynoldsModel = () => {
   (Math.log(crp) - bases.crp) * betas.crp;
 
   // Calculate boolean log set
+  const smokerVal = (smoker === true) ? 1 : 0;
+  const smokerContribution = (smokerVal - bases.smoker) * betas.smoker;
   const famCVDVal = (famHistory === true) ? 1 : 0;
   const famCVDContribution = (famCVDVal - bases.famCVD) * betas.famCVD;
 

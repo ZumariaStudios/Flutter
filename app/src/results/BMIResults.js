@@ -1,12 +1,19 @@
 import React from 'react';
-import BMIReader from '../visualization/BMIReader.js';
+import BMIGraph from '../visualization/BMIGraph.js';
+import { scaleLinear } from 'd3-scale';
 
 
 class BMIResults extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {bmi: ''};
+    this.state = {bmi: '',
+                  bmiResults: '',
+                  slightlyText: '',
+                  rotationDegree: '',
+                  };
     this.calcBMI = this.calcBMI.bind(this);
+    this.setStateVals = this.setStateVals.bind(this);
+    this.getResults = this.getResults.bind(this);
   }
 
   weightInMetric() {
@@ -66,16 +73,55 @@ class BMIResults extends React.Component {
     });
 
     this.localStore('bmi', results);
+    return results;
+  }
+
+  setStateVals(name, value) {
+    this.setState({[name]: value});
+    name === 'bmiResults' || name === 'rotationDegree' ?
+        this.localStore(name, value) : null;
+  }
+
+  getResults(results) {
+    if (results <= 17.5) {
+        this.setStateVals('bmiResults', 'underweight');
+    } else if (results <= 19.5){
+        this.setStateVals('bmiResults', 'underHealthy');
+        this.setStateVals('slightlyText', 'Slightly underweight');
+    } else if (results <= 25) {
+        this.setStateVals('bmiResults', 'healthy');
+    } else if (results <= 26) {
+        this.setStateVals('bmiResults', 'healthyOver');
+        this.setStateVals('slightlyText', 'Slightly overweight');
+    }else if (results <= 29) {
+        this.setStateVals('bmiResults', 'overweight');
+    } else if (results <= 31){
+        this.setStateVals('bmiResults', 'overObese');
+        this.setStateVals('slightlyText', 'Slightly obese');
+    }else {
+        this.setStateVals('bmiResults', 'obese');
+    }
   }
 
   componentDidMount() {
-    this.calcBMI();
+    let bmi = this.calcBMI();
+
+    //set rotation animation
+    const rotationDegrees = scaleLinear().domain([15, 32]).range([0, 180]);
+    let r = rotationDegrees(bmi);
+    const rotationDegree = `rotate(${r})`;
+    this.setStateVals('rotationDegree', rotationDegree);
+
+    bmi ? this.getResults(bmi) : null;
   }
 
   render() {
     return (
-      <div className ="inputBottomPage">
-          <div><BMIReader bmi={this.state.bmi}/></div>
+      <div className ="inputBottomPage bmiGraph">
+          <div><BMIGraph results={this.state.bmiResults}
+                          rotation={this.state.rotationDegree}
+                          bmi={this.state.bmi}
+                          slightly={this.stateslightlyText}/></div>
       </div>
     )
   }

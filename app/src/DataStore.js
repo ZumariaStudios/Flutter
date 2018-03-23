@@ -10,10 +10,13 @@ var DataStore = class {
     heightSnd: '',
     heightSndMes: '',
     bmi:'',
+    bmiResults: '',
     smoker: false,
     famHistory: false,
     diabetesMed: false,
     bloodPressMed: false,
+    bpm: '',
+    bpmResults: '',
     sbp: '',
     dbp: '',
     triglycerides: '',
@@ -23,6 +26,8 @@ var DataStore = class {
     cReactiveProteins: '',
     FraminghamBMIModelRisk: '',
     FraminghamLipidModelRisk: '',
+    reynoldsRisk: '',
+    finalAverage: '',
   }
 
   load() {
