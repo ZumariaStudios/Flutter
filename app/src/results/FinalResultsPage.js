@@ -1,5 +1,4 @@
 import React from 'react';
-import AppConstants from '../results/AppConstants.js';
 import FinalResultsGraph from '../visualization/FinalResultsGraph.js';
 import {calcTotalChol, calcFraminghamBMIModel, calcFraminghamLipidModel, calcReynoldsModel} from '../results/Calculator.js';
 import {withRouter} from 'react-router-dom';
@@ -59,6 +58,16 @@ class FinalResultsPage extends React.Component {
     let totalChol = calcTotalChol();
     console.log('totalChol: ' + totalChol);
 
+    let totalCholResults;
+
+    if (totalChol >= 180 && totalChol <= 200) {
+      totalCholResults = 'ideal';
+    } else if (totalChol > 200 && totalChol <= 239) {
+      totalCholResults = 'elevated';
+    } else {
+      totalCholResults = 'high';
+    }
+
     // Resing heart rate
     let retrievedBpmresults = localStorage.getItem('bpmResults');
     let bpmResults = JSON.parse(retrievedBpmresults);
@@ -70,6 +79,18 @@ class FinalResultsPage extends React.Component {
 
     let retrievedDbp = localStorage.getItem('dbp');
     let dbp = JSON.parse(retrievedDbp);
+
+    let bloodPressResults;
+
+    if (sbp <= 120 && dbp <= 80) {
+      bloodPressResults = 'normal';
+    } else if (sbp <= 140 && dbp <= 90) {
+      bloodPressResults = 'prehypertension';
+    } else if (sbp <= 160 && dbp <= 100){
+      bloodPressResults = 'stage 1 prehypertension';
+    } else {
+      bloodPressResults = 'stage 2 prehypertension';
+    }
   }
 
   render() {
