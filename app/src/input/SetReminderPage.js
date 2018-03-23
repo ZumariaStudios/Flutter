@@ -20,7 +20,7 @@ class SetReminderPage extends React.Component {
 
   nextSection() {
         this.props.history.push('/InputBloodChemistryPage');
-        this.props.history.push('/InputBloodChemistryPage');
+        this.props.history.push('/FinalResultsPage');
         this.pageDirect();
   console.log('"Next section" has been run. Visited is: ' + this.state.visited);
 
