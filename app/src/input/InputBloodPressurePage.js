@@ -11,6 +11,7 @@ class InputBloodPressurePage extends React.Component {
             dbp: '',
             sbpError: false,
             dpbError: false,
+            visited: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.nextSection = this.nextSection.bind(this);
@@ -57,6 +58,7 @@ class InputBloodPressurePage extends React.Component {
   }
 
   nextSection() {
+    this.localStore('visited', false);
     if (this.state.sbp.length === 0 ||
             this.state.dbp.length === 0 ||
             this.state.sbpError || this.state.dbpError) {
