@@ -107,7 +107,7 @@ class BMIResults extends React.Component {
     let bmi = this.calcBMI();
 
     //set rotation animation
-    const rotationDegrees = scaleLinear().domain([15, 32]).range([0, 180]);
+    const rotationDegrees = scaleLinear().domain([15, 35]).range([0, 180]);
     let r = rotationDegrees(bmi);
     const rotationDegree = `rotate(${r})`;
     this.setStateVals('rotationDegree', rotationDegree);

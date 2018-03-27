@@ -115,10 +115,12 @@ class FinalResultsPage extends React.Component {
     }
 
     return(
-      <div><FinalResultsGraph bmiResults={bmiResults}
+      <div className ="ResultsBackground">
+          <FinalResultsGraph bmiResults={bmiResults}
                               totalCholResults={totalCholResults}
                               bpmResults={bpmResults}
-                              bloodPressResults={bloodPressResults}/></div>
+                              bloodPressResults={bloodPressResults}
+                              finalAverage={this.state.finalAverage}/></div>
     );
   }
 }

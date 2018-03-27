@@ -24,6 +24,7 @@ class BPMTimer extends React.Component {
   }
 
   startTimer () {
+
     clearInterval(this.timer);
     this.timer = setInterval(this.tick.bind(this), 1000);
     this.setState({on: true});
