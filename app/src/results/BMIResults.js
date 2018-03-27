@@ -8,7 +8,7 @@ class BMIResults extends React.Component {
     super(props);
     this.state = {bmi: '',
                   bmiResults: '',
-                  slightlyText: '',
+                  slightlyTextext: '',
                   rotationDegree: '',
                   };
     this.calcBMI = this.calcBMI.bind(this);
@@ -78,8 +78,9 @@ class BMIResults extends React.Component {
 
   setStateVals(name, value) {
     this.setState({[name]: value});
-    name === 'bmiResults' || name === 'rotationDegree' ?
-        this.localStore(name, value) : null;
+
+    if (name === 'bmiResults' || name === 'rotationDegree')
+        this.localStore(name, value);
   }
 
   getResults(results) {
@@ -87,18 +88,18 @@ class BMIResults extends React.Component {
         this.setStateVals('bmiResults', 'underweight');
     } else if (results <= 19.5){
         this.setStateVals('bmiResults', 'underHealthy');
-        this.setStateVals('slightlyText', 'Slightly underweight');
+        this.setStateVals('slightlyTextext', 'Slightly underweight');
     } else if (results <= 25) {
         this.setStateVals('bmiResults', 'healthy');
     } else if (results <= 26) {
         this.setStateVals('bmiResults', 'healthyOver');
-        this.setStateVals('slightlyText', 'Slightly overweight');
+        this.setStateVals('slightlyTextext', 'Slightly overweight');
     }else if (results <= 29) {
         this.setStateVals('bmiResults', 'overweight');
     } else if (results <= 31){
         this.setStateVals('bmiResults', 'overObese');
-        this.setStateVals('slightlyText', 'Slightly obese');
-    }else {
+        this.setStateVals('slightlyTextext', 'Slightly obese');
+    } else {
         this.setStateVals('bmiResults', 'obese');
     }
   }
@@ -107,12 +108,13 @@ class BMIResults extends React.Component {
     let bmi = this.calcBMI();
 
     //set rotation animation
-    const rotationDegrees = scaleLinear().domain([15, 35]).range([0, 180]);
+    const rotationDegrees = scaleLinear().domain([15, 36]).range([0, 180]);
     let r = rotationDegrees(bmi);
     const rotationDegree = `rotate(${r})`;
     this.setStateVals('rotationDegree', rotationDegree);
 
-    bmi ? this.getResults(bmi) : null;
+    if (bmi)
+      this.getResults(bmi);
   }
 
   render() {
@@ -121,7 +123,7 @@ class BMIResults extends React.Component {
           <div><BMIGraph results={this.state.bmiResults}
                           rotation={this.state.rotationDegree}
                           bmi={this.state.bmi}
-                          slightly={this.stateslightlyText}/></div>
+                          slightly={this.state.slightlyTextext}/></div>
       </div>
     )
   }

@@ -14,6 +14,7 @@ class FinalResultsPage extends React.Component {
     };
     this.localStore = this.localStore.bind(this);
     this.updateValues = this.updateValues.bind(this);
+    this.nextSection = this.nextSection.bind(this);
   }
 
   localStore(name, value) {
@@ -50,15 +51,18 @@ class FinalResultsPage extends React.Component {
     console.log('finalAverage: ' + finalAverage);
   }
 
+  nextSection() {
+    this.props.history.push('/InteractiveResultsPage');
+  }
+
   render() {
     // get bmi results
     let retrievedBmiResults = localStorage.getItem('bmiResults');
     let bmiResults = JSON.parse(retrievedBmiResults);
-    console.log('bmiResults: ' + bmiResults);
 
     //check for empty values
     if (bmiResults.length === 0) {
-      bloodPressResults = 'noVals';
+      bmiResults = 'noVals';
     }
 
     // get cholesterol
@@ -66,11 +70,11 @@ class FinalResultsPage extends React.Component {
     console.log('totalChol: ' + totalChol);
 
     //check for empty values
-    if (!totalChol) {
-      bloodPressResults = 'noVals';
-    }
-
     let totalCholResults;
+
+    if (!totalChol) {
+      totalCholResults = 'noVals';
+    }
 
     if (totalChol >= 180 && totalChol <= 200) {
       totalCholResults = 'ideal';
@@ -86,6 +90,7 @@ class FinalResultsPage extends React.Component {
     console.log('bpmResults: ' + bpmResults);
 
     //check for empty values
+    let bloodPressResults;
     if (bpmResults.length === 0) {
       bloodPressResults = 'noVals';
     }
@@ -96,8 +101,6 @@ class FinalResultsPage extends React.Component {
 
     let retrievedDbp = localStorage.getItem('dbp');
     let dbp = JSON.parse(retrievedDbp);
-
-    let bloodPressResults;
 
     //check for empty values
     if (sbp.length === 0 || dbp.length === 0) {
@@ -116,11 +119,19 @@ class FinalResultsPage extends React.Component {
 
     return(
       <div className ="ResultsBackground">
+          <h4 className="topSpacing">Your heart risk is...</h4>
           <FinalResultsGraph bmiResults={bmiResults}
                               totalCholResults={totalCholResults}
                               bpmResults={bpmResults}
                               bloodPressResults={bloodPressResults}
-                              finalAverage={this.state.finalAverage}/></div>
+                              finalAverage={this.state.finalAverage}/>
+         <h4 className="topSpacing">What can you do better?</h4>
+         <form><input
+            type='submit'
+            value='Continue'
+            onClick={this.nextSection}/>
+         </form>
+      </div>
     );
   }
 }

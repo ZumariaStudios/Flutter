@@ -9,8 +9,9 @@ const BMIGraph = (props) => {
               </text>);
 
   let slightlyText = props.slightly;
+  console.log('res: ' + res);
   console.log('slightly text: ' + slightlyText);
-  
+
   let textUnder;
 
   if (slightlyText) {
