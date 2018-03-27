@@ -21,6 +21,9 @@ class BPMTimer extends React.Component {
     if (this.state.count !== 0 && this.state.on === true) {
     this.setState({count: (this.state.count - 1)}) };
     console.log('tick has run');
+    if (this.state.count == 0) {
+
+    }
   }
 
   startTimer () {
