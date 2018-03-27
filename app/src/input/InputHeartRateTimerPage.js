@@ -38,7 +38,6 @@ class InputHeartRateTimerPage extends React.Component {
   }
 
   validate(value) {
-    console.log('count is ' + this.state.count);
     if (value.length === 0) {
       this.setState({bpmError: true});
     } else {
@@ -67,6 +66,7 @@ class InputHeartRateTimerPage extends React.Component {
           <BPMTimer handler={this.handler}/>
           <form className ="form">
 <<<<<<< HEAD
+<<<<<<< HEAD
               {!this.state.timerOn ?
 =======
 
@@ -74,6 +74,9 @@ class InputHeartRateTimerPage extends React.Component {
               {this.state.count === 0 ?
 
 >>>>>>> Begin working on timer count display
+=======
+          <div className="BPMinput" >
+>>>>>>> end of Tues
               <label className="inputBottomPage">I counted
                     <input
                         className={this.state.bpmRawError ? 'error' : null}
@@ -85,12 +88,17 @@ class InputHeartRateTimerPage extends React.Component {
                         }}>
                     </input>
 <<<<<<< HEAD
+<<<<<<< HEAD
               </label>: null }
 
 =======
               </label> : null}
             </div>
 >>>>>>> Begin working on timer count display
+=======
+              </label>
+              </div>
+>>>>>>> end of Tues
               {!this.state.bpmRawError &&
                 this.state.bpmRaw.length !== 0 ?
                 <input
