@@ -6,24 +6,31 @@ import Header from '../form/Header.js';
 class SetReminderPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {visited:false };
     this.nextSection = this.nextSection.bind(this);
-    this.pageDirect = this.pageDirect.bind(this);
+    this.localStore = this.localStore.bind(this);
   }
 
-  pageDirect(){
-      console.log('"pageDirect" has been run. Visited is: ' + this.state.visited);
-      this.state = {visited:true };
+  localStore(name, value) {
+    const cachedHits = localStorage.getItem(value);
+    if (cachedHits) {
+      this.setState({[name]: JSON.parse(cachedHits)});
+      return;
+    }
 
-
+    localStorage.setItem(name, JSON.stringify(value));
   }
 
   nextSection() {
-        this.props.history.push('/InputBloodChemistryPage');
-        this.props.history.push('/FinalResultsPage');
-        this.pageDirect();
-  console.log('"Next section" has been run. Visited is: ' + this.state.visited);
+        let retrievedVisited = localStorage.getItem('visited');
+        let visited = JSON.parse(retrievedVisited);
+        console.log('visited: ' + visited);
 
+        if (visited) {
+          this.props.history.push('/FinalResultsPage');
+        } else {
+          this.localStore('visited', true);
+          this.props.history.push('/InputBloodChemistryPage');
+        }
   }
 
 

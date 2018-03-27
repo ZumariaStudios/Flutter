@@ -28,6 +28,7 @@ var DataStore = class {
     FraminghamLipidModelRisk: '',
     reynoldsRisk: '',
     finalAverage: '',
+    visited: false,
   }
 
   load() {

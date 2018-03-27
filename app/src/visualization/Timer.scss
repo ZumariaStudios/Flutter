@@ -10,13 +10,6 @@ $class-slug: for !default;
   fill: $clr-super-light-blue;
 }
 
-<<<<<<< HEAD
-=======
-.activate {
-  @include animation(true);
-}
-
->>>>>>> Fixed timer issue
 .timer {
   width: 45%;
   margin: auto;
@@ -35,8 +28,6 @@ $class-slug: for !default;
 .outerRing{
   fill: $clr-extra-light-blue;
 }
-<<<<<<< HEAD
-=======
 .active{
   @for $i from 15 through 1 {
     .#{$class-slug}-#{$i} {
@@ -45,7 +36,6 @@ $class-slug: for !default;
    }
   }
 }
->>>>>>> Fixed timer issue
 
 .innerRing{
   fill: $clr-blue;
