@@ -20,15 +20,9 @@ class BPMTimer extends React.Component {
   tick () {
     if (this.state.count !== 0 && this.state.on === true) {
     this.setState({count: (this.state.count - 1)}) };
-<<<<<<< HEAD
 
     if (this.state.count === 0) {
       this.props.handler();
-=======
-    console.log('tick has run');
-    if (this.state.count == 0) {
-
->>>>>>> 1e570cfddc135a4a549a8571a6ddbe0449f83547
     }
   }
 
@@ -37,10 +31,12 @@ class BPMTimer extends React.Component {
     clearInterval(this.timer);
     this.timer = setInterval(this.tick.bind(this), 1000);
     this.setState({on: true});
+    this.setState({startAnimation: true});
+
     if (this.state.count === 0) {
           this.resetTimer();
+          this.setState({startAnimation: false});
     }
-    console.log('startTime has run');
   }
 
   resetTimer(){

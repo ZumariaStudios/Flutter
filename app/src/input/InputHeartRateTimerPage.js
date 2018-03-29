@@ -9,11 +9,11 @@ class InputHeartRateTimerPage extends React.Component {
     this.state = {
       bpmRaw: '',
       bpmRawError: false,
-<<<<<<< HEAD
+
       timerOn: true,
-=======
+
       count: 16,
->>>>>>> 1e570cfddc135a4a549a8571a6ddbe0449f83547
+
     }
     this.handleChange = this.handleChange.bind(this);
     this.nextSection = this.nextSection.bind(this);
@@ -89,8 +89,9 @@ class InputHeartRateTimerPage extends React.Component {
                  value='Continue'
                  onClick={this.nextSection}/>
                 : null}
-
+   </div>
            </form>
+
       </div>
     );
   }
