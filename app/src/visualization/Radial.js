@@ -4,6 +4,7 @@ const Radial = (props) => {
     const BAR_WIDTH = 5;
 
     const amt = props.completed || 0;
+    console.log('props completed: ' + amt);
     const dashString = `${amt}, 100`;
 
     let text = null;

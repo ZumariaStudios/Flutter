@@ -1,5 +1,43 @@
-.FinalResultsGraph {
+.ResultsBackground {
+  background-color: $clr-background;
   width: 100%;
+}
+
+.FinalResultsGraph {
+
+  margin-left: 10%;
+  // margin: auto;
+
+  @keyframes initialRotation {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+  }
+
+  @keyframes Reveal {
+    0% {transform: translate(0px, 0px) scale(0);}
+    100% {transform: translate(-150px, 80px) scale(3);}
+  }
+
+
+  .allSections {
+    animation-name: initialRotation;
+    animation-duration: 2s;
+    transform-origin: 50% 50.5%;
+    animation-fill-mode: forwards;
+  }
+
+
+  .shapeBehind {
+    fill: white;
+    animation-name: Reveal;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    transform-origin: center;
+  }
+
+  #toBeRevealed {
+    mask: url(#mask);
+  }
 
   .noVals{
     fill:$clr-gray-70;
@@ -7,6 +45,12 @@
 
   .poor{
     fill: $clr-red;
+    // animation-name: reveal;
+    // animation-duration: 2s;
+
+    // background: linear-gradient(0deg, #e55d87, #5fc3e4);
+    // background-size: 400% 400%;
+    // animation: Gradient 4s linear infinite;
   }
 
   .average{
@@ -20,4 +64,15 @@
  .excellent{
    fill: $clr-dark-blue;
  }
+
+ #chol_poor_section {
+   clip-path: url(#clipping);
+ }
+
+}
+
+text.finalResultsText {
+  fill: $clr-dark-blue;
+  font-size: 1.5em;
+  font-weight: bold;
 }

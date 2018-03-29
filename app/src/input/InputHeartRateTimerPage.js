@@ -54,6 +54,7 @@ class InputHeartRateTimerPage extends React.Component {
           <Header header = "Press the button to begin the countdown" />
           <BPMTimer />
           <form className ="form">
+
               <label className="inputBottomPage">I counted
                     <input
                         className={this.state.bpmRawError ? 'error' : null}

@@ -14,6 +14,7 @@ class FinalResultsPage extends React.Component {
     };
     this.localStore = this.localStore.bind(this);
     this.updateValues = this.updateValues.bind(this);
+    this.nextSection = this.nextSection.bind(this);
   }
 
   localStore(name, value) {
@@ -48,17 +49,32 @@ class FinalResultsPage extends React.Component {
     console.log('framinghamLipidRisk: ' + framinghamLipidRisk);
     console.log('reynoldsRisk: ' + reynoldsRisk);
     console.log('finalAverage: ' + finalAverage);
+  }
 
+  nextSection() {
+    this.props.history.push('/InteractiveResultsPage');
+  }
+
+  render() {
     // get bmi results
     let retrievedBmiResults = localStorage.getItem('bmiResults');
     let bmiResults = JSON.parse(retrievedBmiResults);
-    console.log('bmiResults: ' + bmiResults);
+
+    //check for empty values
+    if (bmiResults.length === 0) {
+      bmiResults = 'noVals';
+    }
 
     // get cholesterol
     let totalChol = calcTotalChol();
     console.log('totalChol: ' + totalChol);
 
+    //check for empty values
     let totalCholResults;
+
+    if (!totalChol) {
+      totalCholResults = 'noVals';
+    }
 
     if (totalChol >= 180 && totalChol <= 200) {
       totalCholResults = 'ideal';
@@ -73,6 +89,12 @@ class FinalResultsPage extends React.Component {
     let bpmResults = JSON.parse(retrievedBpmresults);
     console.log('bpmResults: ' + bpmResults);
 
+    //check for empty values
+    let bloodPressResults;
+    if (bpmResults.length === 0) {
+      bloodPressResults = 'noVals';
+    }
+
     // blood pressure
     let retrievedSbp = localStorage.getItem('sbp');
     let sbp = JSON.parse(retrievedSbp);
@@ -80,7 +102,10 @@ class FinalResultsPage extends React.Component {
     let retrievedDbp = localStorage.getItem('dbp');
     let dbp = JSON.parse(retrievedDbp);
 
-    let bloodPressResults;
+    //check for empty values
+    if (sbp.length === 0 || dbp.length === 0) {
+      bloodPressResults = 'noVals';
+    }
 
     if (sbp <= 120 && dbp <= 80) {
       bloodPressResults = 'normal';
@@ -91,11 +116,22 @@ class FinalResultsPage extends React.Component {
     } else {
       bloodPressResults = 'stage 2 prehypertension';
     }
-  }
 
-  render() {
     return(
-      <div><FinalResultsGraph/></div>
+      <div className ="ResultsBackground">
+          <h4 className="topSpacing">Your heart risk is...</h4>
+          <FinalResultsGraph bmiResults={bmiResults}
+                              totalCholResults={totalCholResults}
+                              bpmResults={bpmResults}
+                              bloodPressResults={bloodPressResults}
+                              finalAverage={this.state.finalAverage}/>
+         <h4 className="topSpacing">What can you do better?</h4>
+         <form><input
+            type='submit'
+            value='Continue'
+            onClick={this.nextSection}/>
+         </form>
+      </div>
     );
   }
 }
