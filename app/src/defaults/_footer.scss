@@ -3,6 +3,13 @@
   .heart, {
     fill: #EE4031;
   }
+
+  @keyframes beatSequence{
+    0% {
+      
+    }
+  }
+
   @keyframes beatAnimation {
     from {
       stroke-dashoffset: 1000;
@@ -19,15 +26,19 @@ polyline {
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-dasharray: 1000;
+}
 
-  animation: beatAnimation 8s linear;
+#Beats {
+
+  .set1 {
+    animation: beatAnimation 8s linear;
   }
 
-  .st1{
-    fill: none;
-    stroke: #EE4031;
+  .set2 {
+    animation: beatAnimation 4s linear;
+
   }
 
-
+}
 
 }

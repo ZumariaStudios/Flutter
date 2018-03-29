@@ -88,10 +88,24 @@ export const calcFraminghamBMIModel = () => {
       + diabeticContribution
       + sbpContribution;
 
+
+
+
+
   // Determine risk
-  let riskStatus = Math.round(100 * (1 - Math.pow(expBase, Math.exp(totalContributions))));
+  let riskStatus = Math.round (1 - Math.pow(expBase, Math.exp(totalContributions)));
   return riskStatus;
 }
+
+
+
+
+
+
+
+
+
+
 
 export const calcFraminghamLipidModel = () => {
 
