@@ -8,7 +8,7 @@ const Radial = (props) => {
     const dashString = `${amt}, 100`;
 
     let text = null;
-    if (props.showPercentage) {
+    if (amt) {
         text = (<text x='50%' y='50%' dy='0.3em' textAnchor='middle'>{amt}%</text>);
     }
 
