@@ -15,6 +15,15 @@ $class-slug: for !default;
   fill: $clr-super-light-blue;
 }
 
+.active {
+  @for $i from 1 through 15 {
+    .#{$class-slug}-#{$i} {
+      animation: activateCounter #{$i - 1}s;
+      fill: $clr-red;
+    }
+  }
+}
+
 .timer {
   width: 45%;
   margin: auto;
