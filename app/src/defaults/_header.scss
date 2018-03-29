@@ -1,1 +1,44 @@
+<<<<<<< HEAD
 
+=======
+.st0 {
+  fill: #FCFCFC;
+  stroke: #EE4031;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+}
+
+.st1 {
+  fill: none;
+  stroke: #EE4031;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+
+}
+
+.heart {
+  fill: #EE4031;
+}
+
+.line {
+    stroke: #EE4031;
+}
+
+
+@keyframes beatAnimation {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.beat {
+  fill: none;
+  stroke: #EE4031;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: beatAnimation 5s linear forwards;
+}
+>>>>>>> Merged with Milu
