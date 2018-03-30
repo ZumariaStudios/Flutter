@@ -1,0 +1,54 @@
+.BPMGraph {
+  @keyframes BpmIndicator {
+    0% {
+      transform: translate(0px);
+    }
+  }
+
+  width: 95%;
+  margin: auto;
+  padding: 0;
+
+  .smallNum {
+    fill: $clr-gray-70;
+  }
+
+  .pointer {
+    fill: $clr-super-light-blue;
+    box-shadow: 6px 6px black;
+    animation-name: BpmIndicator;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+
+  .average {
+    fill:$clr-light-red;
+  }
+
+  .poor {
+    fill: $clr-red;
+  }
+
+  .good {
+    fill:$clr-light-blue;
+  }
+
+  .excellent {
+    fill:$clr-blue;
+  }
+
+  .notActive {
+    fill: $clr-gray-70;
+  }
+
+  .mainBox {
+    fill: $clr-dark-blue;
+    box-shadow: 5px 5px black;
+  }
+
+  text.bpmText {
+    fill: white;
+    font-size: 3.5em;
+    font-weight: bold;
+  }
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import Toggle from 'react-toggle';
 import {withRouter} from 'react-router-dom';
 import Header from '../form/Header.js';
+import Footer from '../form/Footer.js';
 
 class InputSpecificPage extends React.Component {
   constructor(props) {
@@ -17,21 +18,39 @@ class InputSpecificPage extends React.Component {
   }
 
   handleChange(e, name) {
-    this.setState({[name]: e.target.checked});
+    const value = e.target.checked;
+    this.localStore(name, value);
+    this.setState({[name]: value});
+  }
+
+  localStore(name, value) {
+    const cachedHits = localStorage.getItem(value);
+    if (cachedHits) {
+      this.setState({[name]: JSON.parse(cachedHits)});
+      return;
+    }
+
+    localStorage.setItem(name, JSON.stringify(value));
   }
 
   nextSection() {
-    this.props.history.push('/InputBPMPage');
+    this.props.history.push('/InputHeartRatePage');
+  }
+
+  componentWillMount() {
+    this.localStore('smoker', false);
+    this.localStore('famHistory', false);
+    this.localStore('diabetesMed', false);
+    this.localStore('bloodPressMed', false);
   }
 
   render() {
     return (
       <div className ="inputBottomPage">
-       <Header header="Its all coming together now" imgSrc="http://cdn.boilerroom.tv/wp-content/uploads/2014/08/cute.jpg?7c4b8e"/>
+      <Header header="Its all coming together now! Do you:"/>
       <form className ="form">
-        // <h1 className="input_title"></h1>
         <div className="inputLabel">
-            <label>Do you smoke?
+            <label>Smoke?
                 <div className="toggle">
                     <Toggle
                       defaultChecked={this.state.smoker}
@@ -51,20 +70,22 @@ class InputSpecificPage extends React.Component {
             </label>
         </div>
         <div className="inputLabel">
-        <span>Under medication for:</span>
+        Take medication for:
             <label>
-                <div className="medicationInput">Diabetes</div>
+                <div className="medicationInput">
+                 <div className="diabetesCond">Diabetes</div>
                     <Toggle className="toggle"
                         defaultChecked={this.state.diabetesMed}
                         onChange={(e) => {
                             this.handleChange(e, 'diabetesMed')
                         }}/>
-                <div className="medicationInput">Blood pressure</div>
+                <div className="bloodPressCond">Blood pressure</div>
                     <Toggle className="toggle"
                         defaultChecked={this.state.bloodPressMed}
                         onChange={(e) => {
                             this.handleChange(e, 'bloodPressMed')
                         }}/>
+                  </div>
             </label>
         </div>
 
@@ -72,7 +93,10 @@ class InputSpecificPage extends React.Component {
            type='submit'
            value='Continue'
            onClick={this.nextSection}/>
-      </form></div>
+
+      </form>
+            <Footer pageID='3'/>
+            </div>
     )
   }
 }

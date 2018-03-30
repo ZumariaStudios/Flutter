@@ -1,22 +1,111 @@
+.header {
+  width: 100%;
+  img {width: inherit;
+      max-height: 400px;
+  }
+}
+
+
 .error {
   border-bottom: 1px solid red !important;
 }
 
+.errorMessage {
+    font-size: 14px;
+    font-style: italic;
+    margin: 0;
+}
+
 .inputBottomPage {
-  // border: 2px solid red;
-  // margin-top: 8em;
+  background-color: $clr-background;
+  color: $clr-dark-blue;
+  margin: auto;
+  //min-height: 100vh;
+}
+
+.bmiResultsArea {
+  background-color: $clr-super-light-blue;
+  margin: -0.5em;
+}
+
+.topSpacing {
+  padding-top: 1.5em;
+}
+
+.grayLine {
+  background-color: #C1C0C0;
+  height: 6px;
+  width: 100%;
+}
+
+.bmiGraph {
+  margin: 0.8em;
+}
+
+.pulseInstructions {
+  img.pulse {
+    padding: 0.7em;
+    width: 60%;
+    height: auto;
+    margin: auto;
+  }
+}
+
+.inputLabel {
+  text-align: left;
+
+  .medicationInput {
+    text-indent: 5%;
+    float:left;
+    width: 100%;
+
+      .diabetesCond, .bloodPressCond {
+        float: left;
+        clear:left;
+        width: 70%;
+      }
+  }
+
+   .toggle {
+     float: right;
+     clear: right;
+   }
+}
+
+.react-toggle {
+  vertical-align: text-top;
+}
+
+.react-toggle-thumb,
+.react-toggle-track {
+  //little slider buttons and track bar
+  //NEEDS COLORS UPDATED
 }
 
 .form {
-  // border: 2px solid blue;
   margin: 1.5em;
-  padding: 0.5em 0.5em;
+  padding: 0.5em;
+}
+
+%textCommonStyle {
+  color: $clr-blue;
+  text-align: center;
 }
 
 h1 {
-  color: purple;
+  @extend %textCommonStyle;
   font-size: 28px;
-  text-align: center;
+}
+
+h4 {
+  @extend %textCommonStyle;
+  // border: 2px solid green;
+  font-size: 22px;
+  margin: 6px;
+}
+
+h4 {
+  font-size: 18px;
 }
 
 span {
@@ -26,20 +115,22 @@ span {
   flex-wrap: wrap;
 }
 
-input[type="text"], input[type="number"] {
-    border: 0 solid transparent;
-    border-bottom: 1px solid gray;
-    color: purple;
-    display: inline;
-    font-size: 24px;
-    margin: 0.3em 0.5em;
-    outline: none;
-    text-align: center;
-    padding: 0 0.25em;
+input[type="text"],
+input[type="number"] {
+  background-color: $clr-background;
+  border: 0 solid transparent;
+  border-bottom: 1px solid $clr-dark-blue;
+  color: $clr-red;
+  display: inline;
+  font-size: 24px;
+  margin: 0.3em 0.5em;
+  outline: none;
+  text-align: center;
+  padding: 0 0.25em;
 
-    &:focus {
-        outline: none;
-    }
+  &:focus {
+    outline: none;
+  }
 }
 
 input[type="number"] {
@@ -47,29 +138,52 @@ input[type="number"] {
 }
 
 input[type="submit"] {
-  background-color: purple;
+  background-color: $clr-red;
   border-radius: 6px;
   color: white;
   margin: 10px 2px;
   padding: 16px 32px;
+  margin: auto;
+  display: flex;
+}
+%buttonShared {
+  margin-bottom: 1em;
+  width: 6.5em;
+  padding: auto;
+}
+
+input[type="submit"].reminder {
+  background-color: $clr-blue;
+  @extend %buttonShared;
+}
+
+input[type="submit"].never {
+  background-color: $clr-red;
+  @extend %buttonShared;
 }
 
 .toggle {
   align: center;
 }
 
+.div_dropdown {
+  text-align: left;
+  display: inline-block;
+}
+
 .input_center {
   align-items: center;
-  display: flex;
   justify-content: center;
+  text-align: left;
+  display: inline-block;
 
-  .div_dropdown {
-    text-align: left;
-  }
+
+
 }
 
 .input_drop_align {
   align-items: flex-end;
   display: flex;
-  justify-content: center;
+  justify-content: left;
+  flex-wrap: wrap;
 }

@@ -1,0 +1,42 @@
+@keyframes BmiIndicator {
+  0% {
+    transform:rotate(0deg);
+  }
+}
+
+.refNum {
+  fill: $clr-gray-70,
+}
+.lines {
+  fill: $clr-gray-90,
+}
+.graphBase {
+  fill: $clr-dark-blue,
+}
+.BMI_Graph_pointer {
+  animation-name: BmiIndicator;
+  animation-duration: 1s;
+  //animation-direction: reverse;
+  animation-fill-mode: forwards;
+  transform-origin: 50% 73%;
+  fill: $clr-super-light-blue,
+}
+
+.notAlert {
+  fill: $clr-gray-70,
+}
+.alert {
+  fill: $clr-red,
+}
+.medAlert {
+  fill: $clr-light-red,
+}
+.goodResults {
+  fill: $clr-blue,
+}
+
+text.bmiText {
+    fill: $clr-light-blue;
+    font-size: 30px;
+    font-weight: bold;
+  }

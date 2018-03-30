@@ -1,0 +1,57 @@
+
+
+
+
+
+@keyframes activateCounter {
+  0% {fill: $clr-red;}
+  20% {fill: $clr-super-light-blue;}
+  100% {fill: $clr-super-light-blue;}
+}
+
+$class-slug: for !default;
+
+.notActive {
+  fill: $clr-super-light-blue;
+}
+
+.active {
+  @for $i from 1 through 15 {
+    .#{$class-slug}-#{$i} {
+      animation: activateCounter #{$i - 1}s;
+      fill: $clr-red;
+    }
+  }
+}
+
+.timer {
+  width: 45%;
+  margin: auto;
+
+}
+
+.numStyle {
+  fill: $clr-super-light-blue;
+  font-size: 7em;
+}
+
+.textStyle {
+  fill: $clr-super-light-blue;
+  font-size: 4em;
+}
+
+.outerRing{
+  fill: $clr-extra-light-blue;
+}
+.active{
+  @for $i from 15 through 1 {
+    .#{$class-slug}-#{$i} {
+      animation: activateCounter #{$i}s;
+      fill: $clr-red;
+   }
+  }
+}
+
+.innerRing{
+  fill: $clr-blue;
+}

@@ -1,14 +1,14 @@
 import React from 'react';
-import logo from './NewBlue.jpg';
+import Minty from '../visualization/Minty.js';
 
 const Header = (props) => {
 
   return (
-       <div className="headerComponenet">
-       <img alt="hold" src={logo}/>
+       <div className="header">
+        <Minty />
         <h1>{props.header}</h1>
-       </div>
 
+      </div>
 );
 }
 export default Header;

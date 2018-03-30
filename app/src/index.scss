@@ -7,11 +7,22 @@
 // Defaults
 @import 'defaults/_colors';
 @import 'defaults/_form';
+@import 'defaults/_tags';
 @import 'defaults/_typography';
 @import 'defaults/_header';
+@import 'defaults/_footer';
+
 
 // Components
 @import 'toggle/_react_toggle';
 @import 'form/_dropdown';
+@import 'visualization/BMIGraph';
+@import 'visualization/BPMGraph';
+@import 'visualization/PulseInstructionsPage';
+@import 'visualization/Radial';
+@import 'visualization/Minty';
+@import 'visualization/Timer';
+@import 'visualization/FinalResultsGraph';
+@import 'interactiveResults/Button';
 
 // Pages

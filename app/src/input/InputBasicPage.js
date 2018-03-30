@@ -2,6 +2,8 @@ import React from 'react';
 import Dropdown from '../form/Dropdown.js';
 import {withRouter} from 'react-router-dom';
 import Header from '../form/Header.js';
+import Footer from '../form/Footer.js';
+
 class InputBasicPage extends React.Component {
   constructor(props) {
     super(props);
@@ -10,7 +12,7 @@ class InputBasicPage extends React.Component {
       adjective: 'Select',
       sex: 'Select',
       age: '',
-      inputSizeUserName: 10,
+      inputSizeUserName: 4,
       listValues: [true, false, false, false, false],
       //true means there is an error
       errors: {
@@ -26,9 +28,10 @@ class InputBasicPage extends React.Component {
   }
 
   handleChange (event, name, num){
-    const value = event.target.value;
+    let value = event.target.value;
+
+    this.localStore(name, value);
     this.setState({[name]: value});
-    this.validate(name, value);
     this.validate(name, value);
 
     if (name === 'userName') {
@@ -36,6 +39,16 @@ class InputBasicPage extends React.Component {
     }
 
     this.arrayToggle(num);
+  }
+
+  localStore(name, value) {
+    const cachedHits = localStorage.getItem(value);
+    if (cachedHits) {
+      this.setState({[name]: JSON.parse(cachedHits)});
+      return;
+    }
+
+    localStorage.setItem(name, JSON.stringify(value));
   }
 
   arrayToggle(num) {
@@ -67,13 +80,34 @@ class InputBasicPage extends React.Component {
   }
 
   render() {
+
+    let adjectiveInput = null;
+    if (this.state.listValues[1]) {
+      adjectiveInput = (
+        <div className="input_center">
+            <label>and I am a
+            <div className="div_dropdown">
+              <Dropdown
+                  name='adjective'
+                  data={['groovy', 'good looking', 'eccentric', 'fabulous']}
+                  value={this.state.adjective}
+                  onChange={(newVal) => {
+                    this.setState({adjective: newVal});
+                    this.arrayToggle(2);
+                  }}/>
+            </div>
+            </label>
+        </div>
+      );
+    }
+    
     return (
       <div className ="inputBottomPage">
-       <Header header="Introduce yourself" imgSrc="../img/NewBlue.jpg"/>
-
+       <Header visited ={false} header="Introduce yourself"/>
       <form className ="form">
-        <label>My name is
-        <div>
+       <div className="input_center">My name is</div>
+        <label>
+        <div className="div_dropdown">
           <input
               className={this.state.errors.userName ? 'error' : null}
               name="name"
@@ -86,38 +120,28 @@ class InputBasicPage extends React.Component {
           </input></div>
         </label>
 
-         { this.state.listValues[1] ?
-          <div className="input_center">
-              <div className="div_dropdown">and I am a</div>
-              <label>
-                <Dropdown
-                    name='adjective'
-                    data={['groovy', 'good looking', 'eccentric', 'fabulous']}
-                    value={this.state.adjective}
-                    onChange={(newVal) => {
-                      this.setState({adjective: newVal});
-                      this.arrayToggle(2);
-                    }}/>
-              </label>
-          </div>
-            : null
-          }
+         {adjectiveInput}
 
           {this.state.listValues[2] ?
            <div className="input_center">
                <label>
+              <div className="div_dropdown">
                    <Dropdown
                        name='sex'
                        data={['gentleman', 'lady']}
                        value={this.state.sex}
                        onChange={(newVal) => {
+                         this.localStore('sex', newVal);
                          this.setState({sex: newVal});
                          this.arrayToggle(3);
                    }}/>
+                </div>
                </label>
            </div>
              : null
            }
+
+
 
           {this.state.listValues[3] ?
            <label> who is
@@ -141,7 +165,9 @@ class InputBasicPage extends React.Component {
             value='Continue'
             onClick={this.nextSection}/>
            : null}
-      </form></div>
+  </form>
+    <Footer pageID='1'/>
+  </div>
     );
   }
 }
