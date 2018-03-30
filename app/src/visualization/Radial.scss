@@ -7,15 +7,6 @@
 .Radial {
     overflow: visible;
 
-    // .Radial__inner {
-    //     transform-origin: center;
-    //     transform: scale(0.60);
-    //
-    //     path {
-    //         stroke-width: 8;
-    //     }
-    // }
-
     .Radial__outer {
         transform-origin: center;
         transform: scale(0.95);
@@ -29,43 +20,36 @@
         stroke: transparentize($clr-light-blue, 0.75);
     }
 
-    text {
+    text.radialText {
         font-size: 10px;
         font-weight: bold;
-        fill: red;
+        color: red; 
+    }
+    @mixin text.radialText($fill) {
+      fill: $fill;
     }
 
     .low_risk {
+
         animation: RadialProgress 1s ease-in-out forwards;
         stroke: $clr-light-blue;
-
-        text {
-            fill: $clr-light-blue !important;
-        }
     }
 
     .intermediate {
         animation: RadialProgress 1s ease-in-out forwards;
         stroke: $clr-light-red;
-
-        text {
-            fill: $clr-light-red;
-        }
     }
 
     .high_risk {
         animation: RadialProgress 1s ease-in-out forwards;
         stroke: $clr-red;
-
-        text {
-            fill: $clr-red;
-        }
     }
 
 
 
-
 }
+
+
 
 .DualRadial {
     @extend .Radial;

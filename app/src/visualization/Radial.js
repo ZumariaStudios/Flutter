@@ -12,7 +12,7 @@ const Radial = (props) => {
 
     let text = null;
     if (amt) {
-        text = (<text x='50%' y='50%' dy='0.3em' textAnchor='middle'>{amt}%</text>);
+        text = (<text className="radialText" x='50%' y='50%' dy='0.3em' textAnchor='middle'>{amt}%</text>);
     }
 
     return (
@@ -28,7 +28,7 @@ const Radial = (props) => {
                     fill='none'
                     strokeDasharray={dashString}
                 />
-                { text }
+                {text}
             </g>
         </svg>
     );
