@@ -27,7 +27,7 @@ class FraminghamBMIModelResults extends React.Component {
   }
 
   render() {
-    let className = 'intermediate';
+    let className = 'low_risk';
     if (this.state.heartRisk > 40 && this.state.heartRisk < 80) {
       className = 'intermediate';
     }
