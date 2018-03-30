@@ -2,9 +2,6 @@ import React from 'react';
 
 const Radial = (props) => {
     const BAR_WIDTH = 5;
-
-    const statusClass = props.statusClass;
-
     const amt = props.completed || 0;
     console.log('props completed: ' + amt);
     console.log('pathClass is: ' + props.statusClass);
@@ -13,6 +10,14 @@ const Radial = (props) => {
     let text = null;
     if (amt) {
         text = (<text className="radialText" x='50%' y='50%' dy='0.3em' textAnchor='middle'>{amt}%</text>);
+    }
+
+    let statusClass = 'intermediate';
+    if (amt > 40 && amt < 80) {
+      statusClass = 'intermediate';
+    }
+    if (amt >= 80) {
+      statusClass = 'high_risk';
     }
 
     return (

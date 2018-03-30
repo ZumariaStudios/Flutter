@@ -84,6 +84,7 @@ class InteractiveResultsPage extends React.Component {
 
     return(
       <div>
+          <h4>Your heart risk:</h4>
           <div className ="radialGraph"><Radial completed={this.state.tempResults}/></div>
           <div className="navContainer">
               <div className="interactiveButton" onClick={this.selectHandlerChol}>

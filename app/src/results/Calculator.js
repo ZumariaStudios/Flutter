@@ -47,9 +47,6 @@ export const calcTotalChol = () => {
   return (Number(goodChol) + Number(badChol) + (Number(triglycerides)/5));
 }
 
-
-
-
 export const calcFraminghamBMIModel = () => {
 
   if (gender === 'gentleman') {
@@ -91,16 +88,10 @@ export const calcFraminghamBMIModel = () => {
       + diabeticContribution
       + sbpContribution;
 
-
-
-
   // Determine risk
   let riskStatus = Math.round(100 * (1 - Math.pow(expBase, Math.exp(totalContributions))));
   return riskStatus;
 }
-
-
-
 
 export const calcFraminghamLipidModel = () => {
 
