@@ -3,8 +3,11 @@ import React from 'react';
 const Radial = (props) => {
     const BAR_WIDTH = 5;
 
+    const pathClass = props.pathClass;
+
     const amt = props.completed || 0;
     console.log('props completed: ' + amt);
+    console.log('pathClass is: ' + props.pathClass);
     const dashString = `${amt}, 100`;
 
     let text = null;
@@ -20,7 +23,7 @@ const Radial = (props) => {
                     fill='none'
                     strokeWidth={BAR_WIDTH}
                 />
-                <path className='completed'
+                <path className={pathClass}
                     d='M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831'
                     fill='none'
                     strokeDasharray={dashString}
