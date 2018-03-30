@@ -8,10 +8,21 @@
   100% {transform: translateY(90px);}
 }
 
+.navContainer {
+  display: flex;
+  margin: auto;
+  width: 90%;
+}
+
+.interactiveButton {
+  height: 50px;
+  width: 100px;
+}
+
 .buttonShapeBehind1 {
   fill: white;
   animation-name: RevealUp;
-  animation-duration: 1s;
+  animation-duration: 2s;
   animation-fill-mode: forwards;
   transform-origin: center;
 }
@@ -48,15 +59,8 @@
   fill: $clr-dark-blue;
 }
 
-// .excellent:hover{
-//   fill: red;
-//   animation-name: Squish;
-//   transform-origin: center;
-//   animation-duration: 3s;
-// }
-
 text.label {
   fill: white;
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: bold;
 }

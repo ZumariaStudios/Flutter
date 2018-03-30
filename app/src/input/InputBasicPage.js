@@ -80,6 +80,27 @@ class InputBasicPage extends React.Component {
   }
 
   render() {
+
+    let adjectiveInput = null;
+    if (this.state.listValues[1]) {
+      adjectiveInput = (
+        <div className="input_center">
+            <label>and I am a
+            <div className="div_dropdown">
+              <Dropdown
+                  name='adjective'
+                  data={['groovy', 'good looking', 'eccentric', 'fabulous']}
+                  value={this.state.adjective}
+                  onChange={(newVal) => {
+                    this.setState({adjective: newVal});
+                    this.arrayToggle(2);
+                  }}/>
+            </div>
+            </label>
+        </div>
+      );
+    }
+    
     return (
       <div className ="inputBottomPage">
        <Header visited ={false} header="Introduce yourself"/>
@@ -99,24 +120,7 @@ class InputBasicPage extends React.Component {
           </input></div>
         </label>
 
-         { this.state.listValues[1] ?
-          <div className="input_center">
-              <label>and I am a
-              <div className="div_dropdown">
-                <Dropdown
-                    name='adjective'
-                    data={['groovy', 'good looking', 'eccentric', 'fabulous']}
-                    value={this.state.adjective}
-                    onChange={(newVal) => {
-                      this.setState({adjective: newVal});
-                      this.arrayToggle(2);
-                    }}/>
-                        </div>
-              </label>
-
-          </div>
-            : null
-          }
+         {adjectiveInput}
 
           {this.state.listValues[2] ?
            <div className="input_center">
