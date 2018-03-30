@@ -27,21 +27,18 @@ class FraminghamBMIModelResults extends React.Component {
   }
 
   render() {
+    let className = 'intermediate';
+    if (this.state.heartRisk > 40 && this.state.heartRisk < 80) {
+      className = 'intermediate';
+    }
+    if (this.state.heartRisk >= 80) {
+      className = 'high_risk';
+    }
 
     return(
       <div className ="radialGraph">
           <div>
-            {this.state.heartRisk >= 40 && this.state.heartRisk <= 80 ?
-              <Radial completed={this.state.heartRisk} pathClass="intermediate"/>
-              : null}
-
-              {this.state.heartRisk >= 80 ?
-                <Radial completed={this.state.heartRisk} pathClass="high_risk"/>
-                : null}
-
-                {this.state.heartRisk < 40 ?
-                  <Radial completed={this.state.heartRisk} pathClass="low_risk"/>
-                  : null}
+              <Radial completed={this.state.heartRisk} statusClass={className} />
           </div>
       </div>
     );

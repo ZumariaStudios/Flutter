@@ -4,45 +4,63 @@
     }
 }
 
+.RadialRing {
+    transform-origin: center;
+    transform: scale(0.95);
+
+    path {
+        stroke-width: 5;
+    }
+}
+
 .Radial {
     overflow: visible;
 
-    .Radial__outer {
-        transform-origin: center;
-        transform: scale(0.95);
-
-        path {
-            stroke-width: 5;
-        }
-    }
-
-    path {
-        stroke: transparentize($clr-light-blue, 0.75);
-    }
-
-    text.radialText {
+    text {
         font-size: 10px;
         font-weight: bold;
-        color: red; 
-    }
-    @mixin text.radialText($fill) {
-      fill: $fill;
     }
 
     .low_risk {
-
-        animation: RadialProgress 1s ease-in-out forwards;
-        stroke: $clr-light-blue;
+        @extend .RadialRing;
+        .background {
+            stroke: transparentize($clr-light-blue, 0.75);
+        }
+        .completed {
+          animation: RadialProgress 1s ease-in-out forwards;
+          stroke: $clr-light-blue;
+        }
+        text {
+          fill: $clr-light-blue;
+        }
     }
 
     .intermediate {
-        animation: RadialProgress 1s ease-in-out forwards;
-        stroke: $clr-light-red;
+        @extend .RadialRing;
+        .background {
+            stroke: transparentize($clr-light-red, 0.75);
+        }
+        .completed {
+          animation: RadialProgress 1s ease-in-out forwards;
+          stroke: $clr-light-red;
+        }
+        text {
+          fill: $clr-light-red;
+        }
     }
 
     .high_risk {
-        animation: RadialProgress 1s ease-in-out forwards;
-        stroke: $clr-red;
+        @extend .RadialRing;
+        .background {
+            stroke: transparentize($clr-red, 0.75);
+        }
+        .completed {
+          animation: RadialProgress 1s ease-in-out forwards;
+          stroke: $clr-red;
+        }
+        text {
+          fill: $clr-red;
+        }
     }
 
 
