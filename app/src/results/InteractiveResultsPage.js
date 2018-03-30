@@ -1,5 +1,6 @@
 import React from 'react';
 import Radial from '../visualization/Radial.js';
+import Button from '../interactiveResults/Button.js';
 import {calcTotalChol, calcFraminghamBMIModel, calcFraminghamLipidModel, calcReynoldsModel} from '../results/Calculator.js';
 import {withRouter} from 'react-router-dom';
 
@@ -9,9 +10,18 @@ class InteractiveResultsPage extends React.Component {
 
     this.state = {
       tempResults: '',
+      cholOn: true,
+      bloodPressOn: false,
+      bpm: false,
+      bmi: false,
     };
 
     this.reCalculateFormulas = this.reCalculateFormulas.bind(this);
+    this.selectSection = this.selectSection.bind(this);
+  }
+
+  selectSection(name, value) {
+    this.setState({[name]: true});
   }
 
   reCalculateFormulas() {
@@ -28,9 +38,26 @@ class InteractiveResultsPage extends React.Component {
   }
 
   render() {
+    //get cholesterol results
+    let retrievedCholResults = localStorage.getItem('cholResults');
+    let cholResults = JSON.parse(retrievedCholResults);
+
+    //get bpm results
+    let retrievedBpmResults = localStorage.getItem('bpmResults');
+    let bpmResults = JSON.parse(retrievedBpmResults);
+
+    //get blood pressure results
+    let retrievedBloodpressResults = localStorage.getItem('bloodPressResults');
+    let bloodPressResults = JSON.parse(retrievedBloodpressResults);
+
+    //get bmi results
+    let retrievedBmiResults = localStorage.getItem('bmiResults');
+    let bmiResults = JSON.parse(retrievedBmiResults);
+
     return(
       <div className ="radialGraph">
-          <div><Radial completed={this.state.tempResults}/></div>
+          <Radial completed={this.state.tempResults}/>
+          <Button results={cholResults} label='Cholesterol' selected={this.state.cholOn}/>
       </div>
     );
   }

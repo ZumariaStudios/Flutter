@@ -84,6 +84,9 @@ class FinalResultsPage extends React.Component {
       totalCholResults = 'high';
     }
 
+    if (totalCholResults)
+      this.localStore('cholResults', totalCholResults);
+
     // Resing heart rate
     let retrievedBpmresults = localStorage.getItem('bpmResults');
     let bpmResults = JSON.parse(retrievedBpmresults);
@@ -116,6 +119,9 @@ class FinalResultsPage extends React.Component {
     } else {
       bloodPressResults = 'stage 2 prehypertension';
     }
+
+    if (bloodPressResults)
+      this.localStore('bloddPressResults', bloodPressResults);
 
     return(
       <div className ="ResultsBackground">

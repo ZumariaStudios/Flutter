@@ -1,0 +1,62 @@
+@keyframes RevealUp {
+  0% {transform: translateY(40px);}
+  100% {transform: translateY(-30px);}
+}
+
+@keyframes RevealDown {
+  0% {transform: translateY(0px);}
+  100% {transform: translateY(90px);}
+}
+
+.buttonShapeBehind1 {
+  fill: white;
+  animation-name: RevealUp;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  transform-origin: center;
+}
+
+.buttonShapeBehind2 {
+  fill: white;
+  animation-name: RevealDown;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  transform-origin: center;
+}
+
+#revealed {
+  mask: url(#buttonMask);
+}
+
+.noVals{
+  fill:$clr-gray-70;
+}
+
+.poor{
+  fill: $clr-red;
+}
+
+.average{
+  fill: $clr-light-red;
+}
+
+.good{
+  fill: $clr-light-blue;
+}
+
+.excellent{
+  fill: $clr-dark-blue;
+}
+
+// .excellent:hover{
+//   fill: red;
+//   animation-name: Squish;
+//   transform-origin: center;
+//   animation-duration: 3s;
+// }
+
+text.label {
+  fill: white;
+  font-size: 2em;
+  font-weight: bold;
+}
