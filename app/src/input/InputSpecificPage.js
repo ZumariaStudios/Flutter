@@ -2,7 +2,6 @@ import React from 'react';
 import Toggle from 'react-toggle';
 import {withRouter} from 'react-router-dom';
 import Header from '../form/Header.js';
-import Footer from '../form/Footer.js';
 
 class InputSpecificPage extends React.Component {
   constructor(props) {
@@ -95,8 +94,7 @@ class InputSpecificPage extends React.Component {
            onClick={this.nextSection}/>
 
       </form>
-            <Footer pageID='3'/>
-            </div>
+      </div>
     )
   }
 }

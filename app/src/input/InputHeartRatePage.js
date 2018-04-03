@@ -1,7 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import BMIResults from '../results/BMIResults.js';
-import Footer from '../form/Footer.js'
 
 class InputHeartRatePage extends React.Component {
   constructor(props) {
@@ -79,7 +78,6 @@ class InputHeartRatePage extends React.Component {
                      value={this.state.bpmError || this.state.bpm.length === 0 ? 'Find out' : 'continue'}
                      onClick={this.nextSection}/>
            </form>
-                 <Footer pageID='4'/>
       </div>
 
     );

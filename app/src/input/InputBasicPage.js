@@ -2,7 +2,6 @@ import React from 'react';
 import Dropdown from '../form/Dropdown.js';
 import {withRouter} from 'react-router-dom';
 import Header from '../form/Header.js';
-import Footer from '../form/Footer.js';
 
 class InputBasicPage extends React.Component {
   constructor(props) {
@@ -100,7 +99,7 @@ class InputBasicPage extends React.Component {
         </div>
       );
     }
-    
+
     return (
       <div className ="inputBottomPage">
        <Header visited ={false} header="Introduce yourself"/>
@@ -166,7 +165,6 @@ class InputBasicPage extends React.Component {
             onClick={this.nextSection}/>
            : null}
   </form>
-    <Footer pageID='1'/>
   </div>
     );
   }
