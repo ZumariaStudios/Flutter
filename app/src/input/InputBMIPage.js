@@ -88,8 +88,11 @@ class InputBMIPage extends React.Component {
 
   render() {
     return (
-      <div className ="inputBottomPage">
+      <div className ="inputPage">
+      <div className ="top_half">
       <Header header="Introduce yourself"/>
+      </div>
+      <div className="bottom_half">
       <form className ="form">
         <label>Last time I checked, I weighed
         <div className="input_drop_align">
@@ -163,7 +166,14 @@ class InputBMIPage extends React.Component {
          : null}
 
       </form>
+<<<<<<< HEAD
       </div>
+=======
+
+          <Footer pageID='2'/>
+            </div>
+          </div>
+>>>>>>> Desktop width ready
 
     )
   }

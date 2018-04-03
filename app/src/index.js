@@ -20,11 +20,7 @@ import './index.scss';
 class App extends React.Component {
   render() {
     return (
-<<<<<<< HEAD
       <BrowserRouter><div>
-=======
-      <BrowserRouter><span className = "desktop">
->>>>>>> good base needs tailored per page
         <Route exact path='/' component={InputBasicPage}/>
         <Route path='/InputBMIPage' component={InputBMIPage}/>
         <Route path='/InputSpecificPage' component={InputSpecificPage}/>

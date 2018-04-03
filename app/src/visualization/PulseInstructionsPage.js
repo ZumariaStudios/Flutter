@@ -15,6 +15,8 @@ class PulseInstructionsPage extends React.Component {
 
   render() {
     return (
+      <div className="inputPage">
+      <div className="top_half">
       <div className = 'pulseInstructions'>
       <h1>Where to find your pulse</h1>
       <div className='images'>
@@ -26,7 +28,9 @@ class PulseInstructionsPage extends React.Component {
          type='submit'
          value='Continue'
          onClick={this.nextSection}/>
+         </div>
       </div>
+    </div>
     );
   }
 }

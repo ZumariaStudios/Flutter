@@ -52,11 +52,16 @@ class InputHeartRatePage extends React.Component {
 
   render() {
     return(
-      <div className ="inputBottomPage">
+
+      <div className ="inputPage">
+      <div className="top_half">
           <div className ="bmiResultsArea">
               <h4 className="topSpacing">Your BMI result!</h4>
               <BMIResults/>
-              <div className="grayLine"></div>
+              <div className="grayLine">
+          </div>
+      </div>
+      <div className="bottom_half">
           </div>
           <h4 className="topSpacing">Now lets keep going...</h4>
           <form className ="form">
@@ -78,6 +83,11 @@ class InputHeartRatePage extends React.Component {
                      value={this.state.bpmError || this.state.bpm.length === 0 ? 'Find out' : 'continue'}
                      onClick={this.nextSection}/>
            </form>
+<<<<<<< HEAD
+=======
+                 <Footer pageID='4'/>
+            </div>
+>>>>>>> Desktop width ready
       </div>
 
     );

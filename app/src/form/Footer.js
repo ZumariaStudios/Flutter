@@ -2,8 +2,11 @@ import React from 'react';
 
 const Footer = (props) => {
 let pageID = props.pageID;
-let beatID = props.pageID;
+let beatCounter = props.beatCounter;
+let beatID = "beat" + beatCounter;
+
 console.log('page ID is: ' + pageID);
+console.log('beat ID is: ' + beatID);
 
   return (
        <footer className="footer" id={props.pageID}>
@@ -17,10 +20,20 @@ console.log('page ID is: ' + pageID);
           <polyline className={beatID} points="56,43.1 74.1,43.1 78.4,61.2 88,4.7 94.4,94.3 105.1,26 111.5,58 115.7,43.1 127.5,43.1 "/>
           </g>
           <g>
-          <polyline className="beat_1" transform="translate(60,0)" points="56,43.1 74.1,43.1 78.4,61.2 88,4.7 94.4,94.3 105.1,26 111.5,58 115.7,43.1 127.5,43.1 "/>
+          <polyline className="beat_2" transform="translate(60,0)" points="56,43.1 74.1,43.1 78.4,61.2 88,4.7 94.4,94.3 105.1,26 111.5,58 115.7,43.1 127.5,43.1 "/>
           </g>
           <g>
-          <polyline className="beat4" transform="translate(120,0)" points="56,43.1 74.1,43.1 78.4,61.2 88,4.7 94.4,94.3 105.1,26 111.5,58 115.7,43.1 127.5,43.1 "/>
+          <polyline className="beat_3" transform="translate(120,0)" points="56,43.1 74.1,43.1 78.4,61.2 88,4.7 94.4,94.3 105.1,26 111.5,58 115.7,43.1 127.5,43.1 "/>
+          <polyline className="beat_4" transform="translate(180,0)" points="56,43.1 74.1,43.1 78.4,61.2 88,4.7 94.4,94.3 105.1,26 111.5,58 115.7,43.1 127.5,43.1 "/>
+          <polyline className="beat_5" transform="translate(240,0)" points="56,43.1 74.1,43.1 78.4,61.2 88,4.7 94.4,94.3 105.1,26 111.5,58 115.7,43.1 127.5,43.1 "/>
+          <polyline className="beat_6" transform="translate(300,0)" points="56,43.1 74.1,43.1 78.4,61.2 88,4.7 94.4,94.3 105.1,26 111.5,58 115.7,43.1 127.5,43.1 "/>
+          <polyline className="beat_6" transform="translate(360,0)" points="56,43.1 74.1,43.1 78.4,61.2 88,4.7 94.4,94.3 105.1,26 111.5,58 115.7,43.1 127.5,43.1 "/>
+          <polyline className="beat_7" transform="translate(420,0)" points="56,43.1 74.1,43.1 78.4,61.2 88,4.7 94.4,94.3 105.1,26 111.5,58 115.7,43.1 127.5,43.1 "/>
+          <polyline className="beat_8" transform="translate(480,0)" points="56,43.1 74.1,43.1 78.4,61.2 88,4.7 94.4,94.3 105.1,26 111.5,58 115.7,43.1 127.5,43.1 "/>
+              <polyline className="beat_8" transform="translate(540,0)" points="56,43.1 74.1,43.1 78.4,61.2 88,4.7 94.4,94.3 105.1,26 111.5,58 115.7,43.1 127.5,43.1 "/>
+                    <polyline className="beat_9" transform="translate(600,0)" points="56,43.1 74.1,43.1 78.4,61.2 88,4.7 94.4,94.3 105.1,26 111.5,58 115.7,43.1 127.5,43.1 "/>
+          <polyline className="beat_10" transform="translate(660,0)" points="56,43.1 74.1,43.1 78.4,61.2 88,4.7 94.4,94.3 105.1,26 111.5,58 115.7,43.1 127.5,43.1 "/>
+
           </g>
           </svg>
       </div>

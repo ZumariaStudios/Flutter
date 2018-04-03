@@ -40,10 +40,12 @@ class BMIResultsPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="inputPage">
+       <div className="top_half">
           <div><BMIReader bmi={this.state.bmi}/></div>
           <h4>These are your Body Mass Index results!</h4>
           <h4>Now lets keep going...</h4>
+        </div>
       </div>
 
     )

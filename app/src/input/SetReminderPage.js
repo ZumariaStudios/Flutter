@@ -38,8 +38,11 @@ class SetReminderPage extends React.Component {
   render() {
     return (
 
-      <div className ="inputBottomPage">
+      <div className ="inputPage">
+      <div className="top_half">
        <Header header="I'll be happy to remind you in..." />
+      </div>
+      <div className="bottom_half">
       <form className ="form">
           <input
            className="reminder"
@@ -61,7 +64,9 @@ class SetReminderPage extends React.Component {
             type='submit'
             value='Never'
             onClick={this.nextSection}/>
-      </form></div>
+      </form>
+      </div>
+      </div>
     );
   }
 }

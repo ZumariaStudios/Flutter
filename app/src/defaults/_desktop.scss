@@ -4,9 +4,12 @@
     background-size: 375px 223px;
     max-height: 159px;
     border-bottom: 6px solid #C1C0C0;
+    width: 100vw;
+    position: relative;
+    overflow:auto;
   }
 
-  .inputBottomPage {
+  .inputPage {
     border: 2px solid red;
     max-width: 375px;
   }

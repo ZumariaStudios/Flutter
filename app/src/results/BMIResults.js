@@ -119,7 +119,7 @@ class BMIResults extends React.Component {
 
   render() {
     return (
-      <div className ="inputBottomPage bmiGraph">
+      <div className ="inputPage bmiGraph">
           <div><BMIGraph results={this.state.bmiResults}
                           rotation={this.state.rotationDegree}
                           bmi={this.state.bmi}
