@@ -55,12 +55,11 @@ class InputHeartRatePage extends React.Component {
 
       <div className ="inputPage">
       <div className="top_half">
-          <div className ="bmiResultsArea">
               <h4 className="topSpacing">Your BMI result!</h4>
-              <BMIResults/>
-              <div className="grayLine">
-          </div>
-      </div>
+          <div className ="bmiResultsArea">
+              <BMIResults className="bmiResults"/>
+              <div className="grayLine"></div>
+            </div>
       <div className="bottom_half">
           </div>
           <h4 className="topSpacing">Now lets keep going...</h4>

@@ -9,24 +9,26 @@
   background-color: $clr-background;
   color: $clr-dark-blue;
   margin: auto;
-  //min-height: 100vh;
-//  width: 80vw;
   border: 1px solid red;
-
-
   .top_half{
     border: 1px solid pink;
-    width: 80%;
+    width: 100%;
     margin:auto;
+    overflow: hidden;
+      .bmiResults{
+        width: 55%;
+        margin: auto;
+      }
   }
-
   .bottom_half{
     border: 1px solid green;
     width: 80%;
     margin: auto;
+    form {
+     width: 55%;
+      margin: auto;
+    }
   }
-
-
 }
 
 
