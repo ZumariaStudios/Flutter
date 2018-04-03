@@ -66,7 +66,7 @@ class InputHeartRateTimerPage extends React.Component {
           <BPMTimer handler={this.handler}/>
           <form className ="form">
               {!this.state.timerOn ?
-              <label className="inputBottomPage">I counted
+              <label className="inputPage">I counted
                     <input
                         className={this.state.bpmRawError ? 'error' : null}
                         name="bpmRaw"

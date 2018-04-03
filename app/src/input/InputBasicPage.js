@@ -80,7 +80,6 @@ class InputBasicPage extends React.Component {
   }
 
   render() {
-
     let adjectiveInput = null;
     if (this.state.listValues[1]) {
       adjectiveInput = (
@@ -102,10 +101,11 @@ class InputBasicPage extends React.Component {
     }
 
     return (
-      <div className ="inputBottomPage">
-      <div className="desktop">
+      <div className ="inputPage">
+      <div className="top_half">
        <Header visited ={false} header="Introduce yourself"/>
       </div>
+      <div className="bottom_half">
       <form className ="form">
        <div className="input_center">My name is</div>
         <label>
@@ -168,7 +168,9 @@ class InputBasicPage extends React.Component {
             onClick={this.nextSection}/>
            : null}
   </form>
-    <Footer pageID='1'/>
+
+    <Footer pageID='1' beatCounter = '1'/>
+      </div>
   </div>
     );
   }

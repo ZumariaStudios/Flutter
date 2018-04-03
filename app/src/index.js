@@ -20,7 +20,7 @@ import './index.scss';
 class App extends React.Component {
   render() {
     return (
-      <BrowserRouter><span className = "desktop">
+      <BrowserRouter><div>
         <Route exact path='/' component={InputBasicPage}/>
         <Route path='/InputBMIPage' component={InputBMIPage}/>
         <Route path='/InputSpecificPage' component={InputSpecificPage}/>
@@ -32,7 +32,7 @@ class App extends React.Component {
         <Route path='/SetReminderPage' component={SetReminderPage}/>
         <Route path='/FinalResultsPage' component={FinalResultsPage}/>
         <Route path='/InteractiveResultsPage' component={InteractiveResultsPage}/>
-      </span></BrowserRouter>
+      </div></BrowserRouter>
     )
   }
 }

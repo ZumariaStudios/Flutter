@@ -5,6 +5,31 @@
   }
 }
 
+.inputPage {
+  background-color: $clr-background;
+  color: $clr-dark-blue;
+  margin: auto;
+  //min-height: 100vh;
+//  width: 80vw;
+  border: 1px solid red;
+
+
+  .top_half{
+    border: 1px solid pink;
+    width: 80%;
+    margin:auto;
+  }
+
+  .bottom_half{
+    border: 1px solid green;
+    width: 80%;
+    margin: auto;
+  }
+
+
+}
+
+
 .error {
   border-bottom: 1px solid red !important;
 }
@@ -15,12 +40,7 @@
     margin: 0;
 }
 
-.inputBottomPage {
-  background-color: $clr-background;
-  color: $clr-dark-blue;
-  margin: auto;
-  //min-height: 100vh;
-}
+
 
 .bmiResultsArea {
   background-color: $clr-super-light-blue;
