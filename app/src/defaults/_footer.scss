@@ -1,13 +1,7 @@
 .footer {
 
-  .heart, {
+  .heart {
     fill: #EE4031;
-  }
-
-  @keyframes beatSequence{
-    0% {
-      
-    }
   }
 
   @keyframes beatAnimation {
@@ -27,18 +21,4 @@ polyline {
   stroke-linejoin: round;
   stroke-dasharray: 1000;
 }
-
-#Beats {
-
-  .set1 {
-    animation: beatAnimation 8s linear;
-  }
-
-  .set2 {
-    animation: beatAnimation 4s linear;
-
-  }
-
-}
-
 }

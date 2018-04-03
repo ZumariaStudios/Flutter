@@ -1,0 +1,18 @@
+@media screen and (min-width: 600px)  {
+  span.desktop {
+    background-color: $clr-extra-light-blue;
+    background-size: 375px 223px;
+    max-height: 159px;
+    border-bottom: 6px solid #C1C0C0;
+  }
+
+  .inputBottomPage {
+    border: 2px solid red;
+    max-width: 375px;
+  }
+
+  #root{
+    background-color: rgba(166,202,212, .2);
+    background-size: 100%;
+  }
+}
