@@ -59,10 +59,10 @@ class InputHeartRatePage extends React.Component {
           <div className ="bmiResultsArea">
               <BMIResults className="bmiResults"/>
               <div className="grayLine"></div>
-            </div>
-      <div className="bottom_half">
           </div>
-          <h4 className="topSpacing">Now lets keep going...</h4>
+        </div>
+      <div className="bottom_half">
+          <h4>Now lets keep going...</h4>
           <form className ="form">
               <label>My resting heart rate (BPM) is
                     <input
@@ -86,7 +86,11 @@ class InputHeartRatePage extends React.Component {
 =======
                  <Footer pageID='4'/>
             </div>
+<<<<<<< HEAD
 >>>>>>> Desktop width ready
+=======
+        
+>>>>>>> Coming right along
       </div>
 
     );

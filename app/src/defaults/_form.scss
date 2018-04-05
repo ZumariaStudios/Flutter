@@ -11,13 +11,12 @@
   margin: auto;
   border: 1px solid red;
   width: 100vw;
+  height: 100vh;
     .top_half {
       width: 100%;
     }
 
 }
-
-
 .error {
   border-bottom: 1px solid red !important;
 }
@@ -28,15 +27,13 @@
     margin: 0;
 }
 
-
-
 .bmiResultsArea {
   background-color: $clr-super-light-blue;
-  margin: -0.5em;
 }
 
 .topSpacing {
-  padding-top: 1.5em;
+  background-color: $clr-super-light-blue;
+padding-top: 1.5em;
 }
 
 .grayLine {
@@ -46,7 +43,7 @@
 }
 
 .bmiGraph {
-  margin: 0.8em;
+ margin: 0.8em;
 }
 
 .pulseInstructions {
@@ -55,6 +52,7 @@
     width: 60%;
     height: auto;
     margin: auto;
+    display: block;
   }
 }
 
@@ -102,16 +100,13 @@
 h1 {
   @extend %textCommonStyle;
   font-size: 28px;
+  padding: .05em;
 }
 
 h4 {
   @extend %textCommonStyle;
-  // border: 2px solid green;
   font-size: 22px;
   margin: 6px;
-}
-
-h4 {
   font-size: 18px;
 }
 

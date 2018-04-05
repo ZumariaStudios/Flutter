@@ -19,8 +19,8 @@ const BMIGraph = (props) => {
   }
 
   return(
-    <div>
-      <svg className="BMIGraph" viewBox="0 0 592.5 408.2" width="350" preserveAspectRatio='none'>
+    <div className="bmiGraph_desktop">
+      <svg className="BMIGraph" viewBox="0 0 592.5 408.2" preserveAspectRatio="xMidYMid meet">
       <pattern  x="-73.4" y="-378.3" width="72" height="72" patternUnits="userSpaceOnUse" id="_x36__lpi_50_x25_" viewBox="72.2 -72 72 72">
         </pattern>
         <g id="Words">
