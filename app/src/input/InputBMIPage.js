@@ -90,7 +90,10 @@ class InputBMIPage extends React.Component {
     return (
       <div className ="inputPage">
       <div className ="top_half">
+      <div className="desktop_header"></div>
+
       <Header header="Introduce yourself"/>
+
       </div>
       <div className="bottom_half">
       <form className ="form">
