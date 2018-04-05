@@ -110,7 +110,7 @@ class InputBasicPage extends React.Component {
       </div>
       <div className="bottom_half">
       <form className ="form">
-       <div className="input_center">My name is</div>
+       <div className="input_center">My name is
         <label>
         <div className="div_dropdown">
           <input
@@ -122,8 +122,10 @@ class InputBasicPage extends React.Component {
               onChange={(e) => {
                 this.handleChange(e, 'userName', 1)
               }}>
-          </input></div>
+          </input>
+          </div>
         </label>
+                  </div>
 
          {adjectiveInput}
 
