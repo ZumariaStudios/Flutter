@@ -1,8 +1,45 @@
-@media screen and (min-width: 600px)  {
+@media screen and (min-width: 801px)  {
 
   .inputPage {
     border: 2px solid red;
     max-width: 375px;
+
+    .top_half{
+      border: 1px solid pink;
+      width: 100%;
+      margin: auto;
+      overflow: hidden;
+      position: relative;
+      z-index: 3;
+        .bmiResults{
+          width: 55%;
+          margin: auto;
+        }
+    }
+
+    .bottom_half{
+      border: 1px solid green;
+      width: 80%;
+      margin: auto;
+      position: relative;
+      form {
+       width: 55%;
+        margin: auto;
+      }
+    }
+
+    .header {
+      width: 50%;
+      margin-right: 20%; //Why do I need to do it this way?
+      margin-left: 30%;
+      z-index: 10;
+      position: relative;
+
+      h1 {
+        text-align: center;
+        width: 375px;
+      }
+    }
 
       .desktop_header {
         height: 159px;
@@ -11,12 +48,5 @@
       position: absolute;
       z-index: 2;
       }
-
-
   }
-
-  // #root{
-  //   background-color: rgba(166,202,212, .2);
-  //   background-size: 100%;
-  // }
 }
