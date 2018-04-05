@@ -2,20 +2,57 @@
   .inputPage {
     border: 2px solid red;
     width: 100vw;
+    background-color: $clr-super-light-blue !important;
+
+    .top_half {
+      background-color: $clr-super-light-blue;
+    }
+
+    h4 {
+      margin: auto !important;
+    }
+
+    .bmiResultsArea {
+      margin: auto;
+    }
   }
 }
+@media screen and (min-width: 431px) and (max-width: 800px) {
+  .bmiGraph {
+    max-width: 40%;
+    margin: auto !important; //Resolve margin: -.8em on _form.scss
+  }
 
-@media screen and (min-width: 431px) {
-   .header {
-   max-width: 431px;
-   margin: auto;
-   z-index: 10;
-   position: relative;
- }
+  .bmiGraph_desktop {
+    margin: auto;
+    padding-top: 1em;
+  }
 
- .input_drop_align {
-   display: inline-flex;
- }
+  .topSpacing {
+    background-color: $clr-super-light-blue;
+    margin: auto;
+  }
+
+  .header {
+    max-width: 431px;
+    margin: auto;
+    z-index: 10;
+    position: relative;
+  }
+
+  .input_drop_align {
+    display: inline-flex;
+  }
+
+  .images {
+    display: inline-flex;
+    width: 100%;
+
+    img {
+      max-width: 50%;
+      margin: auto;
+    }
+  }
 
   .desktop_header {
     width: 100%;
@@ -24,24 +61,44 @@
     position: absolute;
     z-index: 2;
     background-color: $clr-extra-light-blue;
-
   }
 
-  .bottom_half{
+  .bottom_half {
     border: 1px solid green;
     max-width: 60%;
     margin: auto;
+
     form {
-     width: 80%;
+      width: 80%;
       margin: auto;
     }
   }
-
-
 }
+@media screen and (min-width: 801px) and (max-width: 1280px) {
+  .images {
+    display: flex;
+    width: 100%;
+    margin: auto;
 
+    img {
+      max-width: 50%;
+    }
+  }
 
-@media screen and (min-width: 801px) and (max-width: 1280px)  {
+  .bmiGraph {
+    max-width: 40%;
+    margin: auto !important; //Resolve margin: -.8em on _form.scss
+  }
+
+  .bmiGraph_desktop {
+    margin: auto;
+    padding-top: 1em;
+  }
+
+  .topSpacing {
+    background-color: $clr-super-light-blue;
+    margin: auto;
+  }
 
   .inputPage {
     border: 2px solid red;
@@ -50,61 +107,94 @@
       display: inline-flex;
     }
 
-    .top_half{
+    .top_half {
       border: 1px solid pink;
       width: 100%;
       margin: auto;
       overflow: hidden;
       position: relative;
       z-index: 3;
-        .bmiResults{
-          width: 55%;
-          margin: auto;
-        }
+
+      .bmiResults {
+        width: 55%;
+        margin: auto;
+      }
     }
 
-    .bottom_half{
+    .bottom_half {
       border: 1px solid green;
       max-width: 60%;
       margin: auto;
+
       form {
-       width: 80%;
+        width: 80%;
         margin: auto;
       }
     }
 
     .header {
-      margin:auto;
+      max-width: 431px;
+      margin: auto;
       z-index: 10;
       position: relative;
-
-
     }
 
-      .desktop_header {
-        height: 182px;
-        width: 100%;
-        border-bottom: 6px solid #C1C0C0;
+    .desktop_header {
+      width: 100%;
+      height: 182px;
+      border-bottom: 6px solid #C1C0C0;
       position: absolute;
       z-index: 2;
-      }
+      background-color: $clr-extra-light-blue;
+    }
   }
 }
-
-
 @media screen and (min-width: 1281px) {
+
+  .desktop_header {
+    width: 100%;
+    height: 182px;
+    border-bottom: 6px solid #C1C0C0;
+    position: absolute;
+    z-index: 2;
+    background-color: $clr-extra-light-blue;
+  }
+
+  .bmiGraph {
+    width: 40%;
+    margin: auto !important; //Resolve margin: -.8em on _form.scss
+  }
+
+  .bmiGraph_desktop {
+    margin: auto;
+    padding-top: 1em;
+  }
+
+  .topSpacing {
+    background-color: $clr-super-light-blue;
+    margin: auto;
+  }
+
   .bottom_half {
     max-width: 60%;
     border: 1px solid green;
+    margin: auto;
+    padding-top: 1em;
 
     form {
-     width: 70%;
+      width: 70%;
       margin: auto;
     }
 
     .input_drop_align {
       display: inline-flex;
     }
+  }
 
+  .header {
+    max-width: 431px;
+    margin: auto;
+    z-index: 10;
+    position: relative;
   }
 }
