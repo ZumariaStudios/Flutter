@@ -48,7 +48,10 @@ class InputSpecificPage extends React.Component {
     return (
       <div className ="inputPage">
       <div className="top_half">
+      <div className="desktop_header"></div>
+
       <Header header="Its all coming together now! Do you:"/>
+
       </div>
       <div className="bottom_half">
       <form className ="form">

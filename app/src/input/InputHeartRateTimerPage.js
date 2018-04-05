@@ -61,9 +61,12 @@ class InputHeartRateTimerPage extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className="inputPage">
+      <div className="top_half">
+      <div className="desktop_header"></div>
           <Header header = "Press the button to begin the countdown" />
           <BPMTimer handler={this.handler}/>
+      </div>
           <form className ="form">
               {!this.state.timerOn ?
               <label className="inputPage">I counted

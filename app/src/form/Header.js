@@ -7,7 +7,6 @@ const Header = (props) => {
        <div className="header">
         <Minty />
         <h1>{props.header}</h1>
-
       </div>
 );
 }
