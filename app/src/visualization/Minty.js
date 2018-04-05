@@ -3,7 +3,7 @@ import React from 'react';
 const Minty = () => {
   return(
     <div>
-        <svg className="mintyHeader" viewBox="0 0 375 223" width="375" preserveAspectRatio='none'>
+        <svg className="mintyHeader" viewBox="0 0 375 223" preserveAspectRatio="xMidYMid meet">
             <g>
                 <path className="st0" d="M0,0v159h91.3c0-0.3,0.1-0.6,0.2-0.9l0-0.2c3.7-25.3,10.1-37.2,10.1-37.2c0,0,0,0.1,0,0.1c9.6-21.6,25.7-39.1,45.5-49.2c-3.2-9.7-6.3-19.5-9.5-29.2c-0.4-1.1,0.6-2.5,2.1-3c31.9-9.8,66-9.8,97.9,0c1.6,0.5,2.5,1.8,2.1,3c-1.5,4.5-2.9,9-4.4,13.5c0,0,0,0,0,0L229.8,73c26,14.4,45.2,41.7,50.8,74.2l2,10.4c0,0,0,0,0,0c0,0,0,0,0,0c0.1,0.5,0.2,0.9,0.2,1.4H375V0H0z"/>
                 <path className="st1" d="M283,164h92v-5h-92.1C283.1,160.7,283.1,162.4,283,164z"/>

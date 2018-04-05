@@ -1,5 +1,5 @@
 .header {
-  width: 100vw;
+  //width: 100vw;
   img {width: inherit;
       max-height: 400px;
   }
@@ -180,13 +180,7 @@ input[type="submit"].never {
 }
 
 .input_center {
-  align-items: center;
-  justify-content: center;
-  text-align: left;
   display: inline-block;
-
-
-
 }
 
 .input_drop_align {

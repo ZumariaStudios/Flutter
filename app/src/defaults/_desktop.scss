@@ -1,8 +1,54 @@
-@media screen and (min-width: 801px)  {
+@media screen and (max-width: 430px) {
+  .inputPage {
+    border: 2px solid red;
+    width: 100vw;
+  }
+}
+
+@media screen and (min-width: 431px) {
+   .header {
+   max-width: 431px;
+   margin: auto;
+   z-index: 10;
+   position: relative;
+ }
+
+ .input_drop_align {
+   display: inline-flex;
+ }
+
+  .desktop_header {
+    width: 100%;
+    height: 182px;
+    border-bottom: 6px solid #C1C0C0;
+    position: absolute;
+    z-index: 2;
+    background-color: $clr-extra-light-blue;
+
+  }
+
+  .bottom_half{
+    border: 1px solid green;
+    max-width: 60%;
+    margin: auto;
+    form {
+     width: 80%;
+      margin: auto;
+    }
+  }
+
+
+}
+
+
+@media screen and (min-width: 801px) and (max-width: 1280px)  {
 
   .inputPage {
     border: 2px solid red;
-    max-width: 375px;
+
+    .input_drop_align {
+      display: inline-flex;
+    }
 
     .top_half{
       border: 1px solid pink;
@@ -19,34 +65,46 @@
 
     .bottom_half{
       border: 1px solid green;
-      width: 80%;
+      max-width: 60%;
       margin: auto;
-      position: relative;
       form {
-       width: 55%;
+       width: 80%;
         margin: auto;
       }
     }
 
     .header {
-      width: 50%;
-      margin-right: 20%; //Why do I need to do it this way?
-      margin-left: 30%;
+      margin:auto;
       z-index: 10;
       position: relative;
 
-      h1 {
-        text-align: center;
-        width: 375px;
-      }
+
     }
 
       .desktop_header {
-        height: 159px;
+        height: 182px;
         width: 100%;
         border-bottom: 6px solid #C1C0C0;
       position: absolute;
       z-index: 2;
       }
+  }
+}
+
+
+@media screen and (min-width: 1281px) {
+  .bottom_half {
+    max-width: 60%;
+    border: 1px solid green;
+
+    form {
+     width: 70%;
+      margin: auto;
+    }
+
+    .input_drop_align {
+      display: inline-flex;
+    }
+
   }
 }
