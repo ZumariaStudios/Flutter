@@ -1,15 +1,17 @@
 @media screen and (max-width: 430px) {
+  //Global classes
+  h4 {
+    margin: auto !important;
+  }
+
   .inputPage {
     border: 2px solid red;
     width: 100vw;
-    background-color: $clr-super-light-blue !important;
-
-    .top_half {
-      background-color: $clr-super-light-blue;
-    }
-
-    h4 {
-      margin: auto !important;
+    // background-color: $clr-super-light-blue !important;
+    //Input Heart Rate Page
+    .bmiGraph {
+      padding: 1em;
+      margin: auto !important; //Resolve margin: -.8em on _form.scss
     }
 
     .bmiResultsArea {
@@ -18,16 +20,7 @@
   }
 }
 @media screen and (min-width: 431px) and (max-width: 800px) {
-  .bmiGraph {
-    width: 40%;
-    margin: auto !important; //Resolve margin: -.8em on _form.scss
-  }
-
-  .bmiGraph_desktop {
-    margin: auto;
-    padding-top: 1em;
-  }
-
+  //Global components
   .topSpacing {
     background-color: $clr-super-light-blue;
     margin: auto;
@@ -38,10 +31,6 @@
     margin: auto;
     z-index: 10;
     position: relative;
-  }
-
-  .input_drop_align {
-    display: inline-flex;
   }
 
   .desktop_header {
@@ -63,11 +52,9 @@
       margin: auto;
     }
   }
-}
-@media screen and (min-width: 801px) and (max-width: 1280px) {
-
+  //Input Heart Rate Page
   .bmiGraph {
-    max-width: 40%;
+    width: 50%;
     margin: auto !important; //Resolve margin: -.8em on _form.scss
   }
 
@@ -75,7 +62,13 @@
     margin: auto;
     padding-top: 1em;
   }
-
+  //Input BMI Page
+  .input_drop_align {
+    display: inline-flex;
+  }
+}
+@media screen and (min-width: 801px) and (max-width: 1280px) {
+  //Global components
   .topSpacing {
     background-color: $clr-super-light-blue;
     margin: auto;
@@ -95,11 +88,6 @@
       overflow: hidden;
       position: relative;
       z-index: 3;
-
-      .bmiResults {
-        width: 55%;
-        margin: auto;
-      }
     }
 
     .bottom_half {
@@ -129,8 +117,31 @@
       background-color: $clr-extra-light-blue;
     }
   }
+  //Input Heart Rate Page
+  .bmiGraph {
+    max-width: 40%;
+    margin: auto !important; //Resolve margin: -.8em on _form.scss
+  }
+
+  .bmiGraph_desktop {
+    margin: auto;
+    padding-top: 1em;
+  }
+
+  .bmiResults {
+    width: 55%;
+    margin: auto;
+  }
 }
 @media screen and (min-width: 1281px) {
+  //Global Components
+
+  .header {
+    max-width: 431px;
+    margin: auto;
+    z-index: 10;
+    position: relative;
+  }
 
   .desktop_header {
     width: 100%;
@@ -140,6 +151,7 @@
     z-index: 2;
     background-color: $clr-extra-light-blue;
   }
+  //Input Heart Rate Page
 
   .bmiGraph {
     width: 40%;
@@ -150,32 +162,9 @@
     margin: auto;
     padding-top: 1em;
   }
+  //Input BMI Page
 
-  .topSpacing {
-    background-color: $clr-super-light-blue;
-    margin: auto;
-  }
-
-  .bottom_half {
-    max-width: 60%;
-    border: 1px solid green;
-    margin: auto;
-    padding-top: 1em;
-
-    form {
-      width: 70%;
-      margin: auto;
-    }
-
-    .input_drop_align {
-      display: inline-flex;
-    }
-  }
-
-  .header {
-    max-width: 431px;
-    margin: auto;
-    z-index: 10;
-    position: relative;
+  .input_drop_align {
+    display: inline-flex;
   }
 }

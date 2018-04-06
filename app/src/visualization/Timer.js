@@ -8,7 +8,7 @@ const Timer = (props) => {
 
   return(
     <div>
-        <svg viewBox="0 0 320 320" preserveAspectRatio='none'>
+        <svg viewBox="0 0 320 320" preserveAspectRatio="xMidYMid meet">
         <g id="Layer_2_1_">
             <g id="Layer_1-2">
             <circle className="st0" cx="160" cy="160" r="160"/>
