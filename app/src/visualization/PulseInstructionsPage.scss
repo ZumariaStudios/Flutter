@@ -1,6 +1,16 @@
 .pulseInstructions {
   background-color: $clr-background;
 
+
+    img.pulse {
+      padding: 0.7em;
+      max-width: 60%;
+      height: auto;
+      margin: auto;
+      display: block;
+    }
+
+
     .images {
       margin: auto;
       width: 80%;

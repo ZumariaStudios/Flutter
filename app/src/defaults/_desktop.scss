@@ -7,7 +7,9 @@
   .inputPage {
     border: 2px solid red;
     width: 100vw;
-    // background-color: $clr-super-light-blue !important;
+    text-align: center;
+
+
     //Input Heart Rate Page
     .bmiGraph {
       padding: 1em;
@@ -22,7 +24,7 @@
 @media screen and (min-width: 431px) and (max-width: 800px) {
   //Global components
   .topSpacing {
-    background-color: $clr-super-light-blue;
+  //  background-color: $clr-super-light-blue;
     margin: auto;
   }
 
@@ -44,13 +46,9 @@
 
   .bottom_half {
     border: 1px solid green;
-    max-width: 60%;
+    max-width: 80%;
     margin: auto;
 
-    form {
-      width: 80%;
-      margin: auto;
-    }
   }
   //Input Heart Rate Page
   .bmiGraph {
@@ -66,16 +64,39 @@
   .input_drop_align {
     display: inline-flex;
   }
+  //Input Heart Rate Timer Page
+  .timer {
+   border: 1px solid green;
+   max-width: 35%;
+  }
+
+  .inputPage{
+    text-align: center;
+  }
+
+  //Input Blood Pressure Page
+  .BPMGraph_desktop {
+    max-width: 60%;
+  margin: auto;
+  }
+
+  //Input Blood Chemistry Page
+  .radialGraph_desktop {
+    max-width: 70%;
+    margin: auto;
+  }
+
 }
 @media screen and (min-width: 801px) and (max-width: 1280px) {
   //Global components
   .topSpacing {
-    background-color: $clr-super-light-blue;
+  //  background-color: $clr-super-light-blue;
     margin: auto;
   }
 
   .inputPage {
     border: 2px solid red;
+    text-align: center;
 
     .input_drop_align {
       display: inline-flex;
@@ -92,11 +113,10 @@
 
     .bottom_half {
       border: 1px solid green;
-      max-width: 60%;
+      max-width: 70%;
       margin: auto;
-
       form {
-        width: 80%;
+        max-width: 80%;
         margin: auto;
       }
     }
@@ -132,10 +152,43 @@
     width: 55%;
     margin: auto;
   }
+
+//Pulse Instructions Page
+
+.images {
+  display: flex;
+   img {
+     display: inline-flex;
+     max-width: 100%;
+   }
+}
+//Input Heart Rate Timer Page
+.timer {
+ border: 1px solid green;
+ max-width: 35%;
+}
+
+//Input Blood Pressure Page
+.BPMGraph_desktop {
+  max-width: 50%;
+margin: auto;
+}
+
+//Set Reminder Page
+input[type="submit"] {
+  display: inline-flex !important;
+  margin-left: .5em !important;
+}
+
+//Input Blood Chemistry Page
+.radialGraph_desktop {
+  max-width: 60%;
+  margin: auto;
+}
+
 }
 @media screen and (min-width: 1281px) {
   //Global Components
-
   .header {
     max-width: 431px;
     margin: auto;
@@ -151,8 +204,19 @@
     z-index: 2;
     background-color: $clr-extra-light-blue;
   }
-  //Input Heart Rate Page
 
+  .bottom_half {
+    max-width: 70%;
+    margin: auto;
+    border: 1px solid green;
+
+    form {
+      max-width: 60%;
+      margin: auto;
+    }
+  }
+
+  //Input Heart Rate Page
   .bmiGraph {
     width: 40%;
     margin: auto !important; //Resolve margin: -.8em on _form.scss
@@ -163,8 +227,49 @@
     padding-top: 1em;
   }
   //Input BMI Page
-
   .input_drop_align {
     display: inline-flex;
   }
+
+//Pulse Instructions Page
+.pulseInstructions {
+  max-width: 80%;
+  margin: auto;
+
+.images {
+  display: flex;
+   img {
+     display: inline-flex;
+   }
+ }
+}
+
+//Input Heart Rate Timer Page
+.timer {
+ border: 1px solid green;
+ max-width: 25%;
+}
+
+.inputPage {
+  text-align: center;
+}
+
+//Input Blood Pressure Page
+.BPMGraph_desktop {
+  max-width: 50%;
+margin: auto;
+}
+
+//Set Reminder Page
+input[type="submit"] {
+  display: inline-flex !important;
+  margin-left: .5em !important;
+}
+
+//Input Blood Chemistry Page
+.radialGraph_desktop {
+  max-width: 60%;
+  margin: auto;
+}
+
 }

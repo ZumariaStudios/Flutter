@@ -32,7 +32,7 @@
 }
 
 .topSpacing {
-  background-color: $clr-super-light-blue;
+//  background-color: $clr-super-light-blue;
 padding-top: 1.5em;
 }
 
@@ -46,18 +46,9 @@ padding-top: 1.5em;
  margin: 0.8em;
 }
 
-.pulseInstructions {
-  img.pulse {
-    padding: 0.7em;
-    width: 60%;
-    height: auto;
-    margin: auto;
-    display: block;
-  }
-}
-
 .inputLabel {
   text-align: left;
+  
 
   .medicationInput {
     text-indent: 5%;
@@ -180,7 +171,7 @@ input[type="submit"].never {
 
 .input_drop_align {
   align-items: flex-end;
-  display: flex;
+//  display: flex;
   justify-content: left;
   flex-wrap: wrap;
 }
