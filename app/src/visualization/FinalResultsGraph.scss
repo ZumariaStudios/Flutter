@@ -1,12 +1,10 @@
 .ResultsBackground {
-  background-color: $clr-background;
   width: 100%;
 }
 
 .FinalResultsGraph {
 
   margin-left: 10%;
-  // margin: auto;
 
   @keyframes initialRotation {
     0% {transform: rotate(0deg);}

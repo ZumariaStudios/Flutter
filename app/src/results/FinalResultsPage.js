@@ -137,13 +137,14 @@ class FinalResultsPage extends React.Component {
       <div className="inputPage">
       <div className="top_half">
       <div className ="ResultsBackground">
-          <h2 className="topSpacing">Your heart risk is...</h2>
+          <h2>Your heart risk is...</h2>
           <FinalResultsGraph bmiResults={bmiResults}
                               totalCholResults={totalCholResults}
                               bpmResults={bpmResults}
                               bloodPressResults={bloodPressResults}
                               finalAverage={this.state.finalAverage}/>
-         <h4 className="topSpacing">What can you do better?</h4>
+         <h4>What can you do better?</h4>
+        </div>
         </div>
         <div className="bottom_half">
          <form><input
@@ -152,7 +153,6 @@ class FinalResultsPage extends React.Component {
             onClick={this.nextSection}/>
          </form>
         </div>
-      </div>
     </div>
     );
   }

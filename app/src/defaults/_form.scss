@@ -5,6 +5,11 @@
   }
 }
 
+.ResultsBackground h2 {
+  padding-top: 1em;
+  margin-top:0 !important;
+}
+
 .inputPage {
   background-color: $clr-background;
   color: $clr-dark-blue;
@@ -31,8 +36,9 @@
 }
 
 .topSpacing {
-//  background-color: $clr-super-light-blue;
+background-color: $clr-super-light-blue;
 padding-top: 1.5em;
+margin: auto;
 }
 
 .grayLine {
@@ -97,6 +103,7 @@ h4 {
   @extend %textCommonStyle;
   font-size: 1.375em;
   margin: 6px;
+  padding-top: 1em;
 }
 
 span {

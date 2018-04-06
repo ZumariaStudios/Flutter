@@ -104,7 +104,7 @@ class InputBloodChemistryPage extends React.Component {
         </div>
         <div className="bottom_half">
           </div>
-          <h4 className="topSpacing">One more thing...</h4>
+          <h4>One more thing...</h4>
           <h4>Blood Chemistry</h4>
           <form className ="form">
               <label>Triglycerides (mg/dL):

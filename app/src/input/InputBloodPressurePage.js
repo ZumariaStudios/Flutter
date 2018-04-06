@@ -81,7 +81,7 @@ class InputBloodPressurePage extends React.Component {
       <div className="bottom_half">
           </div>
           </div>
-          <h4 className="topSpacing">Keep going...</h4>
+          <h4>Keep going...</h4>
           <form className ="form">
               <label>My systolic blood pressure (SBP) (mmHg) is
                     <input
