@@ -147,8 +147,6 @@ class InputBasicPage extends React.Component {
              : null
            }
 
-
-
           {this.state.listValues[3] ?
            <label> who is
              <input
@@ -172,12 +170,7 @@ class InputBasicPage extends React.Component {
             onClick={this.nextSection}/>
            : null}
   </form>
-<<<<<<< HEAD
-=======
-
-    <Footer pageID='1' beatCounter = '1'/>
-      </div>
->>>>>>> Desktop width ready
+  </div>
   </div>
     );
   }

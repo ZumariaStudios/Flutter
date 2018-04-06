@@ -82,15 +82,7 @@ class InputHeartRatePage extends React.Component {
                      value={this.state.bpmError || this.state.bpm.length === 0 ? 'Find out' : 'continue'}
                      onClick={this.nextSection}/>
            </form>
-<<<<<<< HEAD
-=======
-                 <Footer pageID='4'/>
-            </div>
-<<<<<<< HEAD
->>>>>>> Desktop width ready
-=======
-        
->>>>>>> Coming right along
+</div> 
       </div>
 
     );

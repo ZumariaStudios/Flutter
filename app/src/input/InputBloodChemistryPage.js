@@ -167,11 +167,10 @@ class InputBloodChemistryPage extends React.Component {
                         this.state.triglyceridesError || this.state.goodCholError ? 'Skip' : 'continue'}
                      onClick={this.nextSection}/>
            </form>
-<<<<<<< HEAD
-=======
-              <Footer pageID='6'/>
+
+
         </div>
->>>>>>> Desktop width ready
+
       </div>
     );
   }

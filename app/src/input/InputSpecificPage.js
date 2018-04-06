@@ -100,14 +100,10 @@ class InputSpecificPage extends React.Component {
            onClick={this.nextSection}/>
 
       </form>
-<<<<<<< HEAD
-      </div>
-=======
 
-            <Footer pageID='3'/>
+      </div>
             </div>
-            </div>
->>>>>>> Desktop width ready
+          
     )
   }
 }
