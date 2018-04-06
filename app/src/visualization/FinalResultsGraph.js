@@ -9,8 +9,8 @@ const FinalResultsGraph = (props) => {
   let text = (<text className='finalResultsText' x='195' y='200' textAnchor='middle'>{props.finalAverage}%</text>);
 
   return (
-    <div>
-        <svg className="FinalResultsGraph" x="0px" y="0px" viewBox="0 0 388 373" preserveAspectRatio="none">
+    <div className="FinalResultsGraph_desktop">
+        <svg className="FinalResultsGraph" x="0px" y="0px" viewBox="0 0 388 373" preserveAspectRatio="xMidYMid meet">
           <g className="allSections">
 
           <defs>

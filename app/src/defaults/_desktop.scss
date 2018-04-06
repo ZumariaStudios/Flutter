@@ -186,6 +186,12 @@ input[type="submit"] {
   margin: auto;
 }
 
+//Final Results Page
+.FinalResultsGraph_desktop {
+  max-width: 60%;
+  margin: auto;
+}
+
 }
 @media screen and (min-width: 1281px) {
   //Global Components
@@ -268,6 +274,16 @@ input[type="submit"] {
 
 //Input Blood Chemistry Page
 .radialGraph_desktop {
+  max-width: 60%;
+  margin: auto;
+}
+
+//Final Results Page
+.ResultsBackground h4 {
+  font-size: 3em;
+}
+
+.FinalResultsGraph_desktop {
   max-width: 60%;
   margin: auto;
 }
