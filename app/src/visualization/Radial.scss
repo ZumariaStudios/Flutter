@@ -67,8 +67,6 @@
 
 }
 
-
-
 .DualRadial {
     @extend .Radial;
 }
@@ -77,4 +75,12 @@
   width: 28%;
   margin: auto;
   padding: 0.5em;
+
+  @media (min-width:801px) {
+    width: 18%;
+  }
+
+  @media (min-width:1281px) {
+    width: 12%;
+  }
 }

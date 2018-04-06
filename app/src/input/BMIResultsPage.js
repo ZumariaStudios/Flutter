@@ -1,6 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import BMIReader from '../visualization/BMIReader.js';
+import {calcBMI} from '../results/Calculator.js';
 
 
 class BMIResultsPage extends React.Component {
@@ -8,50 +9,25 @@ class BMIResultsPage extends React.Component {
     super(props);
     this.state = {bmi: ''};
     this.calcBMI = this.calcBMI.bind(this);
+    this.getVals = this.getVals.bind(this);
   }
 
-  weightInMetric() {
-    let retrievedWeight = localStorage.getItem('weight');
-    let originalWeight = JSON.parse(retrievedWeight);
-
-    let retrievedWeightMes = localStorage.getItem('weightMes');
-    let weightMes = JSON.parse(retrievedWeightMes);
-
-    var fWeight = 0;
-    weightMes === "lbs" ?
-        fWeight = (Number(originalWeight) * 0.45) :
-        fWeight = originalWeight;
-
-    return fWeight;
-  }
-
-  heightInMetric() {
-    let retrievedHeightFst = localStorage.getItem('heightFst');
-    let originalHeightFst = JSON.parse(retrievedHeightFst);
-
-    let retrievedHeightMs = localStorage.getItem('heightFstMes');
-    let heightFstMes = JSON.parse(retrievedHeightMs);
-
-    let retrievedHeightSnd = localStorage.getItem('heightSnd');
-    let originalHeightSnd = JSON.parse(retrievedHeightSnd);
-
-    var fHeight = 0;
-    heightFstMes === 'ft' ?
-        fHeight = Math.pow(
-              ((Number(originalHeightFst) * 12 + Number(
-              originalHeightSnd)) * 0.025), 2) :
-        fHeight = Math.pow((Number(
-              originalHeightFst) + Number(
-              originalHeightSnd)/100),2);
-
-    return fHeight;
+  getVals(name) {
+    let retrieved = localStorage.getItem(name);
+    let actualVal = JSON.parse(retrieved);
+    return actualVal;
   }
 
   calcBMI() {
-    let weight = this.weightInMetric();
-    let height = this.heightInMetric();
+    let weight = getVals('weight');
+    let weightMes = getVals('weightMes');
+    let heightFst = getVals('heightFst');
+    let heightFstMes = getVals('heightFstMes');
+    let heightSnd = getVals('heightSnd');
 
-    let results = (Number(weight)/Number(height)).toFixed(2);
+    let results = calcBMI(weight, weightMes,
+        heightFst, heightFstMes, heightSnd);
+
     this.setState({bmi: results}, function() {
       console.log('bmi state: ' + this.state.bmi);
     });
@@ -69,7 +45,7 @@ class BMIResultsPage extends React.Component {
           <h4>These are your Body Mass Index results!</h4>
           <h4>Now lets keep going...</h4>
       </div>
-        
+
     )
   }
 }

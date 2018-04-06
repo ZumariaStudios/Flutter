@@ -1,0 +1,117 @@
+@keyframes up {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(180deg);}
+}
+
+@keyframes down {
+  0% {transform: rotate(180deg);}
+  100% {transform: rotate(360deg);}
+}
+
+.interactiveBkg {
+  background-color: $clr-background;
+}
+
+.interactiveTopArea {
+  background-color: $clr-background-NoGradient;
+  margin-top: -0.5em;
+
+  .interacH4 {
+    padding-top: 15px;
+  }
+}
+
+.interactiveTitle {
+  color: $clr-dark-blue;
+  font-size: 20px;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+.LightRedArea {
+  background-color: rgba(245, 142, 114, 0.15);
+  padding: 5px;
+}
+
+.interactiveText {
+  align-items: flex-end;
+  color: $clr-dark-blue;
+  display: flex;
+  font-size: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: auto;
+  padding: 2%;
+  width: 90%;
+
+  @media (min-width:801px) {
+    width: 60%;
+  }
+
+  @media (min-width:1281px) {
+    width: 70%;
+  }
+
+  .interactiveInput {
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    display: inline-block;
+    margin-right: 5px;
+  }
+
+  input[type="number"] {
+    font-size: 18px;
+  }
+}
+
+.slider {
+  margin: auto;
+  padding: 10px;
+  width: 80%;
+}
+
+.recommStyling {
+  background-color: rgba(245, 142, 114, 0.15);
+  color: $clr-dark-blue;
+  padding: 4%;
+
+  .recTitle {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .recText {
+    font-size: 14px;
+    line-height: normal;
+  }
+}
+
+.circleArrowContainer {
+  margin: auto;
+  width: 20px;
+
+  .circleBack {
+    fill: $clr-extra-light-red;
+  }
+
+  .triangleArrow {
+    fill: $clr-red;
+  }
+}
+
+.turnUpAni {
+  animation-name: up;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+  transform-origin: center;
+}
+
+.turnDownAni {
+  animation-name: down;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  transform-origin: center;
+}

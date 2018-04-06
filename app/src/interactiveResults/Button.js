@@ -29,8 +29,22 @@ const Button = (props) => {
   let isSelected = props.selected;
 
   let labelValue = props.label;
+  let xValue = props.xValue;
 
-  let label = (<text className="label" x="40" y="110">{labelValue}</text>);
+  let label;
+  if (labelValue === "Resting Heart Rate") {
+    label = (<text className="label" textAnchor='middle'>
+                <tspan x="150" y="80">Resting</tspan>
+                <tspan x="145" y="130">Heart Rate</tspan>
+             </text>);
+  } else if (labelValue === "BMI") {
+    label = (<text className="label" textAnchor='middle'>
+                <tspan x="150" y="80">BMI &</tspan>
+                <tspan x="145" y="130">Lifestyle</tspan>
+             </text>);
+  } else {
+    label = (<text className="label" x={xValue} y="105">{labelValue}</text>);
+  }
 
   return(
     <div>

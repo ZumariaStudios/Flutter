@@ -2,7 +2,6 @@ import React from 'react';
 import Dropdown from '../form/Dropdown.js';
 import {withRouter} from 'react-router-dom';
 import Header from '../form/Header.js';
-import Footer from '../form/Footer.js';
 
 class InputBasicPage extends React.Component {
   constructor(props) {
@@ -10,7 +9,7 @@ class InputBasicPage extends React.Component {
     this.state = {
       userName: '',
       adjective: 'Select',
-      sex: 'Select',
+      gender: 'Select',
       age: '',
       inputSizeUserName: 4,
       listValues: [true, false, false, false, false],
@@ -100,7 +99,7 @@ class InputBasicPage extends React.Component {
         </div>
       );
     }
-    
+
     return (
       <div className ="inputBottomPage">
        <Header visited ={false} header="Introduce yourself"/>
@@ -127,12 +126,12 @@ class InputBasicPage extends React.Component {
                <label>
               <div className="div_dropdown">
                    <Dropdown
-                       name='sex'
+                       name='gender'
                        data={['gentleman', 'lady']}
-                       value={this.state.sex}
+                       value={this.state.gender}
                        onChange={(newVal) => {
-                         this.localStore('sex', newVal);
-                         this.setState({sex: newVal});
+                         this.localStore('gender', newVal);
+                         this.setState({gender: newVal});
                          this.arrayToggle(3);
                    }}/>
                 </div>
@@ -166,7 +165,6 @@ class InputBasicPage extends React.Component {
             onClick={this.nextSection}/>
            : null}
   </form>
-    <Footer pageID='1'/>
   </div>
     );
   }

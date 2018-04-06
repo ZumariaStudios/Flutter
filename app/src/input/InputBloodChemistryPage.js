@@ -1,7 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import FraminghamBMIModelResults from '../results/FraminghamBMIModelResults.js';
-import Footer from '../form/Footer.js';
 
 class InputBloodChemistryPage extends React.Component {
   constructor(props) {
@@ -10,11 +9,11 @@ class InputBloodChemistryPage extends React.Component {
       triglycerides: '',
       goodChol: '',
       badChol: '',
-      cReactiveProteins: '',
+      crp: '',
       triglyceridesError: false,
       goodCholError: false,
       badCholError: false,
-      cReactiveProteinsError: false,
+      crpError: false,
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -63,11 +62,11 @@ class InputBloodChemistryPage extends React.Component {
             this.setState({badCholError: false});
           }
           break;
-      case 'cReactiveProteins':
+      case 'crp':
           if (value.length === 0 || value < 0.1 || value > 10) {
-            this.setState({cReactiveProteinsError: true});
+            this.setState({crpError: true});
           } else {
-            this.setState({cReactiveProteinsError: false});
+            this.setState({crpError: false});
           }
           break;
       default:
@@ -79,11 +78,11 @@ class InputBloodChemistryPage extends React.Component {
     if (this.state.triglycerides.length === 0 ||
             this.state.goodChol.length === 0 ||
             this.state.badChol.length === 0 ||
-            this.state.cReactiveProteins.length === 0 ||
+            this.state.crp.length === 0 ||
             this.state.triglyceridesError ||
             this.state.goodCholError ||
             this.state.badCholError ||
-            this.state.cReactiveProteinsError) {
+            this.state.crpError) {
       this.props.history.push('/SetReminderPage');
     } else {
       this.props.history.push('/FinalResultsPage');
@@ -94,7 +93,7 @@ class InputBloodChemistryPage extends React.Component {
     let triglyceridesErorMessage = '*Enter a value in between 100 and 500';
     let goodCholErrorMessage = '*Enter a value in between 30 and 100';
     let badCholErorMessage = '*Enter a value in between 50 and 250';
-    let cReactiveProteinsErrorMessage = '*Enter a value in between 0.1 and 10';
+    let crpErrorMessage = '*Enter a value in between 0.1 and 10';
     return(
       <div className ="inputBottomPage">
           <div className ="bmiResultsArea">
@@ -146,16 +145,16 @@ class InputBloodChemistryPage extends React.Component {
               </label>
               <label>C-reactive Proteins (mg/dL):
                     <input
-                        className={this.state.cReactiveProteinsError ? 'error' : null}
-                        name="cReactiveProteins"
+                        className={this.state.crpError ? 'error' : null}
+                        name="crp"
                         type="number"
-                        value={this.state.cReactiveProteins}
+                        value={this.state.crp}
                         onChange={(e) => {
-                          this.handleChange(e, 'cReactiveProteins')
+                          this.handleChange(e, 'crp')
                         }}>
                     </input>
-                    <div className="errorMessage">{this.state.cReactiveProteinsError ?
-                          cReactiveProteinsErrorMessage : null}</div>
+                    <div className="errorMessage">{this.state.crpError ?
+                          crpErrorMessage : null}</div>
               </label>
               <input
                      type='submit'
@@ -165,7 +164,6 @@ class InputBloodChemistryPage extends React.Component {
                         this.state.triglyceridesError || this.state.goodCholError ? 'Skip' : 'continue'}
                      onClick={this.nextSection}/>
            </form>
-              <Footer pageID='6'/>
       </div>
     );
   }

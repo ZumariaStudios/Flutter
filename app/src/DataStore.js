@@ -1,7 +1,7 @@
 var DataStore = class {
   let data = {
     userName: '',
-    sex: '',
+    gender: '',
     age: '',
     weight: '',
     weightMes: '',
@@ -13,8 +13,8 @@ var DataStore = class {
     bmiResults: '',
     smoker: false,
     famHistory: false,
-    diabetesMed: false,
-    bloodPressMed: false,
+    diabetic: false,
+    treatingBP: false,
     bpm: '',
     bpmResults: '',
     sbp: '',
@@ -25,7 +25,7 @@ var DataStore = class {
     badChol: '',
     totalChol: '',
     cholResults: '',
-    cReactiveProteins: '',
+    crp: '',
     FraminghamBMIModelRisk: '',
     FraminghamLipidModelRisk: '',
     reynoldsRisk: '',

@@ -2,7 +2,6 @@ import React from 'react';
 import Toggle from 'react-toggle';
 import {withRouter} from 'react-router-dom';
 import Header from '../form/Header.js';
-import Footer from '../form/Footer.js';
 
 class InputSpecificPage extends React.Component {
   constructor(props) {
@@ -10,8 +9,8 @@ class InputSpecificPage extends React.Component {
     this.state = {
       smoker: false,
       famHistory: false,
-      diabetesMed: false,
-      bloodPressMed: false,
+      diabetic: false,
+      treatingBP: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.nextSection = this.nextSection.bind(this);
@@ -40,8 +39,8 @@ class InputSpecificPage extends React.Component {
   componentWillMount() {
     this.localStore('smoker', false);
     this.localStore('famHistory', false);
-    this.localStore('diabetesMed', false);
-    this.localStore('bloodPressMed', false);
+    this.localStore('diabetic', false);
+    this.localStore('treatingBP', false);
   }
 
   render() {
@@ -75,15 +74,15 @@ class InputSpecificPage extends React.Component {
                 <div className="medicationInput">
                  <div className="diabetesCond">Diabetes</div>
                     <Toggle className="toggle"
-                        defaultChecked={this.state.diabetesMed}
+                        defaultChecked={this.state.diabetic}
                         onChange={(e) => {
-                            this.handleChange(e, 'diabetesMed')
+                            this.handleChange(e, 'diabetic')
                         }}/>
                 <div className="bloodPressCond">Blood pressure</div>
                     <Toggle className="toggle"
-                        defaultChecked={this.state.bloodPressMed}
+                        defaultChecked={this.state.treatingBP}
                         onChange={(e) => {
-                            this.handleChange(e, 'bloodPressMed')
+                            this.handleChange(e, 'treatingBP')
                         }}/>
                   </div>
             </label>
@@ -95,8 +94,7 @@ class InputSpecificPage extends React.Component {
            onClick={this.nextSection}/>
 
       </form>
-            <Footer pageID='3'/>
-            </div>
+      </div>
     )
   }
 }

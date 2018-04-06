@@ -1,104 +1,208 @@
 import React from 'react';
 import Radial from '../visualization/Radial.js';
 import Button from '../interactiveResults/Button.js';
-import {calcTotalChol, calcFraminghamBMIModel, calcFraminghamLipidModel, calcReynoldsModel} from '../results/Calculator.js';
+import InteractiveChol from '../interactiveResults/InteractiveChol.js';
+import InteractiveBMI from '../interactiveResults/InteractiveBMI.js';
+import {calcBMI, calcTotalChol, calcFraminghamBMIModel, calcFraminghamLipidModel, calcReynoldsModel} from '../results/Calculator.js';
 import {withRouter} from 'react-router-dom';
+import AppConstants from '../results/AppConstants.js';
+import Toggle from 'react-toggle';
 
 class InteractiveResultsPage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      tempResults: '',
-      cholOn: true,
-      bloodPressOn: false,
-      bpmOn: false,
-      bmiOn: false,
+      active: '',
+      triglycerides: '',
+      goodChol: '',
+      badChol: '',
+      crp: '',
+      weight: '',
+      weightMes: 'lbs',
+      heightFst: '',
+      heightFstMes: 'ft',
+      heightSnd: '',
+      heightSndMes: 'in',
+      bmi: '',
+      smoker: false,
+      cholResults: '',
+      bpmResults: '',
+      bloodPressResults: '',
+      bmiResults: '',
+      gender: '',
+      age: '',
+      bmi: '',
+      diabetic: '',
+      treatingBP: '',
+      sbp: '',
+      famHistory: '',
+      finalAverage: '',
     };
 
     this.reCalculateFormulas = this.reCalculateFormulas.bind(this);
-    this.selectHandlerChol = this.selectHandlerChol.bind(this);
-    this.selectHandlerBloodPress = this.selectHandlerBloodPress.bind(this);
-    this.selectHandlerBpm = this.selectHandlerBpm.bind(this);
-    this.selectHandlerBmi = this.selectHandlerBmi.bind(this);
+    this.selectHandler = this.selectHandler.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.onChangeHandleChange = this.onChangeHandleChange.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
   }
 
-  selectHandlerChol() {
-    this.setState({cholOn: true});
-    this.setState({bloodPressOn: false});
-    this.setState({bmiOn: false});
-    this.setState({bpmOn: false});
+  selectHandler(category) {
+    this.setState({active: category});
   }
 
-  selectHandlerBloodPress() {
-    this.setState({bloodPressOn: true});
-    this.setState({cholOn: false});
-    this.setState({bmiOn: false});
-    this.setState({bpmOn: false});
+  handleChange(name, value) {
+    this.setState({[name]: value}, function () {
+      console.log(name + ': ' + value);
+    });
   }
 
-  selectHandlerBpm() {
-    this.setState({bpmOn: true});
-    this.setState({cholOn: false});
-    this.setState({bloodPressOn: false});
-    this.setState({bmiOn: false});
-  }
-
-  selectHandlerBmi() {
-    this.setState({bmiOn: true});
-    this.setState({bpmOn: false});
-    this.setState({cholOn: false});
-    this.setState({bloodPressOn: false});
+  handleToggle(name, value) {
+    const newValue = value.target.checked;
+    console.log('newValue: ' + newValue);
+    this.setState({smoker: newValue}, function () {
+        console.log('smoker: ' + this.state.smoker)});
+    // this.setState({smoker: newValue});
+    console.log('smoker new value: ' + this.state.smoker);
   }
 
   reCalculateFormulas() {
-    let framinghamBMIRisk = calcFraminghamBMIModel();
-    let framinghamLipidRisk = calcFraminghamLipidModel();
-    let reynoldsRisk = calcReynoldsModel();
 
-    let tempAverage = Math.round((framinghamBMIRisk + framinghamLipidRisk + reynoldsRisk)/3);
-    this.setState({tempResults: tempAverage});
+    let bmi = calcBMI(this.state.weight, this.state.weightMes,
+    this.state.heightFst, this.state.heightFstMes, this.state.heightSnd);
+    this.setState({bmi: bmi}, function () {
+        console.log('new bmi: ' + this.state.bmi)});
+
+    let results;
+    if (this.state.crp) {
+      results = calcReynoldsModel(this.state.gender, this.state.age, this.state.smoker,
+          this.state.sbp, this.state.triglycerides, this.state.goodChol, this.state.badChol,
+          this.state.crp,this.state.famHistory);
+    } else if (this.state.triglycerides && this.state.goodChol && this.state.badChol){
+      results = calcFraminghamLipidModel(this.state.gender, this.state.age, this.state.smoker,
+          this.state.diabetic, this.state.treatingBP, this.state.sbp, this.state.triglycerides,
+          this.state.goodChol, this.state.badChol);
+    } else {
+      results = calcFraminghamBMIModel(this.state.gender, this.state.age, bmi,
+          this.state.smoker, this.state.diabetic, this.state.treatingBP, this.state.sbp);
+    }
+    this.setState({finalAverage: results});
+
+    // console.log('Im in re calculate formulas');
+    // console.log('new weight: ' + this.state.weight);
+    //
+    // let bmi = calcBMI(this.state.weight, this.state.weightMes,
+    // this.state.heightFst, this.state.heightFstMes, this.state.heightSnd);
+    // this.setState({bmi: bmi}, function () {
+    //     console.log('new bmi: ' + this.state.bmi)});
+    // // this.setState({bmi: bmi});
+    //
+    // console.log('smoker before calculating framinghamBMIRisk: ' + this.state.smoker);
+    //
+    // let framinghamBMIRisk = calcFraminghamBMIModel(
+    //   this.state.gender, this.state.age, this.state.bmi, this.state.smoker, this.state.diabetic, this.state.treatingBP,
+    //   this.state.sbp,this.state.triglycerides, this.state.goodChol, this.state.badChol,
+    //   this.state.crp, this.state.famHistory);
+    // console.log('framinghamBMIRisk: ' + framinghamBMIRisk);
+    //
+    // let framinghamLipidRisk = calcFraminghamLipidModel(this.state.gender, this.state.age, this.state.bmi, this.state.smoker, this.state.diabetic, this.state.treatingBP, this.state.sbp, this.state.triglycerides, this.state.goodChol, this.state.badChol, this.state.crp, this.state.famHistory);
+    // let reynoldsRisk = calcReynoldsModel(this.state.gender, this.state.age, this.state.bmi, this.state.smoker, this.state.diabetic, this.state.treatingBP, this.state.sbp, this.state.triglycerides, this.state.goodChol, this.state.badChol, this.state.crp, this.state.famHistory);
+    //
+    // let tempAverage = Math.round((framinghamBMIRisk + framinghamLipidRisk + reynoldsRisk)/3);
+    // this.setState({finalAverage: tempAverage});
+    // console.log('re calculated final Average: ' + this.state.finalAverage);
+  }
+
+  onChangeHandleChange(name, value) {
+    if (name === 'smoker') {
+      console.log('im in smoker handle change');
+      this.handleToggle(name, value);
+    } else {
+      this.handleChange(name, value);
+    }
+    this.reCalculateFormulas();
   }
 
   componentDidMount() {
-    this.reCalculateFormulas();
-    this.selectHandlerChol()
+
+    this.selectHandler('cholesterol');
+
+    const vars = ['gender',
+                  'age',
+                  'bmi',
+                  'diabetic',
+                  'treatingBP',
+                  'sbp',
+                  'famHistory',
+                  'triglycerides',
+                  'goodChol',
+                  'badChol',
+                  'crp',
+                  'weight',
+                  'weightMes',
+                  'heightFst',
+                  'heightSnd',
+                  'heightFstMes',
+                  'heightSndMes',
+                  'smoker',
+                  'cholResults',
+                  'bpmResults',
+                  'bloodPressResults',
+                  'bmiResults',
+                  'finalAverage'];
+    let i;
+    for (i = 0; i < vars.length; i++) {
+      let retrieved = localStorage.getItem(vars[i]);
+      let actualVal = JSON.parse(retrieved);
+      this.handleChange(vars[i], actualVal);
+    }
   }
 
   render() {
-    //get cholesterol results
-    let retrievedCholResults = localStorage.getItem('cholResults');
-    let cholResults = JSON.parse(retrievedCholResults);
 
-    //get bpm results
-    let retrievedBpmResults = localStorage.getItem('bpmResults');
-    let bpmResults = JSON.parse(retrievedBpmResults);
+    let details = null;
 
-    //get blood pressure results
-    let retrievedBloodpressResults = localStorage.getItem('bloodPressResults');
-    let bloodPressResults = JSON.parse(retrievedBloodpressResults);
+    if (this.state.active === "cholesterol") {
+      details = <InteractiveChol tryglycerides={this.state.tryglycerides}
+                                 goodchol={this.state.goodChol}
+                                 badChol={this.state.badChol}
+                                 cReactiveProteins={this.state.cReactiveProteins}
+                                 handleChange={this.onChangeHandleChange}/>
+    } else if (this.state.active === "bmi") {
+      details = <InteractiveBMI weight={this.state.weight}
+                                weightMes={this.state.weightMes}
+                                heightFst={this.state.heightFst}
+                                heightFstMes={this.state.heightFstMes}
+                                heightSnd={this.state.heightSnd}
+                                heightSndMes={this.state.heightSndMes}
+                                bmiResults={this.state.bmiResults}
+                                onChangeHandleChange={this.onChangeHandleChange}
+                                smoker={this.state.smoker}/>
+    }
 
-    //get bmi results
-    let retrievedBmiResults = localStorage.getItem('bmiResults');
-    let bmiResults = JSON.parse(retrievedBmiResults);
 
     return(
-      <div>
-          <div className ="radialGraph"><Radial completed={this.state.tempResults}/></div>
+      <div className="interactiveBkg">
+          <div className="interactiveTopArea">
+              <div className="interacH4"><h4>Your heart risk:</h4></div>
+              <div className ="radialGraph"><Radial completed={this.state.finalAverage}/></div>
+          </div>
+          <div className="grayLine"></div>
           <div className="navContainer">
-              <div className="interactiveButton" onClick={this.selectHandlerChol}>
-                  <Button results={cholResults} label='Cholesterol' selected={this.state.cholOn}/>
+              <div className="interactiveButton" onClick={()=>{this.setState({active: 'cholesterol'})}}>
+                  <Button results={this.state.cholResults} xValue="60" label='Cholesterol' selected={this.state.active === 'cholesterol' ? true : false}/>
               </div>
-              <div className="interactiveButton" onClick={this.selectHandlerBloodPress}>
-                  <Button results={bloodPressResults} label='Blood Pressure' selected={this.state.bloodPressOn}/>
+              <div className="interactiveButton" onClick={()=>{this.setState({active: 'bloodPress'})}}>
+                  <Button results={this.state.bloodPressResults} xValue="30" label='Blood Pressure' selected={this.state.active === 'bloodPress' ? true : false}/>
               </div>
-              <div className="interactiveButton" onClick={this.selectHandlerBpm}>
-                  <Button results={bpmResults} label="Resting Heart Rate" selected={this.state.bpmOn}/>
+              <div className="interactiveButton" onClick={()=>{this.setState({active: 'bpm'})}}>
+                  <Button results={this.state.bpmResults} label="Resting Heart Rate" selected={this.state.active === 'bpm' ? true : false}/>
               </div>
-              <div className="interactiveButton" onClick={this.selectHandlerBmi}>
-                  <Button results={bmiResults} label="BMI" selected={this.state.bmiOn}/>
+              <div className="interactiveButton" onClick={()=>{this.setState({active: 'bmi'})}}>
+                  <Button results={this.state.bmiResults} xValue="110" label="BMI" selected={this.state.active === 'bmi' ? true : false}/>
               </div>
           </div>
+          {details}
       </div>
     );
   }

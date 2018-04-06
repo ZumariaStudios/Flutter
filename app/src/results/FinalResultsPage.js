@@ -15,6 +15,7 @@ class FinalResultsPage extends React.Component {
     this.localStore = this.localStore.bind(this);
     this.updateValues = this.updateValues.bind(this);
     this.nextSection = this.nextSection.bind(this);
+    this.getVal = this.getVal.bind(this);
   }
 
   localStore(name, value) {
@@ -32,23 +33,42 @@ class FinalResultsPage extends React.Component {
     this.localStore(name, value);
   }
 
+  getVal(name) {
+    let retrieved = localStorage.getItem(name);
+    let actualVal = JSON.parse(retrieved);
+    return actualVal;
+  }
+
   componentDidMount() {
-    let framinghamBMIRisk = calcFraminghamBMIModel();
-    this.updateValues('framinghamBMIModelRisk', framinghamBMIRisk);
+    let gender = this.getVal('gender');
+    let age = this.getVal('age');
+    let bmi = this.getVal('bmi');
+    let smoker = this.getVal('smoker');
+    let diabetic = this.getVal('diabetic');
+    let treatingBP = this.getVal('treatingBP');
+    let sbp = this.getVal('sbp');
+    let triglycerides = this.getVal('triglycerides');
+    let goodChol = this.getVal('goodChol');
+    let badChol = this.getVal('badChol');
+    let crp = this.getVal('crp');
+    let famHistory = this.getVal('famHistory');
 
-    let framinghamLipidRisk = calcFraminghamLipidModel();
-    this.updateValues('framinghamLipidModelRisk', framinghamLipidRisk);
+    let results;
+    if (crp) {
+      results = calcReynoldsModel(gender, age, smoker, sbp,
+          triglycerides, goodChol, badChol, crp, famHistory);
+      this.updateValues('reynoldsRisk', results);
+    } else if (triglycerides && goodChol && badChol){
+      results = calcFraminghamLipidModel(gender, age, smoker,
+          diabetic, treatingBP, sbp, triglycerides, goodChol, badChol);
+      this.updateValues('framinghamLipidModelRisk', results);
+    } else {
+      results = calcFraminghamBMIModel(gender, age, bmi, smoker,
+          diabetic, treatingBP, sbp);
+      this.updateValues('framinghamBMIModelRisk', results);
+    }
 
-    let reynoldsRisk = calcReynoldsModel();
-    this.updateValues('reynoldsRisk', reynoldsRisk);
-
-    let finalAverage = Math.round((framinghamBMIRisk + framinghamLipidRisk + reynoldsRisk)/3);
-    this.updateValues('finalAverage', finalAverage);
-
-    console.log('framinghamBMIRisk: ' + framinghamBMIRisk);
-    console.log('framinghamLipidRisk: ' + framinghamLipidRisk);
-    console.log('reynoldsRisk: ' + reynoldsRisk);
-    console.log('finalAverage: ' + finalAverage);
+    this.updateValues('finalAverage', results);
   }
 
   nextSection() {
@@ -57,8 +77,7 @@ class FinalResultsPage extends React.Component {
 
   render() {
     // get bmi results
-    let retrievedBmiResults = localStorage.getItem('bmiResults');
-    let bmiResults = JSON.parse(retrievedBmiResults);
+    let bmiResults = this.getVal('bmiResults');
 
     //check for empty values
     if (bmiResults.length === 0) {
@@ -66,17 +85,17 @@ class FinalResultsPage extends React.Component {
     }
 
     // get cholesterol
-    let totalChol = calcTotalChol();
-    console.log('totalChol: ' + totalChol);
+    let triglycerides = this.getVal('triglycerides');
+    let goodChol = this.getVal('goodChol');
+    let badChol = this.getVal('badChol');
+    let totalChol = calcTotalChol(goodChol, badChol, triglycerides);
 
     //check for empty values
     let totalCholResults;
 
-    if (!totalChol) {
+    if (totalChol.length === 0) {
       totalCholResults = 'noVals';
-    }
-
-    if (totalChol >= 180 && totalChol <= 200) {
+    } else if (totalChol >= 180 && totalChol <= 200) {
       totalCholResults = 'ideal';
     } else if (totalChol > 200 && totalChol <= 239) {
       totalCholResults = 'elevated';
@@ -84,33 +103,25 @@ class FinalResultsPage extends React.Component {
       totalCholResults = 'high';
     }
 
-    if (totalCholResults)
-      this.localStore('cholResults', totalCholResults);
+    this.localStore('cholResults', totalCholResults);
 
     // Resing heart rate
-    let retrievedBpmresults = localStorage.getItem('bpmResults');
-    let bpmResults = JSON.parse(retrievedBpmresults);
-    console.log('bpmResults: ' + bpmResults);
+    let bpmResults = this.getVal('bpmResults');
 
     //check for empty values
-    let bloodPressResults;
     if (bpmResults.length === 0) {
-      bloodPressResults = 'noVals';
+      bpmResults = 'noVals';
     }
 
     // blood pressure
-    let retrievedSbp = localStorage.getItem('sbp');
-    let sbp = JSON.parse(retrievedSbp);
-
-    let retrievedDbp = localStorage.getItem('dbp');
-    let dbp = JSON.parse(retrievedDbp);
+    let bloodPressResults;
+    let sbp = this.getVal('sbp');
+    let dbp = this.getVal('dbp');
 
     //check for empty values
     if (sbp.length === 0 || dbp.length === 0) {
       bloodPressResults = 'noVals';
-    }
-
-    if (sbp <= 120 && dbp <= 80) {
+    } else if (sbp <= 120 && dbp <= 80) {
       bloodPressResults = 'normal';
     } else if (sbp <= 140 && dbp <= 90) {
       bloodPressResults = 'prehypertension';
@@ -120,8 +131,7 @@ class FinalResultsPage extends React.Component {
       bloodPressResults = 'stage 2 prehypertension';
     }
 
-    if (bloodPressResults)
-      this.localStore('bloddPressResults', bloodPressResults);
+    this.localStore('bloddPressResults', bloodPressResults);
 
     return(
       <div className ="ResultsBackground">
