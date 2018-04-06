@@ -137,7 +137,7 @@ class FinalResultsPage extends React.Component {
       <div className="inputPage">
       <div className="top_half">
       <div className ="ResultsBackground">
-          <h4 className="topSpacing">Your heart risk is...</h4>
+          <h2 className="topSpacing">Your heart risk is...</h2>
           <FinalResultsGraph bmiResults={bmiResults}
                               totalCholResults={totalCholResults}
                               bpmResults={bpmResults}

@@ -9,7 +9,6 @@
   background-color: $clr-background;
   color: $clr-dark-blue;
   margin: auto;
-  border: 1px solid red;
   width: 100vw;
   height: 100vh;
     .top_half {
@@ -48,7 +47,7 @@ padding-top: 1.5em;
 
 .inputLabel {
   text-align: left;
-  
+
 
   .medicationInput {
     text-indent: 5%;
@@ -90,15 +89,14 @@ padding-top: 1.5em;
 
 h1 {
   @extend %textCommonStyle;
-  font-size: 28px;
+  font-size: 1.75em;
   padding: .05em;
 }
 
 h4 {
   @extend %textCommonStyle;
-  font-size: 22px;
+  font-size: 1.375em;
   margin: 6px;
-  font-size: 18px;
 }
 
 span {
@@ -116,7 +114,7 @@ input[type="number"] {
   border-bottom: 1px solid $clr-dark-blue;
   color: $clr-red;
   display: inline;
-  font-size: 24px;
+  font-size: 1.5em;
   margin: 0.3em 0.5em;
   outline: none;
   text-align: center;
@@ -171,7 +169,7 @@ input[type="submit"].never {
 
 .input_drop_align {
   align-items: flex-end;
-//  display: flex;
+  display: flex;
   justify-content: left;
   flex-wrap: wrap;
 }

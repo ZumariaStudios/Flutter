@@ -40,9 +40,7 @@ class SetReminderPage extends React.Component {
       <div className ="inputPage">
       <div className="top_half">
       <div className="desktop_header"></div>
-
        <Header header="I'll be happy to remind you in..." />
-
       </div>
       <div className="bottom_half">
       <form className ="form">
