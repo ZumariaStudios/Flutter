@@ -33,13 +33,36 @@ class FinalResultsPage extends React.Component {
   }
 
   componentDidMount() {
-    let framinghamBMIRisk = calcFraminghamBMIModel();
+
+    const getVal = (name) => {
+      let retrieved = localStorage.getItem(name);
+      let actualVal = JSON.parse(retrieved);
+      return actualVal;
+    }
+
+    let gender = getVal('gender');
+    let age = getVal('age');
+    let bmi = getVal('bmi');
+    let smoker = getVal('smoker');
+    let diabetic = getVal('diabetic');
+    let treatingBP = getVal('treatingBP');
+    let sbp = getVal('sbp');
+    let triglycerides = getVal('triglycerides');
+    let goodChol = getVal('goodChol');
+    let badChol = getVal('badChol');
+    let crp = getVal('crp');
+    let famHistory = getVal('famHistory');
+
+
+    let framinghamBMIRisk = calcFraminghamBMIModel(gender, age, bmi, smoker, diabetic, treatingBP, sbp, triglycerides, goodChol, badChol, crp, famHistory);
+    console.log('framinghamBMIRisk: ' + framinghamBMIRisk);
+
     this.updateValues('framinghamBMIModelRisk', framinghamBMIRisk);
 
-    let framinghamLipidRisk = calcFraminghamLipidModel();
+    let framinghamLipidRisk = calcFraminghamLipidModel(gender, age, bmi, smoker, diabetic, treatingBP, sbp, triglycerides, goodChol, badChol, crp, famHistory);
     this.updateValues('framinghamLipidModelRisk', framinghamLipidRisk);
 
-    let reynoldsRisk = calcReynoldsModel();
+    let reynoldsRisk = calcReynoldsModel(gender, age, bmi, smoker, diabetic, treatingBP, sbp, triglycerides, goodChol, badChol, crp, famHistory);
     this.updateValues('reynoldsRisk', reynoldsRisk);
 
     let finalAverage = Math.round((framinghamBMIRisk + framinghamLipidRisk + reynoldsRisk)/3);

@@ -1,3 +1,13 @@
+@keyframes up {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(180deg);}
+}
+
+@keyframes down {
+  0% {transform: rotate(180deg);}
+  100% {transform: rotate(360deg);}
+}
+
 .interactiveBkg {
   background-color: $clr-background;
 }
@@ -62,9 +72,10 @@
   width: 80%;
 }
 
-.smokeRecomm {
-  display: none;
-  margin: 2%;
+.recommStyling {
+  background-color: rgba(245, 142, 114, 0.15);
+  color: $clr-dark-blue;
+  padding: 4%;
 
   .recTitle {
     font-size: 16px;
@@ -76,4 +87,31 @@
     font-size: 14px;
     line-height: normal;
   }
+}
+
+.circleArrowContainer {
+  margin: auto;
+  width: 20px;
+
+  .circleBack {
+    fill: $clr-extra-light-red;
+  }
+
+  .triangleArrow {
+    fill: $clr-red;
+  }
+}
+
+.turnUpAni {
+  animation-name: up;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+  transform-origin: center;
+}
+
+.turnDownAni {
+  animation-name: down;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  transform-origin: center;
 }

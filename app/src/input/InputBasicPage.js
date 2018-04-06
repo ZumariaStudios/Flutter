@@ -9,7 +9,7 @@ class InputBasicPage extends React.Component {
     this.state = {
       userName: '',
       adjective: 'Select',
-      sex: 'Select',
+      gender: 'Select',
       age: '',
       inputSizeUserName: 4,
       listValues: [true, false, false, false, false],
@@ -126,12 +126,12 @@ class InputBasicPage extends React.Component {
                <label>
               <div className="div_dropdown">
                    <Dropdown
-                       name='sex'
+                       name='gender'
                        data={['gentleman', 'lady']}
-                       value={this.state.sex}
+                       value={this.state.gender}
                        onChange={(newVal) => {
-                         this.localStore('sex', newVal);
-                         this.setState({sex: newVal});
+                         this.localStore('gender', newVal);
+                         this.setState({gender: newVal});
                          this.arrayToggle(3);
                    }}/>
                 </div>

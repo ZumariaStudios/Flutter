@@ -1,53 +1,57 @@
 import AppConstants from '../results/AppConstants.js';
 
-let retrievedGender = localStorage.getItem('sex');
-let gender = JSON.parse(retrievedGender);
-
-let retrievedAge = localStorage.getItem('age');
-let age = JSON.parse(retrievedAge);
-
-let retrievedBmi = localStorage.getItem('bmi');
-let bmi = JSON.parse(retrievedBmi);
-
-let retrievedSmoker = localStorage.getItem('smoker');
-let smoker = JSON.parse(retrievedSmoker);
-
-let retrievedDiabetic = localStorage.getItem('diabetesMed');
-let diabetic = JSON.parse(retrievedDiabetic);
-
-let retrievedTreatingBP = localStorage.getItem('bloodPressMed');
-let treatingBP = JSON.parse(retrievedTreatingBP);
-
-let retrievedSbp = localStorage.getItem('sbp');
-let sbp = JSON.parse(retrievedSbp);
-
-// let retrievedDbp = localStorage.getItem('dbp');
-// let dbp = JSON.parse(retrievedDbp);
-
-let retrievedTrig = localStorage.getItem('triglycerides');
-let triglycerides = JSON.parse(retrievedTrig);
-
-let retrievedGoodChol = localStorage.getItem('goodChol');
-let goodChol = JSON.parse(retrievedGoodChol);
-
-let retrievedBadChol = localStorage.getItem('badChol');
-let badChol = JSON.parse(retrievedBadChol);
-
-let retrievedCReact = localStorage.getItem('cReactiveProteins');
-let crp = JSON.parse(retrievedCReact);
-
-let retrievedFamHistory = localStorage.getItem('famHistory');
-let famHistory = JSON.parse(retrievedFamHistory);
+// const getVal = (name) => {
+//   let retrieved = localStorage.getItem(name);
+//   let actualVal = JSON.parse(retrieved);
+//   return actualVal;
+// }
+//
+// let gender = getVal('sex');
+// let age = getVal('age');
+// let bmi = getVal('bmi');
+// let smoker = getVal('smoker');
+// let diabetic = getVal('diabetesMed');
+// let treatingBP = getVal('bloodPressMed');
+// let sbp = getVal('sbp');
+// let triglycerides = getVal('triglycerides');
+// let goodChol = getVal('goodChol');
+// let badChol = getVal('badChol');
+// let crp = getVal('cReactiveProteins');
+// let famHistory = getVal('famHistory');
 
 let bases;
 let betas;
 let expBase;
 
-export const calcTotalChol = () => {
+export const calcTotalChol = (goodChol, badChol, triglycerides) => {
   return (Number(goodChol) + Number(badChol) + (Number(triglycerides)/5));
 }
 
-export const calcFraminghamBMIModel = () => {
+export const calcBMI = (weight, weightMes,heightFst, heightFstMes, heightSnd) => {
+  let fWeight = 0;
+  let fHeight = 0;
+
+  if (weightMes === "lbs") {
+    fWeight = (Number(weight) * 0.45);
+  } else {
+    fWeight = weight;
+  }
+
+  if (heightFstMes === 'ft') {
+    fHeight = Math.pow(
+      ((Number(heightFst) * 12 + Number(
+          heightSnd)) * 0.025), 2);
+  } else {
+    fHeight = Math.pow((Number(
+          heightFst) + Number(
+          heightSnd)/100),2);
+  }
+
+  let results = (Number(fWeight)/Number(fHeight)).toFixed(2);
+  return results;
+}
+
+export const calcFraminghamBMIModel = (gender, age, bmi, smoker, diabetic, treatingBP, sbp, triglycerides, goodChol, badChol, crp, famHistory) => {
 
   if (gender === 'gentleman') {
     bases = AppConstants.BASELINES.fbm.male;
@@ -93,7 +97,7 @@ export const calcFraminghamBMIModel = () => {
   return riskStatus;
 }
 
-export const calcFraminghamLipidModel = () => {
+export const calcFraminghamLipidModel = (gender, age, bmi, smoker, diabetic, treatingBP, sbp, triglycerides, goodChol, badChol, crp, famHistory) => {
 
   if (gender === 'gentleman') {
     bases = AppConstants.BASELINES.flm.male;
@@ -105,7 +109,7 @@ export const calcFraminghamLipidModel = () => {
     expBase = AppConstants.EXP_BASES.flm.female;
   }
 
-  let cholTotal = calcTotalChol();
+  let cholTotal = calcTotalChol(goodChol, badChol, triglycerides);
 
   // Calculate boolean log set
   const ageContribution =
@@ -143,7 +147,7 @@ export const calcFraminghamLipidModel = () => {
   return riskStatus;
 }
 
-export const calcReynoldsModel = () => {
+export const calcReynoldsModel = (gender, age, bmi, smoker, diabetic, treatingBP, sbp, triglycerides, goodChol, badChol, crp, famHistory) => {
 
   if (gender === 'gentleman') {
     bases = AppConstants.BASELINES.rm.male;
@@ -155,7 +159,7 @@ export const calcReynoldsModel = () => {
     expBase = AppConstants.EXP_BASES.rm.female;
   }
 
-  let cholTotal = calcTotalChol();
+  let cholTotal = calcTotalChol(goodChol, badChol, triglycerides);
 
   // Calculate natural log set
   const ageContribution = (gender === 'gentleman')

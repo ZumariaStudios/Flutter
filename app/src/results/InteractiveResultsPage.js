@@ -3,7 +3,7 @@ import Radial from '../visualization/Radial.js';
 import Button from '../interactiveResults/Button.js';
 import InteractiveChol from '../interactiveResults/InteractiveChol.js';
 import InteractiveBMI from '../interactiveResults/InteractiveBMI.js';
-import {calcTotalChol, calcFraminghamBMIModel, calcFraminghamLipidModel, calcReynoldsModel} from '../results/Calculator.js';
+import {calcBMI, calcTotalChol, calcFraminghamBMIModel, calcFraminghamLipidModel, calcReynoldsModel} from '../results/Calculator.js';
 import {withRouter} from 'react-router-dom';
 import AppConstants from '../results/AppConstants.js';
 import Toggle from 'react-toggle';
@@ -13,12 +13,11 @@ class InteractiveResultsPage extends React.Component {
     super(props);
 
     this.state = {
-      tempResults: '',
       active: '',
       triglycerides: '',
       goodChol: '',
       badChol: '',
-      cReactiveProteins: '',
+      crp: '',
       weight: '',
       weightMes: 'lbs',
       heightFst: '',
@@ -27,11 +26,24 @@ class InteractiveResultsPage extends React.Component {
       heightSndMes: 'in',
       bmi: '',
       smoker: false,
+      cholResults: '',
+      bpmResults: '',
+      bloodPressResults: '',
+      bmiResults: '',
+      gender: '',
+      age: '',
+      bmi: '',
+      diabetic: '',
+      treatingBP: '',
+      sbp: '',
+      famHistory: '',
+      finalAverage: '',
     };
 
     this.reCalculateFormulas = this.reCalculateFormulas.bind(this);
     this.selectHandler = this.selectHandler.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.onChangeHandleChange = this.onChangeHandleChange.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
   }
 
@@ -40,101 +52,92 @@ class InteractiveResultsPage extends React.Component {
   }
 
   handleChange(name, value) {
-    this.setState({[name]: value});
-    console.log(name + ': ' + value);
+    this.setState({[name]: value}, function () {
+      console.log(name + ': ' + value);
+    });
   }
 
   handleToggle(name, value) {
-    const newValue = value.target.checked;
-    this.setState({[name]: newValue});
-    console.log(name + ': ' + newValue);
+    const newValue = !value.target.checked;
+    console.log('newValue: ' + newValue);
+    this.setState({smoker: newValue}, function () {
+        console.log('smoker: ' + this.state.smoker)});
+    // this.setState({smoker: newValue});
+    console.log('smoker new value: ' + this.state.smoker);
   }
 
   reCalculateFormulas() {
-    let framinghamBMIRisk = calcFraminghamBMIModel();
-    let framinghamLipidRisk = calcFraminghamLipidModel();
-    let reynoldsRisk = calcReynoldsModel();
+    console.log('Im in re calculate formulas');
+    console.log('new weight: ' + this.state.weight);
+
+    let bmi = calcBMI(this.state.weight, this.state.weightMes,
+    this.state.heightFst, this.state.heightFstMes, this.state.heightSnd);
+    this.setState({bmi: bmi}, function () {
+        console.log('new bmi: ' + this.state.bmi)});
+    // this.setState({bmi: bmi});
+
+    console.log('smoker before calculating framinghamBMIRisk: ' + this.state.smoker);
+
+    let framinghamBMIRisk = calcFraminghamBMIModel(
+      this.state.gender, this.state.age, this.state.bmi, this.state.smoker, this.state.diabetic, this.state.treatingBP,
+      this.state.sbp,this.state.triglycerides, this.state.goodChol, this.state.badChol,
+      this.state.crp, this.state.famHistory);
+    console.log('framinghamBMIRisk: ' + framinghamBMIRisk);
+
+    let framinghamLipidRisk = calcFraminghamLipidModel(this.state.gender, this.state.age, this.state.bmi, this.state.smoker, this.state.diabetic, this.state.treatingBP, this.state.sbp, this.state.triglycerides, this.state.goodChol, this.state.badChol, this.state.crp, this.state.famHistory);
+    let reynoldsRisk = calcReynoldsModel(this.state.gender, this.state.age, this.state.bmi, this.state.smoker, this.state.diabetic, this.state.treatingBP, this.state.sbp, this.state.triglycerides, this.state.goodChol, this.state.badChol, this.state.crp, this.state.famHistory);
 
     let tempAverage = Math.round((framinghamBMIRisk + framinghamLipidRisk + reynoldsRisk)/3);
-    this.setState({tempResults: tempAverage});
+    this.setState({finalAverage: tempAverage});
+    console.log('re calculated final Average: ' + this.state.finalAverage);
+  }
+
+  onChangeHandleChange(name, value) {
+    if (name === 'smoker') {
+      console.log('im in smoker handle change');
+      this.handleToggle(name, value);
+    } else {
+      this.handleChange(name, value);
+    }
+    this.reCalculateFormulas();
   }
 
   componentDidMount() {
-    this.reCalculateFormulas();
+
     this.selectHandler('cholesterol');
 
-    //get tryglycerides value
-    let retrievedTrig = localStorage.getItem('triglycerides');
-    let triglycerides = JSON.parse(retrievedTrig);
-    this.handleChange('triglycerides', triglycerides);
-
-    //get goodChol value
-    let retrievedGoodChol = localStorage.getItem('goodChol');
-    let goodChol = JSON.parse(retrievedGoodChol);
-    this.handleChange('goodChol', goodChol);
-
-    //get badChol value
-    let retrievedBadChol = localStorage.getItem('badChol');
-    let badChol = JSON.parse(retrievedBadChol);
-    this.handleChange('badChol', badChol);
-
-    //get c Reactive Proteins value
-    let retrievedCReact = localStorage.getItem('cReactiveProteins');
-    let cReactiveProteins = JSON.parse(retrievedCReact);
-    this.handleChange('cReactiveProteins', cReactiveProteins);
-
-    //get weight
-    let retrievedWeight = localStorage.getItem('weight');
-    let weight = JSON.parse(retrievedWeight);
-    this.handleChange('weight', weight);
-
-    //get weightMes
-    let retrievedWeightMes = localStorage.getItem('weightMes');
-    let weightMes = JSON.parse(retrievedWeightMes);
-    this.handleChange('weightMes', weightMes);
-
-    //get heightFst
-    let retrievedHeightFst = localStorage.getItem('heightFst');
-    let heightFst = JSON.parse(retrievedHeightFst);
-    this.handleChange('heightFst', heightFst);
-
-    //get heightSnd
-    let retrievedHeightSnd = localStorage.getItem('heightSnd');
-    let heightSnd = JSON.parse(retrievedHeightSnd);
-    this.handleChange('heightSnd', heightSnd);
-
-    //get heightFstMes
-    let retrievedheightFstMes = localStorage.getItem('heightFstMes');
-    let heightFstMes = JSON.parse(retrievedheightFstMes);
-    this.handleChange('heightFstMes', heightFstMes);
-
-    //get heightSndMes
-    let retrievedheightSndMes = localStorage.getItem('heightSndMes');
-    let heightSndMes = JSON.parse(retrievedheightSndMes);
-    this.handleChange('heightSndMes', heightSndMes);
-
-    // get smoker
-    let retrievedSmoker = localStorage.getItem('smoker');
-    let smoker = JSON.parse(retrievedSmoker);
-    this.handleChange('smoker', smoker);
+    const vars = ['gender',
+                  'age',
+                  'bmi',
+                  'diabetic',
+                  'treatingBP',
+                  'sbp',
+                  'famHistory',
+                  'triglycerides',
+                  'goodChol',
+                  'badChol',
+                  'crp',
+                  'weight',
+                  'weightMes',
+                  'heightFst',
+                  'heightSnd',
+                  'heightFstMes',
+                  'heightSndMes',
+                  'smoker',
+                  'cholResults',
+                  'bpmResults',
+                  'bloodPressResults',
+                  'bmiResults',
+                  'finalAverage'];
+    let i;
+    for (i = 0; i < vars.length; i++) {
+      let retrieved = localStorage.getItem(vars[i]);
+      let actualVal = JSON.parse(retrieved);
+      this.handleChange(vars[i], actualVal);
+    }
   }
 
   render() {
-    //get cholesterol results
-    let retrievedCholResults = localStorage.getItem('cholResults');
-    let cholResults = JSON.parse(retrievedCholResults);
-
-    //get bpm results
-    let retrievedBpmResults = localStorage.getItem('bpmResults');
-    let bpmResults = JSON.parse(retrievedBpmResults);
-
-    //get blood pressure results
-    let retrievedBloodpressResults = localStorage.getItem('bloodPressResults');
-    let bloodPressResults = JSON.parse(retrievedBloodpressResults);
-
-    //get bmi results
-    let retrievedBmiResults = localStorage.getItem('bmiResults');
-    let bmiResults = JSON.parse(retrievedBmiResults);
 
     let details = null;
 
@@ -143,7 +146,7 @@ class InteractiveResultsPage extends React.Component {
                                  goodchol={this.state.goodChol}
                                  badChol={this.state.badChol}
                                  cReactiveProteins={this.state.cReactiveProteins}
-                                 handleChange={this.handleChange}/>
+                                 handleChange={this.onChangeHandleChange}/>
     } else if (this.state.active === "bmi") {
       details = <InteractiveBMI weight={this.state.weight}
                                 weightMes={this.state.weightMes}
@@ -151,31 +154,31 @@ class InteractiveResultsPage extends React.Component {
                                 heightFstMes={this.state.heightFstMes}
                                 heightSnd={this.state.heightSnd}
                                 heightSndMes={this.state.heightSndMes}
-                                bmiResults={bmiResults}
-                                handleChange={this.handleChange}
-                                handleToggle={this.handleToggle}
+                                bmiResults={this.state.bmiResults}
+                                onChangeHandleChange={this.onChangeHandleChange}
                                 smoker={this.state.smoker}/>
     }
+
 
     return(
       <div className="interactiveBkg">
           <div className="interactiveTopArea">
               <div className="interacH4"><h4>Your heart risk:</h4></div>
-              <div className ="radialGraph"><Radial completed={this.state.tempResults}/></div>
+              <div className ="radialGraph"><Radial completed={this.state.finalAverage}/></div>
           </div>
           <div className="grayLine"></div>
           <div className="navContainer">
               <div className="interactiveButton" onClick={()=>{this.setState({active: 'cholesterol'})}}>
-                  <Button results={cholResults} xValue="60" label='Cholesterol' selected={this.state.active === 'cholesterol' ? true : false}/>
+                  <Button results={this.state.cholResults} xValue="60" label='Cholesterol' selected={this.state.active === 'cholesterol' ? true : false}/>
               </div>
               <div className="interactiveButton" onClick={()=>{this.setState({active: 'bloodPress'})}}>
-                  <Button results={bloodPressResults} xValue="30" label='Blood Pressure' selected={this.state.active === 'bloodPress' ? true : false}/>
+                  <Button results={this.state.bloodPressResults} xValue="30" label='Blood Pressure' selected={this.state.active === 'bloodPress' ? true : false}/>
               </div>
               <div className="interactiveButton" onClick={()=>{this.setState({active: 'bpm'})}}>
-                  <Button results={bpmResults} label="Resting Heart Rate" selected={this.state.active === 'bpm' ? true : false}/>
+                  <Button results={this.state.bpmResults} label="Resting Heart Rate" selected={this.state.active === 'bpm' ? true : false}/>
               </div>
               <div className="interactiveButton" onClick={()=>{this.setState({active: 'bmi'})}}>
-                  <Button results={bmiResults} xValue="110" label="BMI" selected={this.state.active === 'bmi' ? true : false}/>
+                  <Button results={this.state.bmiResults} xValue="110" label="BMI" selected={this.state.active === 'bmi' ? true : false}/>
               </div>
           </div>
           {details}
