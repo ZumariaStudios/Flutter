@@ -58,7 +58,7 @@ class InteractiveResultsPage extends React.Component {
   }
 
   handleToggle(name, value) {
-    const newValue = !value.target.checked;
+    const newValue = value.target.checked;
     console.log('newValue: ' + newValue);
     this.setState({smoker: newValue}, function () {
         console.log('smoker: ' + this.state.smoker)});
@@ -67,29 +67,50 @@ class InteractiveResultsPage extends React.Component {
   }
 
   reCalculateFormulas() {
-    console.log('Im in re calculate formulas');
-    console.log('new weight: ' + this.state.weight);
 
     let bmi = calcBMI(this.state.weight, this.state.weightMes,
     this.state.heightFst, this.state.heightFstMes, this.state.heightSnd);
     this.setState({bmi: bmi}, function () {
         console.log('new bmi: ' + this.state.bmi)});
-    // this.setState({bmi: bmi});
 
-    console.log('smoker before calculating framinghamBMIRisk: ' + this.state.smoker);
+    let results;
+    if (this.state.crp) {
+      results = calcReynoldsModel(this.state.gender, this.state.age, this.state.smoker,
+          this.state.sbp, this.state.triglycerides, this.state.goodChol, this.state.badChol,
+          this.state.crp,this.state.famHistory);
+    } else if (this.state.triglycerides && this.state.goodChol && this.state.badChol){
+      results = calcFraminghamLipidModel(this.state.gender, this.state.age, this.state.smoker,
+          this.state.diabetic, this.state.treatingBP, this.state.sbp, this.state.triglycerides,
+          this.state.goodChol, this.state.badChol);
+    } else {
+      results = calcFraminghamBMIModel(this.state.gender, this.state.age, bmi,
+          this.state.smoker, this.state.diabetic, this.state.treatingBP, this.state.sbp);
+    }
+    this.setState({finalAverage: results});
 
-    let framinghamBMIRisk = calcFraminghamBMIModel(
-      this.state.gender, this.state.age, this.state.bmi, this.state.smoker, this.state.diabetic, this.state.treatingBP,
-      this.state.sbp,this.state.triglycerides, this.state.goodChol, this.state.badChol,
-      this.state.crp, this.state.famHistory);
-    console.log('framinghamBMIRisk: ' + framinghamBMIRisk);
-
-    let framinghamLipidRisk = calcFraminghamLipidModel(this.state.gender, this.state.age, this.state.bmi, this.state.smoker, this.state.diabetic, this.state.treatingBP, this.state.sbp, this.state.triglycerides, this.state.goodChol, this.state.badChol, this.state.crp, this.state.famHistory);
-    let reynoldsRisk = calcReynoldsModel(this.state.gender, this.state.age, this.state.bmi, this.state.smoker, this.state.diabetic, this.state.treatingBP, this.state.sbp, this.state.triglycerides, this.state.goodChol, this.state.badChol, this.state.crp, this.state.famHistory);
-
-    let tempAverage = Math.round((framinghamBMIRisk + framinghamLipidRisk + reynoldsRisk)/3);
-    this.setState({finalAverage: tempAverage});
-    console.log('re calculated final Average: ' + this.state.finalAverage);
+    // console.log('Im in re calculate formulas');
+    // console.log('new weight: ' + this.state.weight);
+    //
+    // let bmi = calcBMI(this.state.weight, this.state.weightMes,
+    // this.state.heightFst, this.state.heightFstMes, this.state.heightSnd);
+    // this.setState({bmi: bmi}, function () {
+    //     console.log('new bmi: ' + this.state.bmi)});
+    // // this.setState({bmi: bmi});
+    //
+    // console.log('smoker before calculating framinghamBMIRisk: ' + this.state.smoker);
+    //
+    // let framinghamBMIRisk = calcFraminghamBMIModel(
+    //   this.state.gender, this.state.age, this.state.bmi, this.state.smoker, this.state.diabetic, this.state.treatingBP,
+    //   this.state.sbp,this.state.triglycerides, this.state.goodChol, this.state.badChol,
+    //   this.state.crp, this.state.famHistory);
+    // console.log('framinghamBMIRisk: ' + framinghamBMIRisk);
+    //
+    // let framinghamLipidRisk = calcFraminghamLipidModel(this.state.gender, this.state.age, this.state.bmi, this.state.smoker, this.state.diabetic, this.state.treatingBP, this.state.sbp, this.state.triglycerides, this.state.goodChol, this.state.badChol, this.state.crp, this.state.famHistory);
+    // let reynoldsRisk = calcReynoldsModel(this.state.gender, this.state.age, this.state.bmi, this.state.smoker, this.state.diabetic, this.state.treatingBP, this.state.sbp, this.state.triglycerides, this.state.goodChol, this.state.badChol, this.state.crp, this.state.famHistory);
+    //
+    // let tempAverage = Math.round((framinghamBMIRisk + framinghamLipidRisk + reynoldsRisk)/3);
+    // this.setState({finalAverage: tempAverage});
+    // console.log('re calculated final Average: ' + this.state.finalAverage);
   }
 
   onChangeHandleChange(name, value) {

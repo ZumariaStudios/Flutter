@@ -1,24 +1,5 @@
 import AppConstants from '../results/AppConstants.js';
 
-// const getVal = (name) => {
-//   let retrieved = localStorage.getItem(name);
-//   let actualVal = JSON.parse(retrieved);
-//   return actualVal;
-// }
-//
-// let gender = getVal('sex');
-// let age = getVal('age');
-// let bmi = getVal('bmi');
-// let smoker = getVal('smoker');
-// let diabetic = getVal('diabetesMed');
-// let treatingBP = getVal('bloodPressMed');
-// let sbp = getVal('sbp');
-// let triglycerides = getVal('triglycerides');
-// let goodChol = getVal('goodChol');
-// let badChol = getVal('badChol');
-// let crp = getVal('cReactiveProteins');
-// let famHistory = getVal('famHistory');
-
 let bases;
 let betas;
 let expBase;
@@ -51,7 +32,7 @@ export const calcBMI = (weight, weightMes,heightFst, heightFstMes, heightSnd) =>
   return results;
 }
 
-export const calcFraminghamBMIModel = (gender, age, bmi, smoker, diabetic, treatingBP, sbp, triglycerides, goodChol, badChol, crp, famHistory) => {
+export const calcFraminghamBMIModel = (gender, age, bmi, smoker, diabetic, treatingBP, sbp) => {
 
   if (gender === 'gentleman') {
     bases = AppConstants.BASELINES.fbm.male;
@@ -97,7 +78,7 @@ export const calcFraminghamBMIModel = (gender, age, bmi, smoker, diabetic, treat
   return riskStatus;
 }
 
-export const calcFraminghamLipidModel = (gender, age, bmi, smoker, diabetic, treatingBP, sbp, triglycerides, goodChol, badChol, crp, famHistory) => {
+export const calcFraminghamLipidModel = (gender, age, smoker, diabetic, treatingBP, sbp, triglycerides, goodChol, badChol) => {
 
   if (gender === 'gentleman') {
     bases = AppConstants.BASELINES.flm.male;
@@ -147,7 +128,7 @@ export const calcFraminghamLipidModel = (gender, age, bmi, smoker, diabetic, tre
   return riskStatus;
 }
 
-export const calcReynoldsModel = (gender, age, bmi, smoker, diabetic, treatingBP, sbp, triglycerides, goodChol, badChol, crp, famHistory) => {
+export const calcReynoldsModel = (gender, age, smoker, sbp, triglycerides, goodChol, badChol, crp, famHistory) => {
 
   if (gender === 'gentleman') {
     bases = AppConstants.BASELINES.rm.male;
