@@ -72,11 +72,15 @@ class InputBloodPressurePage extends React.Component {
     let sbpErorMessage = '*Enter a value in between 100 and 180';
     let dbpErrorMessage = '*Enter a value in between 70 and 110';
     return(
-      <div className ="inputBottomPage">
+      <div className ="inputPage">
+       <div className="top_half">
           <div className ="bmiResultsArea">
               <h4 className="topSpacing">Cardiovascular Health Assessment:</h4>
               <BPMResults/>
               <div className="grayLine"></div>
+      </div>
+      <div className="bottom_half">
+          </div>
           </div>
           <h4 className="topSpacing">Keep going...</h4>
           <form className ="form">

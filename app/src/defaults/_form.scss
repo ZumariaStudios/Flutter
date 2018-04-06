@@ -1,11 +1,21 @@
 .header {
-  width: 100%;
+  //width: 100vw;
   img {width: inherit;
       max-height: 400px;
   }
 }
 
+.inputPage {
+  background-color: $clr-background;
+  color: $clr-dark-blue;
+  margin: auto;
+  width: 100vw;
+  height: 100vh;
+    .top_half {
+      width: 100%;
+    }
 
+}
 .error {
   border-bottom: 1px solid red !important;
 }
@@ -16,20 +26,13 @@
     margin: 0;
 }
 
-.inputBottomPage {
-  background-color: $clr-background;
-  color: $clr-dark-blue;
-  margin: auto;
-  //min-height: 100vh;
-}
-
 .bmiResultsArea {
   background-color: $clr-super-light-blue;
-  margin: -0.5em;
 }
 
 .topSpacing {
-  padding-top: 1.5em;
+//  background-color: $clr-super-light-blue;
+padding-top: 1.5em;
 }
 
 .grayLine {
@@ -39,20 +42,12 @@
 }
 
 .bmiGraph {
-  margin: 0.8em;
-}
-
-.pulseInstructions {
-  img.pulse {
-    padding: 0.7em;
-    width: 60%;
-    height: auto;
-    margin: auto;
-  }
+ margin: 0.8em;
 }
 
 .inputLabel {
   text-align: left;
+
 
   .medicationInput {
     text-indent: 5%;
@@ -94,18 +89,14 @@
 
 h1 {
   @extend %textCommonStyle;
-  font-size: 28px;
+  font-size: 1.75em;
+  padding: .05em;
 }
 
 h4 {
   @extend %textCommonStyle;
-  // border: 2px solid green;
-  font-size: 22px;
+  font-size: 1.375em;
   margin: 6px;
-}
-
-h4 {
-  font-size: 18px;
 }
 
 span {
@@ -113,6 +104,7 @@ span {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+
 }
 
 input[type="text"],
@@ -122,7 +114,7 @@ input[type="number"] {
   border-bottom: 1px solid $clr-dark-blue;
   color: $clr-red;
   display: inline;
-  font-size: 24px;
+  font-size: 1.5em;
   margin: 0.3em 0.5em;
   outline: none;
   text-align: center;
@@ -172,13 +164,7 @@ input[type="submit"].never {
 }
 
 .input_center {
-  align-items: center;
-  justify-content: center;
-  text-align: left;
   display: inline-block;
-
-
-
 }
 
 .input_drop_align {

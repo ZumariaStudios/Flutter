@@ -124,20 +124,26 @@ class FinalResultsPage extends React.Component {
       this.localStore('bloddPressResults', bloodPressResults);
 
     return(
+      <div className="inputPage">
+      <div className="top_half">
       <div className ="ResultsBackground">
-          <h4 className="topSpacing">Your heart risk is...</h4>
+          <h2 className="topSpacing">Your heart risk is...</h2>
           <FinalResultsGraph bmiResults={bmiResults}
                               totalCholResults={totalCholResults}
                               bpmResults={bpmResults}
                               bloodPressResults={bloodPressResults}
                               finalAverage={this.state.finalAverage}/>
          <h4 className="topSpacing">What can you do better?</h4>
+        </div>
+        <div className="bottom_half">
          <form><input
             type='submit'
             value='Continue'
             onClick={this.nextSection}/>
          </form>
+        </div>
       </div>
+    </div>
     );
   }
 }

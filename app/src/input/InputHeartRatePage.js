@@ -53,13 +53,17 @@ class InputHeartRatePage extends React.Component {
 
   render() {
     return(
-      <div className ="inputBottomPage">
-          <div className ="bmiResultsArea">
+
+      <div className ="inputPage">
+      <div className="top_half">
               <h4 className="topSpacing">Your BMI result!</h4>
-              <BMIResults/>
+          <div className ="bmiResultsArea">
+              <BMIResults className="bmiResults"/>
               <div className="grayLine"></div>
           </div>
-          <h4 className="topSpacing">Now lets keep going...</h4>
+        </div>
+      <div className="bottom_half">
+          <h4>Now lets keep going...</h4>
           <form className ="form">
               <label>My resting heart rate (BPM) is
                     <input
@@ -80,6 +84,8 @@ class InputHeartRatePage extends React.Component {
                      onClick={this.nextSection}/>
            </form>
                  <Footer pageID='4'/>
+            </div>
+        
       </div>
 
     );

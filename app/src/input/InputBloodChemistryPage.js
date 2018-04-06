@@ -96,11 +96,14 @@ class InputBloodChemistryPage extends React.Component {
     let badCholErorMessage = '*Enter a value in between 50 and 250';
     let cReactiveProteinsErrorMessage = '*Enter a value in between 0.1 and 10';
     return(
-      <div className ="inputBottomPage">
+      <div className ="inputPage">
+       <div className="top_half">
           <div className ="bmiResultsArea">
               <h4 className="topSpacing">Your heart risk so far...</h4>
               <FraminghamBMIModelResults/>
               <div className="grayLine"></div>
+        </div>
+        <div className="bottom_half">
           </div>
           <h4 className="topSpacing">One more thing...</h4>
           <h4>Blood Chemistry</h4>
@@ -166,6 +169,7 @@ class InputBloodChemistryPage extends React.Component {
                      onClick={this.nextSection}/>
            </form>
               <Footer pageID='6'/>
+        </div>
       </div>
     );
   }
