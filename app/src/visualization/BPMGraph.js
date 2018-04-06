@@ -30,8 +30,8 @@ const BPMGraph = (props) => {
   let text = (<text className='bpmText' x={xPosVal} y='165' textAnchor='middle'>{textVal}</text>);
 
   return (
-    <div>
-        <svg className="BPMGraph" viewBox="0 0 745 279.9" preserveAspectRatio='none'>
+    <div className="BPMGraph_desktop">
+        <svg className="BPMGraph" viewBox="0 0 745 279.9" preserveAspectRatio="xMidYMid meet">
         <path className="mainBox" d="M694.1,220H50.9c-12.1,0-21.9-9.8-21.9-21.9V55.5c0-12.1,9.8-21.9,21.9-21.9h643.3c12.1,0,21.9,9.8,21.9,21.9v142.6C716,210.2,706.2,220,694.1,220z"/>
         <rect x="215.3" y="50.9" transform="matrix(1 -1.013721e-03 1.013721e-03 1 -0.1294 0.2945)" className={results === 'Average' ? 'average' : 'notActive'} width="150.4" height="153.8"/>
         <rect x="379.3" y="50.9" transform="matrix(1 -1.013721e-03 1.013721e-03 1 -0.1293 0.4608)" className={results === 'Good' ? 'good' : 'notActive'} width="150.4" height="153.8"/>

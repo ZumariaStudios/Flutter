@@ -37,7 +37,7 @@ class FraminghamBMIModelResults extends React.Component {
 
     return(
       <div className ="radialGraph">
-          <div>
+          <div className="radialGraph_desktop">
               <Radial completed={this.state.heartRisk} statusClass={className} />
           </div>
       </div>
