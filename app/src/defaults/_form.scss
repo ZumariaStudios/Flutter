@@ -5,6 +5,7 @@
   }
 }
 
+<<<<<<< HEAD
 .ResultsBackground h2 {
   padding-top: 1em;
   margin-top:0 !important;
@@ -20,6 +21,18 @@
       width: 100%;
     }
 
+=======
+.inputPage {
+  background-color: $clr-background;
+  color: $clr-dark-blue;
+  margin: auto;
+  width: 100vw;
+  height: 100vh;
+    .top_half {
+      width: 100%;
+    }
+
+>>>>>>> 2c2e671672c2246d7df8738898d0fe32f27699df
 }
 .error {
   border-bottom: 1px solid red !important;
@@ -36,9 +49,14 @@
 }
 
 .topSpacing {
+<<<<<<< HEAD
 background-color: $clr-super-light-blue;
 padding-top: 1.5em;
 margin: auto;
+=======
+//  background-color: $clr-super-light-blue;
+padding-top: 1.5em;
+>>>>>>> 2c2e671672c2246d7df8738898d0fe32f27699df
 }
 
 .grayLine {
@@ -103,7 +121,10 @@ h4 {
   @extend %textCommonStyle;
   font-size: 1.375em;
   margin: 6px;
+<<<<<<< HEAD
   padding-top: 1em;
+=======
+>>>>>>> 2c2e671672c2246d7df8738898d0fe32f27699df
 }
 
 span {

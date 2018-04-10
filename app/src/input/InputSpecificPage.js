@@ -103,7 +103,7 @@ class InputSpecificPage extends React.Component {
 
       </div>
             </div>
-          
+
     )
   }
 }

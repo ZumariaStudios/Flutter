@@ -168,10 +168,16 @@ class InputBMIPage extends React.Component {
 
       </form>
 
+<<<<<<< HEAD
       </div>
 
           </div>
 
+=======
+          <Footer pageID='2'/>
+            </div>
+          </div>
+>>>>>>> 2c2e671672c2246d7df8738898d0fe32f27699df
 
     )
   }
